@@ -1,0 +1,74 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\Z}{\mathbb Z}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#9A}
+\centerline{Sumanth Ravipati}
+\centerline{10/27/2018}
+
+\begin{enumerate}
+    \item Are cosets groups? Why or why not?
+    \begin{flushleft}
+    Cosets are not necessarily groups or subgroups since they do not necessarily contain the identity element. We can see this via a simple example of a coset that is not a group. Let $G = S_3$ and $H = \{ e, (1,2) \}$ and so the cosets are $\{ e, (1,2) \}, \{ (1,2,3), (1,3) \}, \{ (1, 3, 3), (2,3) \}$. If we look at the particular coset $\{ (1,2,3), (1,3) \}$, we can see that $(1,3)(1,3) = e$, which is not an element of that particular coset and so it is not closed under the binary operation, a requirement for any group.
+    \end{flushleft}
+    \item What is the significance of Lagrange's Theorem
+    \begin{flushleft}
+    Lagrange's theorem is significant for a number of reasons, including the fact that it predates group theory itself. There are a quite a few corollaries that are direct consequences of the original theorem, including Fermat's little theorem and Euler's theorem, staples of elementary number theory. In terms of the direct mathematics of the theorem, it can be used to find candidates for the orders of the subgroups of a group. It also shows that any group of prime order is cyclic, which directly ties together number theory and group theory.
+    \end{flushleft}
+    \item What do you think is meant by "Classification" in Theorem 7.3? In what sense is it classifying groups?
+    \begin{flushleft}
+    The theorem states that given any group of order $2p$, it is isomorphic to either $Z_{2p}$ or $D_p$. In this sense, the word "Classification" is used more like "Categorization" as it is categorizing groups of order $2p$ into two possible isomorphisms. The theorem is classifying groups in the sense that once, we know which of the two groups a given order $2p$ group is isomorphic to, it inherits all of its underlying properties, with only the labels of the elements and operations being different.
+    \end{flushleft}
+    \item For Chapter 7: Does this reading explain something you already partly suspected, or does it come totally out of the blue?
+    \begin{flushleft}
+    This chapter introduces two new main concepts, namely cosets and the orbit-stabilizer theorem, that are secretly building blocks and extensions of Lagrange's theorem. The theorem itself is not too unexpected but its applications seem to be much wider than initially expected. The definitions for orbits and stabilizers really seem to tie in concepts from the previous chapter on isomorphisms to permutation groups in an unexpected way.
+    \end{flushleft}
+    \item What is the relationship between $\Z, 4\Z$ and $\Z_4$?
+    \begin{flushleft}
+    We begin by defining each: $\Z = \{ \ldots, -3, -2, -1, 0, 1, 2, 3, \ldots \}$, $4\Z = \{ 0, \pm4, \pm8, \ldots, \pm4n, \ldots \}$ and $\Z_4 = \{ 0 (mod 4), 1 (mod 4), 2 (mod 4), 3 (mod 4)\} = \{ \Bar{0}, \Bar{1}, \Bar{2}, \Bar{3} \}$. Immediately, we can see that $4\Z$ is a subgroup of $\Z$ consisting of all multiples of 4. If we construct the left cosets of $4\Z$ in $\Z$, for all elements of $\Z$, we get the following collection: $\{ 4\Z , 1 + 4 \Z, 2 + 4\Z, 3 + n\Z \}$. We can conceptualize the collection by noting that any element $k$ of $\Z$ belongs to the coset $r + n\Z$, where $r$ is the remainder when dividing $k$ by 4. We can then see that $\Z_4 = \Z/4\Z$, or the quotient group of $\Z$ with its subgroup $4\Z$.
+    \end{flushleft}
+    \item What is the difference between $\Z_2 \bigoplus \Z_2$ and $\Z_4$? Do you think that $\Z_6$ and $\Z_2 \bigoplus \Z_3$ are isomorphic? Why not?
+    \begin{flushleft}
+    $\Z_2 = \{ 0, 1 \}$ and $\Z_2 \bigoplus \Z_2 = \{ (0,0), (0, 1), (1, 0), (1, 1) \}$. $\Z_2 \bigoplus \Z_2$ consists of 4 2-tuples and is not cyclic. The elements of $\Z_2 \bigoplus \Z_2$ can be generalized to $\{ e, a, b, ab \}$, which can be seen since for any pair of distinct non-identity elements, $a$ and $b$, $ab \not= e$. However for 1 and 3 in $\Z_4$, $1 + 3 = 0 = e$. Also, any group of order 4 is isomorphic to either $\Z_4$ or $\Z_2. \bigoplus \Z_2$. The criterion for $\Z_m$ being isomorphic to $\Z_{n_1}, \ldots, \Z_{n_k}$ is if $n_i$ and $n_j$ are relatively prime when $i \not= j$ where $m = n_1n_2\ldots n_k$. Since 2 and 3 are relatively prime, $m = 2\times3 = 6$ and so $\Z_6$ is isomorphic to $\Z_2 \bigoplus \Z_3$.
+    \end{flushleft}
+    \item Let $H$ and $K$ be subgroups of a group G. What is the difference between $H \bigoplus K$ and $HK = \{hk | h \in H, k \in K\}$? Are they both groups? Are they both subgroups of G? Do they have the same number of elements?
+    \begin{flushleft}
+    $H \bigoplus K$ consist of 2-tuples while $HK$ consists of elements of the original groups since it will be closed under the given binary operation. However, $HK$ is a subgroup of $G$ if and only if $HK = KH$. This is true since for every $hk$ in a subgroup $HK$, $(hk)^{-1} = k^{-1}h^{-1}$ must be in $HK$. Also, if we take $k$ and $h$ from $KH$, we get $kh$, which is an element of $HK$ and so $KH$ is a subset of $HK$ and $HK$ is a subset of $KH$. Therefore given, that $HK$ is a subgroup, $HK = KH$, as claimed. $H \bigoplus K$ and $HK$ may not have the same number of elements as many product $hk$ may be repeated while the external direct sums will all be distinct. $H \bigoplus K$ will have $|H||K|$ elements while $HK$ will have at most $|H||K|$ elements.
+    \end{flushleft}
+\end{enumerate}
+\end{document} 

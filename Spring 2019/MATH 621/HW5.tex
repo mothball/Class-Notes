@@ -1,0 +1,66 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{booktabs}
+\usetikzlibrary{arrows.meta}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\id}{\mathrm{id}}
+\pgfplotsset{compat=1.15}
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 621\quad
+    HW 5\quad
+    Sumanth Ravipati\quad
+    March 6, 2019}
+\end{center}
+\vspace{.15in}
+\begin{flushleft}
+Sources: 
+\end{flushleft}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] Let $G$ be a group with 4 elements. Prove that $G$ is abelian.
+\newline
+
+\begin{flushleft}
+Let $G$ contain the 4, distinct, generic elements $\{e, f, g, h\}$, with $e$ being the identity element. For $G$ to be abelian, $ab = ba\, \forall a, b \in G$. Without loss of generality, let us suppose that $G$ is not abelian because $fg \not= gf$. We know that for any $a, b \in G\setminus \{e\}, ab \not= a$ because if $ab = a$, multiplying both sides on the left by $a^{-1}$ gives us $a^{-1}ab = a^{-1}a \Rightarrow b = e$, a contradiction. Using this fact, we can conclude that $fg$ and $gf$ are both not equal to $f$ or $g$. Again, without loss of generality, since there are only 2 elements remaining, we can set $fg = h$ and $gf = e$. Since $gf = e$, the inverse of both sides must equal one another so $(gf)^{-1} = e^{-1}$. Using a previously proven identity, we see that $f^{-1}g^{-1} = e$. Multiplying both sides on the right by $g$ gives us $f^{-1} = g$. We can substitute this identity into our earlier equation $fg = h$. This becomes $fg = ff^{-1} = e \not= h$, a contradiction. Therefore, $fg$ does in fact equal $gf$. Since this was chosen in general for this group $G$ with 4 distinct, generic elements, any such $G$ is abelian, as was to be shown. $\Box$
+\end{flushleft}
+
+\newpage
+\item[2.] Prove that $\Z/2\Z \times \Z/2\Z$ is the only non-cyclic group of order 4.
+\newline
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\newpage
+\item[3.] Let $n \in \N$ and $p$ a prime number with $p > n$. Let $G$ be a group with $|G| = pn$. If $H$ is a subgroup of $G$ with $|H| = p$, show that $H$ is the only subgroup of $G$ with order $p$, and is a normal subgroup of $G$.
+\newline
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\end{enumerate}
+\end{document}

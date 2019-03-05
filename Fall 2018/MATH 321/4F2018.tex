@@ -1,0 +1,207 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+%\usepackage{times}
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+%\renewcommand{\IJ}{\mathbb{J}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\excise}[1]{}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#4F}
+\centerline{Sumanth Ravipati}
+\centerline{9/15/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item In each case, find the inverse of the element under the given operation.
+    \begin{enumerate}
+        \item $13$ in $\IZ_{20}$
+        \begin{flushleft}
+        We need to find an element $13^{-1}$ such that $e = 13 \cdot 13^{-1} = 1\pmod{20}$. If we multiply $13$ with $17$, we get: $13 \cdot 17 = 221 = 1\pmod{20} = e$. Therefore $17 = 13^{-1}$.
+        \end{flushleft}
+        \item $13$ in $U(14)$
+        \begin{flushleft}
+        We need to find an element $13^{-1}$ such that $e = 13 \cdot 13^{-1} = 1\pmod{14}$. If we multiply $13$ with $13$, we get: $13 \cdot 13 = 169 = 1 \pmod{14} = e$. Therefore $13 = 13^{-1}$.
+        \end{flushleft}
+        \item $n-1$ in $U(n) (n > 2)$
+        \begin{flushleft}
+        We need to find an element $(n-1)^{-1}$ such that $e = (n-1) \cdot (n-1)^{-1} = 1\pmod{n}$. If we multiply $(n-1)$ with $(n-1)$, we get: $(n-1)^2 = n^2 - 2n + 1 = n(n-2) + 1 = 1\pmod{n} = e$. Therefore $(n-1) = (n-1)^{-1}$.
+        \end{flushleft}
+        \item $3 - 2i$ in $\IC^*$, the group of nonzero complex numbers under multiplication
+        \begin{flushleft}
+        We need to find an element $a + bi = (3 - 2i)$ such that $e = (3 - 2i) \cdot (3 - 2i)^{-1} = 1$. Therefore, $(3 - 2i)^{-1} = \frac{1}{3 - 2i} = \frac{1}{3 - 2i} \cdot \frac{3 + 2i}{3 + 2i} = \frac{3 + 2i}{3^2 - (2i)^2} = \frac{3 + 2i}{13} = \frac{3}{13} + i\frac{2}{13}$. Therefore, the multiplicative inverse of $3 - 2i$ is $\frac{3}{13} + i\frac{2}{13}$.
+        \end{flushleft}
+    \end{enumerate}
+
+\item List the elements of $U(20)$.
+\begin{flushleft}
+All the elements of $U(20)$ are all the natural numbers less than $20$ and relatively prime to $20$. Therefore, they share no common prime factors $2, 5$ of $20 = 2^2\cdot5$. $U(20) = \{1, 3, 7, 9, 11, 13, 17, 19\}$
+\end{flushleft}
+
+\item In $U(9)$ find the inverse of 2, 7, and 8.
+\begin{flushleft}
+All the elements of $U(9)$ are relatively prime to $9$. $U(9) = \{1, 2, 4, 5, 7, 8\}$
+\end{flushleft}
+    \begin{enumerate}
+        \item $2^{-1}$ in $U(9)$
+        \begin{flushleft}
+        We need to find an element $2^{-1}$ such that $e = 2 \cdot 2^{-1} = 1\pmod{9}$. If we multiply $2$ with $5$, we get: $2 \cdot 5 = 10 = 1\pmod{9} = e$. Therefore $5 = 2^{-1}$.
+        \end{flushleft}
+        \item $7^{-1}$ in $U(9)$
+        \begin{flushleft}
+        We need to find an element $7^{-1}$ such that $e = 7 \cdot 7^{-1} = 1\pmod{9}$. If we multiply $7$ with $4$, we get: $7 \cdot 4 = 28 = 1 \pmod{9} = e$. Therefore $4 = 7^{-1}$.
+        \end{flushleft}
+        \item $8^{-1}$ in $U(9)$
+        \begin{flushleft}
+        We need to find an element $8^{-1}$ such that $e = 8 \cdot 8^{-1} = 1\pmod{9}$. If we multiply $8$ with $8$, we get: $8 \cdot 8 = 64 = 1\pmod{9} = e$. Therefore $8 = 8^{-1}$.
+        \end{flushleft}
+    \end{enumerate}
+\newpage
+\item
+    \begin{enumerate}
+        \item Prove that in a group, $(ab)^2 = a^2b^2$ if and only if $ab = ba$.
+        \begin{flushleft}
+        $(\Rightarrow)$: Given $(ab)^2 = a^2b^2$, we must show that $ab = ba$.
+        $$(ab)^2 = a^2b^2$$
+        $$(ab)(ab) = (aa)(bb)$$
+        $$abab = aabb$$
+        $$(a^{-1})abab(b^{-1}) = (a^{-1})aabb(b^{-1})$$
+        $$(a^{-1}a)ba(bb^{-1}) = (a^{-1}a)ab(bb^{-1})$$
+        $$(e)ba(e) = (e)ab(e)$$
+        $$ba = ab$$
+        $(\Leftarrow)$: Given $ab = ba$, we must show that $(ab)^2 = a^2b^2$.
+        $$ab = ba$$
+        $$(a)ab(b) = (a)ba(b)$$
+        $$aabb = abab$$
+        $$(aa)(bb) = (ab)(ab)$$
+        $$a^2b^2 = (ab)^2$$
+        \end{flushleft}
+        \item Prove that in a group, $(ab)^{-2} = b^{-2}a^{-2}$ if and only if $ab = ba$.
+        \begin{flushleft}
+        Lemma: For group elements $a$ and $b$, $(ab)^{-1} = b^{-1}a^{-1}$. \newline
+        Proof:
+        $$e = e$$
+        $$(ab)(ab)^{-1} = aa^{-1}$$
+        $$(ab)(ab)^{-1} = aea^{-1}$$
+        $$(ab)(ab)^{-1} = a(bb^{-1})a^{-1}$$
+        $$(ab)(ab)^{-1} = (ab)(b^{-1}a^{-1})$$
+        $$(ab)^{-1}(ab)(ab)^{-1} = (ab)^{-1}(ab)(b^{-1}a^{-1})$$
+        $$[(ab)^{-1}(ab)](ab)^{-1} = [(ab)^{-1}(ab)](b^{-1}a^{-1})$$
+        $$e(ab)^{-1} = e(b^{-1}a^{-1})$$
+        $$(ab)^{-1} = (b^{-1}a^{-1})$$
+        Without loss of generality, we have also shown that:
+        $$(ba)^{-1} = (a^{-1}b^{-1})$$
+        $(\Rightarrow)$: Given $(ab)^{-2} = b^{-2}a^{-2}$, we must show that $ab = ba$.
+        $$(ab)^{-2} = b^{-2}a^{-2}$$
+        $$(ab)^{-1}(ab)^{-1} = (b^{-1})^2(a^{-1})^2$$
+        $$(b^{-1}a^{-1})(b^{-1}a^{-1}) = (b^{-1}b^{-1})(a^{-1}a^{-1})$$
+        $$b^{-1}a^{-1}b^{-1}a^{-1} = b^{-1}b^{-1}a^{-1}a^{-1}$$
+        $$(b)b^{-1}a^{-1}b^{-1}a^{-1}(a) = (b)b^{-1}b^{-1}a^{-1}a^{-1}(a)$$
+        $$(bb^{-1})a^{-1}b^{-1}(a^{-1}a) = (bb^{-1})b^{-1}a^{-1}(a^{-1}a)$$
+        $$(e)a^{-1}b^{-1}(e) = (e)b^{-1}a^{-1}(e)$$
+        $$a^{-1}b^{-1} = b^{-1}a^{-1}$$
+        $$(ba)^{-1} = (ab)^{-1}$$
+        $$ba = ab$$
+        $(\Leftarrow)$: Given $ab = ba$, we must show that $(ab)^{-2} = b^{-2}a^{-2}$.
+        $$ab = ba$$
+        $$(ab)^{-2} = (ba)^{-2}$$
+        $$(ab)^{-2} = ((ba)^{-1})^2$$
+        $$(ab)^{-2} = (a^{-1}b^{-1})^2$$
+        $$(ab)^{-2} = (a^{-1}b^{-1})(a^{-1}b^{-1})$$
+        $$(ab)^{-2} = (a^{-1}b^{-1}a^{-1}b^{-1})$$
+        $$(ab)^{-2} = (b^{-1}b^{-1})(a^{-1}a^{-1})$$
+        $$(ab)^{-2} = (b^{-1})^2(a^{-1})^2$$
+        $$(ab)^{-2} = b^{-2}a^{-2}$$
+        \end{flushleft}
+    \end{enumerate}
+    
+\item Let $R$ be any fixed rotation and $F$ any fixed reflection in a dihedral group.
+
+\begin{enumerate}
+    \item Prove that $FR^kF =  R^{-k}$.
+\begin{flushleft}
+Lemma: $FRF = R^{-1}$. Proof: Let us label the vertices of the n-gon as $v_1, v_2, \ldots, v_n$. Without loss of generality, let us consider $F$ as the fixed reflection through $v_1$. The first operation $F$ keeps $v_1$ at $v_1$ and sends $v_i$ to $v_{n-i+2}$. The operation $R$ shifts $v_{n-i+2}$ to $v_{n-i+3}$. Finally, $F$ flips $v_{n-i+3}$ to $v_{n-(n-i+3)+2} = v_{i-1}$. To check for equality, we note that the operation $R^{-1}$ rotates $v_i$ to $v_{i-1}$ for all $1 \leq i \leq n$. $\Box$ \newline
+
+We shall now prove the statement (a) using induction. We know from the previous lemma that that the base case of $k=1: FRF = R^{-1}$ is true. We shall assume that the statement is true for any given $n > 1: FR^nF = R^{-n}$ and then proceed to prove that it will be true for $n+1: FR^{n+1}F = R^{-(n+1)}$.
+\end{flushleft}
+
+$$FR^nF = R^{-n}$$
+$$FR^nF(R^{-1}) = R^{-n}(R^{-1})$$
+$$FR^nF(FRF) = (R^n)^{-1}(R)^{-1}$$
+$$FR^n(FF)RF = (RR^n)^{-1}$$
+$$FR^n(e)RF = (R^{n+1})^{-1}$$
+$$F(R^nR)F = R^{-(n+1)}$$
+$$FR^{n+1}F = R^{-(n+1)}$$
+
+\newpage
+\item Why does this imply that $D_n$ is non-Abelian?
+\begin{flushleft}
+From part (a), we get:
+$$FR^kF =  R^{-k}$$
+$$FR^kF(F) =  R^{-k}(F)$$
+$$FR^k(FF) =  R^{-k}F$$
+$$FR^k =  R^{-k}F$$
+Proof by contradiction: if $D_n$ is Abelian, $FR^k = R^kF = R^{-k}F \Rightarrow R^k = R^{-k}$, which is not true for $R^k \in D_n$ in general. Therefore, $D_n$ is non-Abelian. In fact, it is only true for $n=1,2$.
+\end{flushleft}
+\end{enumerate}
+
+\end{enumerate}
+\end{document} 

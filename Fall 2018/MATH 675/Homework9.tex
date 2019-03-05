@@ -1,0 +1,37 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\norm}[1]{\left\vert #1 \right \vert}	
+\newcommand{\Norm}[1]{\left\Vert #1 \right \Vert}
+\renewcommand{\span}{\operatorname{span}}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 8}
+\centerline{Due 11/07/2018}
+\vspace{.25in}
+
+\begin{enumerate}[1.]
+\item Is the completion of an inner product space a Hilbert space? Explain.
+\item (Section 15, p.141, Problem 2) Prove each of the following:
+\begin{enumerate}
+\item Given a Banach space $V$, let $\{B_n\}$ be a nested sequence of closed spheres in $V$. Prove that $\cap_n B_n$ is nonempty. (Note that the radius is not assumed to go to zero, and the centers are not assumed to be the same.)
+\item Give an example of a nested sequence of closed non-empty sets $C_i$ in $\R$ such that $\cap C_i=\emptyset$.
+\item Give an example of a nested sequence $\{E_n\}$ of nonempty closed bounded convex sets in a Banach space $V$ (of your choice) such that $\cap_n E_n=\emptyset$.
+\end{enumerate}
+\item Let $\{e_i\}$ be an orthonormal basis for a Hilbert space $H$. Take $x_n=e_{2n}$ and $y_n=e_{2n}+\frac{e_{2n+1}}{n+1}$, and set $M=\span(\{x_n\})$, $N=\span(\{y_n\})$. Show that $M+N$ is not closed, even though $M$ and $N$ are both closed.
+\item Let $f(x)$ be the GDP of Russia between 1990 and 2015, where we take $x\in [0,1]$ with $x=0$ corresponding to 1990 and $x=1$ corresponding to 2015. Approximate $f(x)$ using the cosine Fourier series. How many terms do you need to get a decent approximation? Provide some illustrations. (You will need Mathematica which is available on campus computers and the attached Mathematica file for this. You don't need to know anything about Mathematica, however.)
+\end{enumerate}
+
+\end{document}

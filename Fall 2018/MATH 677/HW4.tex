@@ -1,0 +1,169 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 677 Homework 4}
+\centerline{Sumanth Ravipati}
+\centerline{10/9/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[(10)] Suppose $A$ is an $n \times n$-matrix
+\begin{enumerate}
+    \item If $A$ satisfies the identity $A^2 = 0$, find an explicit formula for $e^{tA}$.
+    \begin{flushleft}
+    $$e ^ { tA } = \sum _ { k = 0 } ^ { \infty } \frac { (tA) ^ { k } } { k ! } = I + tA + \frac { 1 } { 2 ! } t^2 A ^ { 2 } + \frac { 1 } { 3 ! } t^3 A ^ { 3 } + \frac { 1 } { 4 ! } t^4 A ^ { 4 } + \cdots$$
+    $$= I + tA + \frac { 1 } { 2 ! } t^2(0) + \frac { 1 } { 3 ! } t^3(0)A + \frac { 1 } { 4 ! } t^4(0)^2 + \cdots$$
+    $$= I + tA $$
+    \newline
+    \end{flushleft}
+    \item If $A$ satisfies the identity $A^2 = -I$, find an explicit formula for $e^{tA}$.
+    \begin{flushleft}
+    $$e ^ { tA } = \sum _ { k = 0 } ^ { \infty } \frac { (tA) ^ { k } } { k ! } = I + tA + \frac { 1 } { 2 ! } t^2 A ^ { 2 } + \frac { 1 } { 3 ! } t^3 A ^ { 3 } + \frac { 1 } { 4 ! } t^4 A ^ { 4 } + \cdots$$
+    $$= I + tA + \frac { 1 } { 2 ! } t^2 (-I) + \frac { 1 } { 3 ! } t^3(-I)A + \frac { 1 } { 4 ! } t^4 (-I)^2 + \frac { 1 } { 5 ! } t^5(-I)^2A + \cdots$$
+    $$= I + tA - \frac { 1 } { 2 ! } t^2 - \frac { 1 } { 3 ! } t^3A + \frac { 1 } { 4 ! } t^4 + \frac { 1 } { 5 ! } t^5A - \frac { 1 } { 6 ! } t^6 - \frac { 1 } { 7 ! } t^7A + \cdots$$
+    $$= I(1 - \frac { 1 } { 2 ! } t^2 + \frac { 1 } { 4 ! } t^4 - \frac { 1 } { 6 ! } t^6 + \cdots) + A(t - \frac { 1 } { 3 ! } t^3 + \frac { 1 } { 5 ! } t^5 - \frac { 1 } { 7 ! } t^7 + \cdots)$$
+    $$= I\cos{t} + A\sin{t}$$
+    \newline
+    \end{flushleft}
+    \item If $A$ satisfies the identity $A^2 = I$, find an explicit formula for $e^{tA}$.
+    \begin{flushleft}
+    $$e ^ { tA } = \sum _ { k = 0 } ^ { \infty } \frac { (tA) ^ { k } } { k ! } = I + tA + \frac { 1 } { 2 ! } t^2 A ^ { 2 } + \frac { 1 } { 3 ! } t^3 A ^ { 3 } + \frac { 1 } { 4 ! } t^4 A ^ { 4 } + \cdots$$
+    $$= I + tA + \frac { 1 } { 2 ! } t^2 (I) + \frac { 1 } { 3 ! } t^3(I)A + \frac { 1 } { 4 ! } t^4 (I)^2 + \frac { 1 } { 5 ! } t^5(I)^2A + \cdots$$
+    $$= I + tA + \frac { 1 } { 2 ! } t^2 + \frac { 1 } { 3 ! } t^3A + \frac { 1 } { 4 ! } t^4 + \frac { 1 } { 5 ! } t^5A + \frac { 1 } { 6 ! } t^6 + \frac { 1 } { 7 ! } t^7A + \cdots$$
+    $$= (I + \frac { 1 } { 2 ! } t^2 + \frac { 1 } { 4 ! } t^4 + \frac { 1 } { 6 ! } t^6 + \cdots) + A(t + \frac { 1 } { 3 ! } t^3 + \frac { 1 } { 5 ! } t^5 + \frac { 1 } { 7 ! } t^7 + \cdots)$$
+    $$= I\cosh{t} + A\sinh{t}$$
+    \end{flushleft}
+\end{enumerate}
+\newpage
+\item[(11)] Consider the linear planar system $\dot{x} = Ax$ for the matrix \newline
+$$A = \left[ \begin{array} { r r } { - 5 } & { 1 } \\ { 1 } & { - 5 } \end{array} \right]$$
+Let $(x_1(t),x_2(t))$ be a nontrivial solution of this linear system with the initial value $(x_1(0),x_2(0)) = (a,b) \not= (0,0)$. Find all possible values of $\lim_{t\rightarrow\infty}x_2(t)/x_1(t)$. Which initial conditions $(a,b)$ lead to which limit?
+\begin{flushleft}
+First let us determine the eigenvalues and eigenvectors for the matrix $A$:
+$$\det(A-\lambda I) = \begin{vmatrix} { -5 - \lambda } & { 1 } \\ { 1 } & { -5 - \lambda }\end{vmatrix} = (-1)^2(\lambda + 5)^2 - 1 = \lambda^2 + 10\lambda + 24 = (\lambda + 4)(\lambda + 6) = 0$$
+$$\Rightarrow \lambda = -4,-6$$
+$$A+4I = \left[ \begin{array} { r r } { -1 } & { 1 } \\ { 1 } & { -1 } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { - 1 } & { 1 } \\ { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { 1 } & { -1 } \\ { 0 } & { 0 } \end{array} \right]$$
+$$x_1 - x_2 = 0 \Rightarrow x_1 = x_2$$
+$$\left[ \begin{array} { r } { x_1 } \\ { x_2 } \end{array} \right] = \left[ \begin{array} { r } { x_1 } \\ { x_1 } \end{array} \right] = x_1\left[ \begin{array} { r } { 1 } \\ { 1 } \end{array} \right]$$
+$$A+6I = \left[ \begin{array} { r r } { 1 } & { 1 } \\ { 1 } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { 1 } & { 1 } \\ { 0 } & { 0 } \end{array} \right]$$
+$$x_1 + x_2 = 0 \Rightarrow x_2 = -x_1$$
+$$\left[ \begin{array} { r } { x_1 } \\ { x_2 } \end{array} \right] = \left[ \begin{array} { r } { x_1 } \\ { -x_1 } \end{array} \right] = x_1\left[ \begin{array} { r } { 1 } \\ { -1 } \end{array} \right]$$
+So the corresponding eigenvectors of $A$ are:
+$$\left[ \begin{array} { r } { 1 } \\ { 1 } \end{array} \right], \left[ \begin{array} { r } { 1 } \\ { -1 } \end{array} \right]$$
+The similarity matrix would then be:
+$$S = \left[ \begin{array} { r r } { 1 } & { 1 } \\ { 1 } & { -1 } \end{array} \right]$$
+$$A = S \times D \times S^{-1} =  \left[ \begin{array} { r r } { 1 } & { 1 } \\ { 1 } & { -1 } \end{array} \right] \times  \left[ \begin{array} { r r } { -4 } & { 0 } \\ { 0 } & { -6 } \end{array} \right] \times  \left[ \begin{array} { r r } { \frac{1}{2} } & { \frac{1}{2} } \\ { \frac{1}{2} } & { -\frac{1}{2} } \end{array} \right]$$
+$$e^{At} = \left[ \begin{array} { r r } { 1 } & { 1 } \\ { 1 } & { -1 } \end{array} \right] \times  \left[ \begin{array} { r r } { e^{-4t} } & { 0 } \\ { 0 } & { e^{-6t} } \end{array} \right] \times  \frac{1}{2}\left[ \begin{array} { r r } { 1 } & { 1 } \\ { 1 } & { -1 } \end{array} \right] = \frac{1}{2}\left[\begin{array}{cc} e^{-6 t}+e^{-4 t} & -e^{-6 t}+e^{-4 t} \\ -e^{-6 t}+e^{-4 t} & e^{-6 t}+e^{-4 t} \\ \end{array}\right]$$
+$$x(t) = \frac{1}{2}\left[\begin{array}{cc} e^{-6 t}+e^{-4 t} & -e^{-6 t}+e^{-4 t} \\ -e^{-6 t}+e^{-4 t} & e^{-6 t}+e^{-4 t} \\ \end{array}\right]\times \left[ \begin{array} { r } { a } \\ { b } \end{array} \right] = \frac{1}{2}\left[ \begin{array} { r } { a(e^{-6 t}+e^{-4 t}) + b(-e^{-6 t}+e^{-4 t}) } \\ { a(-e^{-6 t}+e^{-4 t}) + b(e^{-6 t}+e^{-4 t}) } \end{array} \right]$$
+$$\lim_{t\rightarrow\infty}\frac{x_2(t)}{x_1(t)} = \lim_{t\rightarrow\infty}\frac{a(e^{-6 t}+e^{-4 t}) + b(-e^{-6 t}+e^{-4 t})}{a(-e^{-6 t}+e^{-4 t}) + b(e^{-6 t}+e^{-4 t})} = \lim_{t\rightarrow\infty}\frac{(a-b)(e^{-6 t}) + (a+b)(e^{-4 t})}{(b-a)(e^{-6 t}) + (a+b)(e^{-4 t})}$$
+If $a \not= b$, as $t\rightarrow\infty$, the $t^{-6t}$ terms tend to dominate, so we can simplify as follows:
+$$=\lim_{t\rightarrow\infty}\frac{(a-b)(e^{-6 t})}{-(a-b)(e^{-6 t})} = -1$$
+If $a = b$, we can remove the $t^{-6t}$ terms and simplify as follows:
+$$=\lim_{t\rightarrow\infty}\frac{(a+b)(e^{-4 t})}{(a+b)(e^{-4 t})} = 1$$
+\end{flushleft}
+\newpage
+\item[(12)] Condiser the matrix \newline
+$$A = \left[ \begin{array} { l l l } { 1 } & { 0 } & { 0 } \\ { 1 } & { 2 } & { 0 } \\ { 1 } & { 2 } & { 3 } \end{array} \right]$$
+\begin{enumerate}
+    \item Use the Jordan canonical form to compute $e^{At}$.
+    \begin{flushleft}
+    Let us first determine the eigenvalues of the given matrix. To do so let us first calculate the determinant of the matrix $A - \lambda I$ and set it equal to $0$:
+    $$\det(A-\lambda I) = \begin{vmatrix} { 1 - \lambda } & { 0 } & { 0 } \\ { 1 } & { 2 - \lambda } & { 0 } \\ { 1 } & { 2 } & { 3 - \lambda } \end{vmatrix} = $$
+    $$(1- \lambda)\begin{vmatrix} { 2 - \lambda } & { 0 } \\  { 2 } & { 3 - \lambda } \end{vmatrix} = (1- \lambda)(2- \lambda)(3- \lambda) = 0$$
+    $$\Rightarrow \lambda = 1, 2,\text{ or }3$$
+    Each eigenvalue has a multiplicity of 1, so there will be 1 associated non-zero eigenvector. The Jordan canonical form is simply the diagonalization of the matrix, with simply the eigenvalues in the diagonal positions.
+    $$A-I = \left[ \begin{array} { l l l } { 0 } & { 0 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { 1 } & { 2 } & { 2 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { 0 } & { 1 } & { 2 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { 0 } & { 1 } & { 2 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_1 + x_2 = 0, x_2 + 2x_3 = 0$$
+    $$x_1 = -x_2, x_3 = (-1/2)x_2$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { -x_2 } \\ { x_2 } \\ { \frac{-1}{2}x_2 } \end{array} \right] = x_2 \left[ \begin{array} { l } { -2 } \\ { 2 } \\ { -1 } \end{array} \right]$$
+    \newline
+    $$A-2I = \left[ \begin{array} { l l l } { -1 } & { 0 } & { 0 } \\ { 1 } & { 0 } & { 0 } \\ { 1 } & { 2 } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 0 } \\ { 1 } & { 0 } & { 0 } \\ { 0 } & { 2 } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 0 } & { 0 } \\ { 0 } & { 2 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_1 = 0, 2x_2 + x_3 = 0 \Rightarrow x_3 = -2x_2$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { 0 } \\ { x_2 } \\ { -2x_2 } \end{array} \right] = x_2 \left[ \begin{array} { l } { 0 } \\ { 1 } \\ { -2 } \end{array} \right]$$
+    \newline
+    $$A-3I = \left[ \begin{array} { l l l } { -2 } & { 0 } & { 0 } \\ { 1 } & { -1 } & { 0 } \\ { 1 } & { 2 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 0 } \\ { 1 } & { 0 } & { 0 } \\ { 0 } & { 2 } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 0 } & { 0 } \\ { 0 } & { 2 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_1 = 0, 2x_2 + x_3 = 0 \Rightarrow x_3 = -2x_2$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { 0 } \\ { 0 } \\ { x_3 } \end{array} \right] = x_3 \left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]$$
+    Placing the eigenvectors together in a single matrix gives us the following similarity matrix, which can be used to form the Jordan canonical form:
+    $$S = \left[ \begin{array} { l l l } { -2 } & { 0 } & { 0 } \\ { 2 } & { 1 } & { 0 } \\ { -1 } & { -2 } & { 1 } \end{array} \right]$$
+    $$A = S\times D\times S^{-1} = \left[ \begin{array} { l l l } { -2 } & { 0 } & { 0 } \\ { 2 } & { 1 } & { 0 } \\ { -1 } & { -2 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { 1 } & { 0 } & { 0 } \\ { 0 } & { 2 } & { 0 } \\ { 0 } & { 0 } & { 3 } \end{array} \right] \times \left[ \begin{array} { l l l } { -\frac{1}{2} } & { 0 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { \frac{3}{2} } & { 2 } & { 1 } \end{array} \right]$$
+    $$e^{A t} = \left[ \begin{array} { l l l } { -2 } & { 0 } & { 0 } \\ { 2 } & { 1 } & { 0 } \\ { -1 } & { -2 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { e^t } & { 0 } & { 0 } \\ { 0 } & { e^{2t}} & { 0 } \\ { 0 } & { 0 } & { e^{3t}} \end{array} \right] \times \left[ \begin{array} { l l l } { -\frac{1}{2} } & { 0 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { \frac{3}{2} } & { 2 } & { 1 } \end{array} \right]$$
+    $$e^{A t} = \left[ \begin{array} { c c c } { e^t } & { 0 } & { 0 } \\ { -e^t+e^{2t} } & { e^{2t} } & { 0 } \\ { \frac{e^t}{2}-2e^{2t}+\frac{3e^{3t}}{2} } & { -2e^{2t}+2e^{3t} } & { e^{3t} } \end{array} \right]$$
+    \end{flushleft}
+    \item Use part (a) to calculate the solution to the initial value problem $\dot{x} = Ax$, $x(t_0) = x_0$, for arbitrary $t_0 \in \R$ and $x_0 \in \R^3$.
+    $$x(t) = e^{A (t-t_0)}x_0 = \left[ \begin{array} { c c c } { e^{(t-t_0)} } & { 0 } & { 0 } \\ { -e^{(t-t_0)}+e^{2(t-t_0)} } & { e^{2(t-t_0)} } & { 0 } \\ { \frac{e^{(t-t_0)}}{2}-2e^{2(t-t_0)}+\frac{3e^{3(t-t_0)}}{2} } & { -2e^{2(t-t_0)}+2e^{3(t-t_0)} } & { e^{3(t-t_0)} } \end{array} \right] \times \left[ \begin{array} { l l l } { x_{0_1} } \\ { x_{0_2} } \\ { x_{0_3} } \end{array} \right]$$
+    $$x(t) = \left[ \begin{array} { c c c } { x_{0_1}e^{(t-t_0)} } \\ { x_{0_1}(-e^{(t-t_0)}+e^{2(t-t_0)}) + x_{0_2}e^{2(t-t_0)} } \\ { x_{0_1}(\frac{e^{(t-t_0)}}{2}-2e^{2(t-t_0)}+\frac{3e^{3(t-t_0)}}{2}) + x_{0_2}(-2e^{2(t-t_0)}+2e^{3(t-t_0)}) + x_{0_3}e^{3(t-t_0)} } \end{array} \right]$$
+\end{enumerate}
+\newpage
+\item[(13)] Consider the matrices \newline
+$$A = \left[ \begin{array} { r r r } { - 1 } & { - 3 } & { 0 } \\ { 0 } & { 2 } & { 0 } \\ { 0 } & { 0 } & { - 1 } \end{array} \right] \quad \text { and } \quad B = \left[ \begin{array} { r r r } { - 1 } & { - 3 } & { 1 } \\ { 0 } & { 2 } & { 0 } \\ { 0 } & { 0 } & { - 1 } \end{array} \right]$$
+\begin{enumerate}
+    \item Determine the bases of generalized eigenvectors suitable for determining the Jordan forms of $A$ and $B$.\newline
+    
+    Let us first determine the eigenvalues of the given matrix $A$. To do so let us first calculate the determinant of the matrix $A - \lambda I$ and set it equal to $0$:
+    $$\det(A-\lambda I) = \begin{vmatrix} { -1 - \lambda } & { -3 } & { 0 } \\ { 0 } & { 2 - \lambda } & { 0 } \\ { 0 } & { 0 } & { -1 - \lambda } \end{vmatrix} = $$
+    $$(-1- \lambda)\begin{vmatrix} { 2 - \lambda } & { 0 } \\  { 0 } & { -1 - \lambda } \end{vmatrix} = (-1)^2(1 + \lambda)(2 - \lambda)(1 + \lambda) = 0$$
+    $$\Rightarrow \lambda = -1 \text{ or }2$$
+    $$A-2I = \left[ \begin{array} { l l l } { -3 } & { -3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { -3 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_1 + x_2 = 0 \Rightarrow x_2 = -x_1, x_3 = 0$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { x_1 } \\ { -x_1 } \\ { 0 } \end{array} \right] = x_1 \left[ \begin{array} { l } { 1 } \\ { -1 } \\ { 0 } \end{array} \right]$$
+    \newline
+    $$A+I = \left[ \begin{array} { l l l } { 0 } & { -3 } & { 0 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 0 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_2 = 0$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { x_1 } \\ { 0 } \\ { x_3 } \end{array} \right] = x_1 \left[ \begin{array} { l } { 1 } \\ { 0 } \\ { 0 } \end{array} \right] + x_3 \left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]$$
+    \newline
+    Therefore the generalized eigenvectors for $A$ are:
+    $$ \left[ \begin{array} { l } { 1 } \\ { -1 } \\ { 0 } \end{array} \right], \left[ \begin{array} { l } { 1 } \\ { 0 } \\ { 0 } \end{array} \right], \left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]$$
+    
+    Let us first determine the eigenvalues of the given matrix $B$. To do so let us first calculate the determinant of the matrix $B - \lambda I$ and set it equal to $0$:
+    $$\det(B-\lambda I) = \begin{vmatrix} { -1 - \lambda } & { -3 } & { 1 } \\ { 0 } & { 2 - \lambda } & { 0 } \\ { 0 } & { 0 } & { -1 - \lambda } \end{vmatrix} = $$
+    $$(-1- \lambda)\begin{vmatrix} { 2 - \lambda } & { 0 } \\  { 0 } & { -1 - \lambda } \end{vmatrix} = (-1)^2(1 + \lambda)(2 - \lambda)(1 + \lambda) = 0 \Rightarrow \lambda = -1 \text{ or }2$$
+    $$B-2I = \left[ \begin{array} { l l l } { -3 } & { -3 } & { 1 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { -3 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { -3 } & { -3 } & { 1 } \\ { 0 } & { 0 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { -3 } & { -3 } & { 0 } \\ { 0 } & { 0 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_1 + x_2 = 0 \Rightarrow x_2 = -x_1, x_3 = 0$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { x_1 } \\ { -x_1 } \\ { 0 } \end{array} \right] = x_1 \left[ \begin{array} { l } { 1 } \\ { -1 } \\ { 0 } \end{array} \right]$$
+    \newline
+    $$B+I = \left[ \begin{array} { l l l } { 0 } & { -3 } & { 1 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 1 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 0 } & { 1 } \\ { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_2 = 0, x_3 = 0$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { x_1 } \\ { 0 } \\ { 0 } \end{array} \right] = x_1 \left[ \begin{array} { l } { 1 } \\ { 0 } \\ { 0 } \end{array} \right]$$
+    \newline
+    $$(B+I)^2 = \left[ \begin{array} { l l l } { 0 } & { -3 } & { 1 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]^2 = \left[ \begin{array} { l l l } { 0 } & { -9 } & { 0 } \\ { 0 } & { 9 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { -9 } & { 0 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right] \rightarrow \left[ \begin{array} { l l l } { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]$$
+    $$x_2 = 0$$
+    $$\left[ \begin{array} { l } { x_1 } \\ { x_2 } \\ { x_3 } \end{array} \right] = \left[ \begin{array} { l } { x_1 } \\ { 0 } \\ { x_3 } \end{array} \right] = x_1 \left[ \begin{array} { l } { 1 } \\ { 0 } \\ { 0 } \end{array} \right] + x_3 \left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]$$
+    $$e^{tB}\left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right] = e^{-t}(Iv_3+t(B+I)v_3)$$
+    $$= e^{-t}\left(\left[ \begin{array} { l l l } { 1 } & { 0 } & { 0 } \\ { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right]\left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]+t\left[ \begin{array} { l l l } { 0 } & { -3 } & { 1 } \\ { 0 } & { 3 } & { 0 } \\ { 0 } & { 0 } & { 0 } \end{array} \right]\left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right]\right)$$
+    $$= e^{-t}\left(\left[ \begin{array} { l } { 0 } \\ { 0 } \\ { 1 } \end{array} \right] + \left[ \begin{array} { l } { t } \\ { 0 } \\ { 0 } \end{array} \right]\right) = \left[ \begin{array} { l } { te^{-t} } \\ { 0 } \\ { e^{-t} } \end{array} \right]$$
+    Therefore the generalized eigenvectors for $B$ are:
+    $$ \left[ \begin{array} { l } { 1 } \\ { -1 } \\ { 0 } \end{array} \right], \left[ \begin{array} { l } { 1 } \\ { 0 } \\ { 0 } \end{array} \right], \left[ \begin{array} { l } { t } \\ { 0 } \\ { 1 } \end{array} \right]$$
+    
+    \item Use part (a) to calculate $e^{At}$ and $e^{Bt}$.\newline
+    
+    Placing the eigenvectors together in a single matrix gives us the following similarity matrix, which can be used to form the Jordan canonical form:
+    $$S = \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$A = S\times D\times S^{-1} = \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { 2 } & { 0 } & { 0 } \\ { 0 } & { -1 } & { 0 } \\ { 0 } & { 0 } & { -1 } \end{array} \right] \times \left[ \begin{array} { l l l } { 0 } & { -1 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$e^{A t} = \left[ \begin{array} { l l l } { 1 } & { 1 } & { 0 } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { e^{2t} } & { 0 } & { 0 } \\ { 0 } & { e^{-t}} & { 0 } \\ { 0 } & { 0 } & { e^{-t}} \end{array} \right] \times \left[ \begin{array} { l l l } { 0 } & { -1 } & { 0 } \\ { 1 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$e^{A t} = \left[ \begin{array} { l l l } { e^{-t} } & { e^{-t}-e^{2t} } & { 0 } \\ { 0 } & { e^{2t} } & { 0 } \\ { 0 } & { 0 } & { e^{-t} } \end{array} \right]$$
+    \newline
+    $$S = \left[ \begin{array} { l l l } { 1 } & { 1 } & { t } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$B = S\times D\times S^{-1} = \left[ \begin{array} { l l l } { 1 } & { 1 } & { t } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { 2 } & { 0 } & { 0 } \\ { 0 } & { -1 } & { 0 } \\ { 0 } & { 0 } & { -1 } \end{array} \right] \times \left[ \begin{array} { l l l } { 0 } & { -1 } & { 0 } \\ { 1 } & { 1 } & { -t } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$e^{B t} = \left[ \begin{array} { l l l } { 1 } & { 1 } & { t } \\ { -1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } \end{array} \right] \times \left[ \begin{array} { l l l } { e^{2t} } & { 0 } & { 0 } \\ { 0 } & { e^{-t}} & { 0 } \\ { 0 } & { 0 } & { e^{-t}} \end{array} \right] \times \left[ \begin{array} { l l l } { 0 } & { -1 } & { 0 } \\ { 1 } & { 1 } & { -t } \\ { 0 } & { 0 } & { 1 } \end{array} \right]$$
+    $$e^{B t} = \left[ \begin{array} { l l l } { e^{-t} } & { e^{-t}-e^{2t} } & { te^{-t} } \\ { 0 } & { e^{2t} } & { 0 } \\ { 0 } & { 0 } & { e^{-t} } \end{array} \right]$$
+\end{enumerate}
+\end{enumerate}
+\end{document}

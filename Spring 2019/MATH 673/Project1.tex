@@ -1,0 +1,188 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 673\quad
+    Project 1\quad
+    Sumanth Ravipati\quad
+    March 19, 2019}
+\end{center}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] Computer Experiment 3.1: Lyapunov Exponents\newline
+
+Write a program to calculate the Lyapunov exponent of $g_a(x) = ax(1-x)$ for values of the parameter $a$ between 2 and 4. Graph the results as a function of $a$.
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\newpage
+\item[2.] Challenge 3: Sharkovskii's Theorem\newline
+
+\begin{enumerate}
+    \item[Step 1] Recall that the image of an interval under a continuous map is an interval. Use the fact that $A \subseteq B \Rightarrow f(A) \subseteq f(B)$ to show that
+    $$A_1 \subseteq f(A_1) \subseteq f^2(A_1) \subseteq \ldots$$
+    \newline
+    \begin{flushleft}
+    
+    We shall prove the statement using the principle of mathematical induction.\newline
+    
+    Let us prove the base case for $n = 1$
+    \end{flushleft}
+
+    \item[Step 2] Show that the number of orbit points $x_i$ lying in $f^j(A_1)$ is strictly increasing with $j$ until all $p$ points are contained in $f^k(A_1)$ for a certain $k$. Explain why $f^k(A_1)$ contains $[x_1, x_p]$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 3] Prove that either (1) there is another subinterval (besides $A_1$) whose image contains $A_1$, or (2) $p$ is even and $f$ has a period-two orbit.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 4] Prove that either (1) $f$ has a periodic orbit of period $p-2$ in $[x_1, x_p]$, (2) $p$ is even and $f$ has a period-two orbit, or (3) $k = p - 2$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 5] Show that the endpoints of subintervals $A_1, \ldots , A_8$ map as in Figure 3.15, or as its mirror image. Conclude that $A_1 \subseteq f(A_8)$, and that the transition graph is as shown in Figure 3.16 for the itineraries of $f$. In particular, $A_8$ maps over $A_i$ for all odd $i$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 6] Using symbol sequences constructed from Figure 3.16, prove the existence of periodic points of the following periods:\newline
+    \begin{enumerate}
+        \item[(a)] Even numbers less than 9;
+        \begin{flushleft}
+    
+        \end{flushleft}
+        \item[(b)] All numbers greater than 9;
+        \begin{flushleft}
+    
+        \end{flushleft}
+        \item[(c)] Period 1.
+        \begin{flushleft}
+    
+        \end{flushleft}
+    \end{enumerate}
+    
+    \item[Step 7] Explain how to generalize the proof from 9 to any odd number greater than 1.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 8] Prove that if $f$ has a periodic orbit of even period, then $f$ has a periodic orbit of period-two. 
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 9] Let $k$ be a positive integer and let $f$ be any map such that $f^{2^k}$ has a period $r$ point $x$. Prove that $x$ is a period $2^jr$ point of $f$ for some $0 \leq j \leq k$. Moreover, prove that if $r$ is an even number, then $j = k$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 10] Prove that if $f$ has a periodic orbit of period $2^k$, then $f$ has periodic orbits of periods $2^{k-1}, \ldots, 4, 2, 1$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 11] Use these periodic orbits and Step 10 to complete the proof of Sharkovskii’s Theorem.
+    \begin{flushleft}
+    
+    \end{flushleft}
+\end{enumerate}
+
+\newpage
+\item[3.] Computer Experiment 4.3: Julia Sets\newline
+
+Draw the Julia set for $f(z) = z^2 + c$ with $c = 0.29 + 0.54i$. Plot the basin of infinity in black. Divide the square $[-1.3,1.3] \times [-1.3, 1.3]$ into an $N \times N$ grid for $N = 100$. For each of the $N^2$ small boxes, iterate $f(z)$ using the center of the box as initial value. Plot a black point at the box (or better, fill in the box) if the iteration diverges to infinity; plot a different color if the iteration stays bounded. Your picture should bear some resemblance to the examples in Figure 4.11. What is the bounded attracting periodic sink for this Julia set? Locate $c$ in the Mandelbrot set. Increase $N$ for better resolution. Further work: Can you find a constant $c$ such that $f(z) = z^2 + c$ has a period-six sink?
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\newpage
+\item[4.] Computer Experiment 5.2: Lyapunov Exponents\newline
+
+Write a program to measure Lyapunov exponents. Check the program by comparing your approximation for the Hénon or Ikeda map with what is given in the text. Calculate the Lyapunov exponents of the Tinkerbell map quasiperiodic orbit from Computer Exercise 5.1 (one should be zero). Finally, change the first parameter of Tinkerbell to $c_1 = 0.9$ and repeat. Plot the orbit to see the graceful-looking chaotic attractor which gives the map its name.
+
+\begin{center}
+    Tinkerbell map from Computer Exercise 5.1
+\end{center}
+$$f ( x , y ) = \left( x ^ { 2 } - y ^ { 2 } + c _ { 1 } x + c _ { 2 } y , 2 x y + c _ { 3 } x + c _ { 4 } y \right)$$
+where $c _ { 1 } = - 0.3 , c _ { 2 } = - 0.6 , c _ { 3 } = 2 , c _ { 4 } = 0.5$, with initial value $(x,y) = (0.1, 0.1)$.
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\newpage
+\item[5.] Challenge 5: Computer Calculations and Shadowing\newline
+
+\begin{enumerate}
+    \item[Step 1] Assume that \textbf{B}$(x_0)$ differ from $x_0$ by less than $d$ in each coordinate. In Figure 5.20 we draw a rectangle centered at $x_0$ with dimensions $3d$ in the horizontal direction and $2d$ in the vertical direction. Assume that the rectangle lies on one side or the other of the line $y = 1/2$, so that it is not chopped in two by the map. Then its image is the rectangle shown; the center of the rectangle is of course \textbf{B}$(x_0)$. Show that the image of the rectangle is guaranteed to "lie across" the original rectangle. Explain why there is a fixed point of \textbf{B} in the rectangle, within $2d$ of $x_0$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 2] Now suppose our computer makes mistakes in evaluating \textbf{B} of size at most $10^{-6}$, and it tells us that \textbf{B}$(x_0)$ and $x_0$ are equal within $10^{-6}$. Prove that \textbf{B} has a fixed point within $10^{-5}$ of $x_0$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 3] Prove Theorem 5.19.\newline
+    
+    \textit{\textbf{Theorem 5.19} Let \textbf{B} denote the skinny baker map, and let $d > 0$. Assume that there is a set of points $\{x_0, x_1, \ldots, x_{k-1}, x_k = x_0\}$ such that each coordinate of \textbf{B}$(x_i)$ and $x_{i+1}$ differ by less than $d$ for $i = 0,1, \ldots, k-1$. Then there is a periodic orbit $\{z_0, z_1, \ldots, z_{k-1}\}$ such that $|x_i - z_i| < 2d$ for $i = 0, \ldots, k-1$.}
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 4] Let \textbf{f} be any continuous map, and assume that there is a set of rectangles $S_0, \ldots, S_k$ such that \textbf{f}$(S_i)$ lies across $S_{i+1}$ for $i = 0, \ldots, k-1$, each with the same orientation. Prove that there is a point $x_0$ in $S_0$ such that \textbf{f}$^i(x_0)$ lies in the rectangle $S_i$ for all $0 \leq i \leq k$. By the way, does $k$ have to be finite?
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 5] Let \textbf{B} denote the baker map and let $d > 0$. Prove the following: If $\{x_0, x_1, \ldots, x_k \}$ is a set of points such that each coordinate of \textbf{B}$(x_i)$ and $x_{i+1}$ differ by less than $d$ for $i = 0, 1, \ldots, k-1$, then there is a true orbit within $2d$ of the $x_i$, that is, there exists an orbit $\{z_0, z_1, \ldots, z_k\}$ of \textbf{B} such that $|x_i - z_i| < 2d$ for $i = 0, \ldots, k$.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 6] To what extent can the results for the baker map be reproduced in other maps? What properties are important? Show that the same steps can be carried out for the cat map, for example, by replacing the $3d \times 2d$ rectangle appropriately.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 7] Assume that a plot of a length one million orbit of the cat map is made on a computer screen, and that the computer is capable of calculating an iteration of the cat map accurately within $10^{-6}$. Do you believe that the dots plotted represent a true orbit of the map (to within the pixels of the screen)?
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+    \item[Step 8] Decide what property is lacking in map (5.14) that allows incorrect conclusions to be made from the computation.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    
+\end{enumerate}
+
+\begin{flushleft}
+
+\end{flushleft}
+
+\end{enumerate}
+\end{document}

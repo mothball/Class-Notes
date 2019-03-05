@@ -1,0 +1,112 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+\setlength{\textwidth}{6.2in}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+%\usepackage{times}
+
+\newcommand{\excise}[1]{}
+
+
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+\begin{document}
+
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#6}
+\centerline{Sumanth Ravipati}
+\centerline{10/9/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item In $Z_{24}$, list all generators for the subgroup of order 8. Let $G = \langle a\rangle$ and let $|a| = 24$. List all generators for the subgroup of order 8.
+\begin{flushleft}
+According to the Fundamental Theorem of Cyclic Groups, if an integer $k$ is a positive divisor of $n$, the order of the parent group, the group $\langle a\rangle$ has exactly one subgroup of order $k$: $\langle a^{n/k}\rangle$. Since $24/8 = 3$, $3$ is a generator with order $8$. All of the generators will be of the form $3j$ where $gcd(8,j) = 1$. For the subgroup of order 8, this means that $j = 1, 3, 5, 7$. Also, the number of elements of order $d$ in a cyclic group of order $n$, where $d$ is a positive divisor of $n$ is $\phi(d)$. With $d = 8$ and $n = 24$, $\phi(8) = 4$.
+$$\langle3\rangle = \langle3\cdot3\rangle = \langle3\cdot5\rangle = \langle3\cdot7\rangle$$
+$$\langle a^3\rangle = \langle(a^3)^3\rangle = \langle(a^3)^5\rangle = \langle(a^3)^7\rangle$$
+\end{flushleft}
+\item Suppose that a cyclic group $G$ has exactly three subgroups: $G$ itself, $\{e\}$, and a subgroup of order 7. What is $|G|$? What can you say if 7 is replaced with $p$ where $p$ is a prime?
+\begin{flushleft}
+If we let $|G| = n$, and since $G$ has exactly three subgroups, we know that $n$ has exactly 3 divisors. Only squares of primes have exactly 3 divisors, and the divisors will always be $p^2, p, \text{ and } 1$. We shall prove the following lemma:\newline
+Lemma: If a number has exactly 3 divisors, it must be of the form $p^2$, where $p$ is prime.\newline
+Proof: Every number $n > 1$ has at least 2 divisors, itself and 1.
+\end{flushleft}
+\item Prove that a finite group is the union of proper subgroups if and only if the group is not cyclic.
+\begin{flushleft}
+To begin let us assume that a finite group is a union of proper subgroups and we shall show that the group is not cyclic. First let us prove the equivalent contrapositve statement: we assume  that the group is cyclic and show that  the finite group is not a union of proper subsets. Let us label the group under consideration $G$ and the subsets of $G$ as $H_1, H_2, \ldots, H_n$. Then $G = H_1 \cup H_2 \cup \ldots \cup H_n = \bigcup\limits_{i=1}^n H_i$. Since $G$ is cyclic, there exists an element $a$, which can generate the entire set: $\langle a\rangle = G$. Since $a \in G$, it is also element of the union: $a \in \bigcup\limits_{i=1}^n H_i$. This means that $a$ must be an element of at least one of the individual subsets: $(a \in H_1) \vee (a \in H_2) \vee \ldots \vee (a \in H_n)$. Without loss of generality, let us say $a \in H_k$, which means that $\langle a\rangle = G \subseteq H_k$. This means that $H_i \not\subset G$ and so $G$ is not a union of proper subsets, as desired. Via contrapositive, we have shown that a if a finite group is a union of proper subsets, then the group is not cyclic.\newline
+Now to prove the converse: here we assume that a finite group is not cyclic and we shall show that the group is a union of proper subsets. Since $G$ is not cyclic, there does not exist an element $a$ such that $\langle a\rangle = G$, or equivalently, for all elements $a_i \in G$, $\langle a_i\rangle \subsetneq G$. Since $G$ is finite, let $G = \{a_1, a_2, \ldots, a_n\}$ and so $G = \langle a_1\rangle \cup \langle a_2\rangle \cup \ldots \cup \langle a_n\rangle$. Since $G$ is cyclic, $\langle a_i\rangle \subsetneq G$ for all $1 \leq i \leq n$. Therefore $G$ is a union of proper subgroups. $\Box$
+\end{flushleft}
+\item Let $p$ be a prime. If a group has more than $p-1$ elements of order $p$, why can’t the group be cyclic?
+\begin{flushleft}
+The number of elements of order d in a cyclic group of order n is $\phi(d)$, which is the number of positive integers less than and relatively prime to $d$. If $p$ is prime, $\phi(p) = p-1$ and so if a group has more than $p-1$ elements of order $p$, the group cannot be cyclic.
+\end{flushleft}
+%\item[*5.] Given the fact that $U(49)$ is cyclic and has 42 elements, deduce the number of generators that $U(49)$ has without actually finding any of the generators.
+\item[6.] Let $a$ and $b$ belong to a group. If $|a| = 12$, $|b| = 22$, and $\langle a\rangle \cap \langle b\rangle \not=\{e\}$, prove that $a^6 = b^{11}$.
+\begin{flushleft}
+We know that $(\langle a\rangle \cap \langle b\rangle) \subset \langle a\rangle$ and $(\langle a\rangle \cap \langle b\rangle) \subset \langle b\rangle$. Therefore $\lvert\langle a\rangle \cap \langle b\rangle\rvert \bigm| \lvert\langle a\rangle\rvert$ and $\lvert\langle a\rangle \cap \langle b\rangle\rvert \bigm| \lvert\langle b\rangle\rvert$. Since $\lvert\langle a\rangle \cap \langle b\rangle\rvert$ divides both 12 and 22, it must also divide $lcm(12, 22) = 2$. So $\lvert\langle a\rangle \cap \langle b\rangle\rvert$ must be either $1$ or $2$. Since $\langle a\rangle \cap \langle b\rangle \not=\{e\}$, $\lvert\langle a\rangle \cap \langle b\rangle\rvert$ must equal 2. According to the Fundamental Theorem of Cyclic Groups, if an integer $k$ is a positive divisor of $n$, the order of the parent group, the group $\langle a\rangle$ has exactly one subgroup of order $k$: $\langle a^{n/k}\rangle$. Therefore, $\langle a^{12/2}\rangle = \langle a^6\rangle$ is the only subgroup of $\langle a\rangle$ or order 2 and $\langle b^{22/2}\rangle = \langle b^11\rangle$ is the only subgroup of $\langle b\rangle$ of order 2. Therefore $\langle a^6\rangle$ and $\langle b^11\rangle$ are the only elements of $\langle a\rangle \cap \langle b\rangle$ besides the identity. Since the order is 2, they must be equal to each other: $\langle a^6\rangle = \langle b^11\rangle$. Therefore, we have shown that $a^6 = b^{11}$, as desired. $\Box$
+\end{flushleft}
+\item[7.] Let
+$$\alpha = \left[ \begin{array} { l l l l l l l l } { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } & { 7 } & { 8 } \\ { 2 } & { 3 } & { 4 } & { 5 } & { 1 } & { 7 } & { 8 } & { 6 } \end{array} \right]\text{ and } \beta = \left[ \begin{array} { l l l l l l l l } { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } & { 7 } & { 8 } \\ { 1 } & { 3 } & { 8 } & { 7 } & { 6 } & { 5 } & { 2 } & { 4 } \end{array} \right]$$
+\newline
+Write $\alpha$, $\beta$, and $\alpha\beta$ as
+\begin{enumerate}
+    \item products of disjoint cycles\newline
+    The permutations can be converted into the product of disjoint cycles by following an elements until it reappears. Each of the intermediate elements are then appended to the first to form a disjoint cycle. This process is repeated until all of the elements have been accounted for.
+    \begin{enumerate}
+        \item $\alpha: 1\rightarrow2\rightarrow3\rightarrow4\rightarrow5\rightarrow1; 6\rightarrow7\rightarrow8\rightarrow6 \Rightarrow \alpha = (12345)(678)$
+        \item $\beta: 1\rightarrow1;2\rightarrow3\rightarrow8\rightarrow4\rightarrow7\rightarrow2;5\rightarrow6\rightarrow5 \Rightarrow \beta = (1)(23847)(56) = (23847)(56)$
+        \item $\alpha\beta = (12345)(678)(23847)(56) = (12485736)$
+        $$1\rightarrow1\rightarrow2;2\rightarrow3\rightarrow4;4\rightarrow7\rightarrow8;8\rightarrow4\rightarrow5;5\rightarrow6\rightarrow7;7\rightarrow2\rightarrow3;3\rightarrow8\rightarrow6;6\rightarrow5\rightarrow1$$
+    \end{enumerate}
+    \item product of 2-cycles.\newline
+    Since every permutation in $S_n, n > 1$ is a product of 2-cycles, we can express $\alpha, \beta, \text{ and } \alpha\beta$ as product of 2-cycles as well. We construct them by pairing the first term of each disjoint cycle with every other term in that same cycle. This process is repeated for every disjoint cycle.
+    \begin{enumerate}
+        \item $\alpha = (15)(14)(13)(12)(68)(67)$
+        \item $\beta = (27)(24)(28)(23)(56)$
+        \item $\alpha\beta = (16)(13)(17)(15)(18)(14)(12)$
+    \end{enumerate}
+\end{enumerate}
+\item[8.] What is the order of each of the following permutations?
+\begin{enumerate}
+    \item $\left[ \begin{array} { l l l l l l } { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } \\ { 2 } & { 1 } & { 5 } & { 4 } & { 6 } & { 3 } \end{array} \right] = (12)(356)$\newline
+    $\Rightarrow \lvert(12)(356)\rvert = lcm(\lvert(12)\rvert,\lvert(356)\rvert) = lcm(2,3) = 6$\newline
+    We begin by writing the permutation in cycle-notation as the product of disjoint cycles. The order of the permutations is the least common multiple of the order of each of the disjoint cycles. The same procedure is used to determine the order of the permutation below.
+    \item $\left[ \begin{array} { l l l l l l l } { 1 } & { 2 } & { 3 } & { 4 } & { 5 } & { 6 } & { 7 } \\ { 7 } & { 6 } & { 1 } & { 2 } & { 3 } & { 4 } & { 5 } \end{array} \right] = (1753)(264)$\newline
+    
+    $\Rightarrow \lvert(1753)(264)\rvert = lcm(\lvert(1753)\rvert,\lvert(264)\rvert) = lcm(4,3) = 12$
+\end{enumerate}
+\item[9.] Show that $A_8$ contains an element of order 15.
+\begin{flushleft}
+Since $A_8$ contains all even permutations of 8 symbols, it must also contain the following permutation: $(123)(45678)$. The order of this permutation is calculated as follows: $\lvert(123)(45678)\rvert = lcm(\lvert(123)\rvert,\lvert(45678)\rvert) = lcm(3,5) = 15$. We have thus shown that $A_8$ contains an element of order 15 since $(123)(45678) \in A_8$
+\end{flushleft}
+\item[10.] If $\alpha$ is even, prove that $\alpha^{-1}$ is even. If $\alpha$ is odd, prove that $\alpha^{-1}$ is odd.
+\begin{flushleft}
+If $\alpha$ is even, it is the product of an even number of 2-cycles. Therefore $\alpha = \alpha_1\alpha_2\ldots\alpha_{n-1}\alpha_n$, where $n$ is an even number. Let us consider the following product: $(\alpha_1\alpha_2\ldots\alpha_{n-1}\alpha_n)(\alpha_n\alpha_{n-1}\ldots\alpha_2\alpha_1)$. Since every 2-cycle is its own inverse, we can rewrite the product as follows: $(\alpha_1\alpha_2\ldots\alpha_{n-1}\alpha_n)(\alpha_n\alpha_{n-1}\ldots\alpha_2\alpha_1) = (\alpha_1\alpha_2\ldots\alpha_{n-1}\alpha_n)(\alpha_n^{-1}\alpha_{n-1}^{-1}\ldots\alpha_2^{-1}\alpha_1^{-1}) = (\alpha_1\alpha_2\ldots\alpha_{n-1})(\alpha_n\alpha_n^{-1})(\alpha_{n-1}^{-1}\ldots\alpha_2^{-1}\alpha_1^{-1}) = (\alpha_1\alpha_2\ldots\alpha_{n-1})(e)(\alpha_{n-1}^{-1}\ldots\alpha_2^{-1}\alpha_1^{-1}) = (\alpha_1\alpha_2\ldots\alpha_{n-1})(\alpha_{n-1}^{-1}\ldots\alpha_2^{-1}\alpha_1^{-1})$. After $n$ such operations we are left with $e$. Since $\alpha\alpha^{-1} = e = (\alpha_1\alpha_2\ldots\alpha_{n-1}\alpha_n)(\alpha_n\alpha_{n-1}\ldots\alpha_2\alpha_1)$, we know that $\alpha^{-1} = (\alpha_n\alpha_{n-1}\ldots\alpha_2\alpha_1)$. Therefore, $\alpha^{-1}$ is also a product of $n$ 2-cycles. Therefore, if $\alpha$ is even, $\alpha^{-1}$ is also even. Using the exact same argument, we see that if $\alpha$ is odd, $\alpha^{-1}$ is also odd.
+\end{flushleft}
+%\newpage
+%\item[**11.] Associate an even permutation with the number $+1$ and an odd permutation with the number $-1$. Draw an analogy between the result of multiplying two permutations and the result of multiplying their corresponding numbers $+1$ or $-1$.
+%\item[**12.] Show that if $H$ is a subgroup of $S_n$, then either every member of $H$ is an even permutation or exactly half of the members are even.
+%\item[**13.] Suppose that $H$ is a subgroup of $S_n$ of odd order. Prove that $H$ is a subgroup of $A_n$.
+%\item[**14.] Prove that $(1234)$ is not the product of 3-cycles. Generalize.
+\end{enumerate}
+%*This problem is fun, but you are not required to turn it in.
+
+%** These problems will not be collected, but you want to do them by Monday Oct 8 at the latest.
+\end{document} 

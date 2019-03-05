@@ -1,0 +1,178 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3}}}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 677 Homework 5}
+\centerline{Sumanth Ravipati}
+\centerline{10/22/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[(14)] Exercise 2.69 on page 180 in Chicone's book: \newline
+
+\begin{enumerate}
+    \item Use variation of parameters to solve the system
+    $$\dot{x} = x -y + e^{-t}, \quad \dot{y} = x + y + e^{-t}.$$
+    \begin{flushleft}
+    The system can be rewritten in matrix form as follows: $$\left( \begin{array} { r } { \dot{x} } \\ { \dot{y} } \end{array} \right) = \left( \begin{array} { r r } { 1 } & { - 1 } \\ { 1 } & { 1 } \end{array} \right)\left( \begin{array} { r } { x } \\ { y } \end{array} \right) + \left( \begin{array} { r } { e^{-t} } \\ { e^{-t} } \end{array} \right)$$
+    We shall first solve the homogeneous system:
+    $$\dot{\vec{x}} = \left( \begin{array} { r r } { 1 } & { - 1 } \\ { 1 } & { 1 } \end{array} \right)\vec{x}$$
+    The characteristic polynomial is first determined by setting the determinant of the matrix $A - \lambda I$ equal to 0.
+    $$\det(A-\lambda I) = \begin{vmatrix} { 1 - \lambda } & { -1 } \\ { 1 } & { 1 - \lambda }\end{vmatrix} = (1 - \lambda)^2 + 1 = \lambda^2 - 2\lambda + 2 = 0$$
+    $$\Rightarrow \lambda = \frac{2 \pm \sqrt{2^2 - 4(2)}}{2} = \frac{2 \pm \sqrt{-4}}{2} = 1 \pm i$$
+    $$A-(1+i)I = \left[ \begin{array} { r r } { -i } & { -1 } \\ { 1 } & { -i } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { -i } & { -1 } \\ { i } & { 1 } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { i } & { 1 } \\ { 0 } & { 0 } \end{array} \right]$$
+    $$ix_1 + x_2 = 0 \Rightarrow x_2 = -ix_1$$
+    $$\left[ \begin{array} { r } { x_1 } \\ { x_2 } \end{array} \right] = \left[ \begin{array} { r } { x_1 } \\ { -ix_1 } \end{array} \right] = x_1 \left[ \begin{array} { r } { 1 } \\ { -i } \end{array} \right]$$
+    $$A-(1-i)I = \left[ \begin{array} { r r } { i } & { -1 } \\ { 1 } & { i } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { i } & { -1 } \\ { i } & { -1 } \end{array} \right] \rightarrow \left[ \begin{array} { r r } { i } & { -1 } \\ { 0 } & { 0 } \end{array} \right]$$
+    $$ix_1 - x_2 = 0 \Rightarrow x_2 = ix_1$$
+    $$\left[ \begin{array} { r } { x_1 } \\ { x_2 } \end{array} \right] = \left[ \begin{array} { r } { x_1 } \\ { ix_1 } \end{array} \right] = x_1 \left[ \begin{array} { r } { 1 } \\ { i } \end{array} \right]$$
+    Therefore the eigenvalue, eigenvector pairs for this system are:
+    $$\left(1+i,\left( \begin{array} { r } { i } \\ { 1 } \end{array} \right)\right) \text{ and } \left(1-i,\left( \begin{array} { r } { 1 } \\ { i } \end{array} \right)\right)$$
+    Therefore the fundamental matrix for the homogeneous system is:
+    $$\Phi(t) = \left( \begin{array} { c c } { e ^ { (1-i)t } } & { ie ^ { (1+i)t } } \\ { ie ^ { (1-i)t } } & { e ^ { (1+i)t } } \end{array} \right)$$
+    Using Euler's formula and linear combinations we can reduce this to the following:
+    $$\Phi(t) = e^t \left( \begin{array} { c c } { \cos(t) }  & { -\sin(t) } \\ { \sin(t) } & { \cos(t) } \end{array} \right)$$
+    The particular solution to the system is given by:
+    $$\mathbf { x } _ { p } ( t ) = \Phi ( t ) \mathbf { v } ( t ) \text{, and }\Phi ( t ) \mathbf { v } ^ { \prime } = \left( \begin{array} { c } { e ^ { -t } } \\ { e ^ { -t } } \end{array} \right)$$
+    We can solve for $\mathbf{v}^\prime$ by using the inverse of $\Phi(t)$ as follows:
+    $$\left( \begin{array} { c } { v _ { 1 } ^ { \prime } } \\ { v _ { 2 } ^ { \prime } } \end{array} \right) = \left( \begin{array} { r r } { e^t\cos(t) }  & { -e^t\sin(t) } \\ { e^t\sin(t) } & { e^t\cos(t) } \end{array} \right) ^ { - 1 } \left( \begin{array} { c } { e ^ { -t } } \\ { e ^ { -t } } \end{array} \right)$$
+    We can find the inverse of the fundamental matrix be calculating its determinant:
+    $$\det(\Phi(t)) = e^{2t}(\cos^2(t) + \sin^2(t)) = e^{2t}$$
+    The inverse of the fundamental matrix is then:
+    $$\Phi^{-1}(t) = \frac{1}{e^{2t}} \left( \begin{array} { r r } { e^t\cos(t) }  & { e^t\sin(t) } \\ { -e^t\sin(t) } & { e^t\cos(t) } \end{array} \right) = e^{-t} \left( \begin{array} { r r } { \cos(t) }  & { \sin(t) } \\ { -\sin(t) } & { \cos(t) } \end{array} \right)$$
+    Therefore, we can substitute for the previous equation for $\mathbf{v}^\prime$:
+    $$\left( \begin{array} { c } { x ^ { \prime } } \\ { y ^ { \prime } } \end{array} \right) =  e^{-t} \left( \begin{array} { r r } { \cos(t) }  & { \sin(t) } \\ { -\sin(t) } & { \cos(t) } \end{array} \right) \left( \begin{array} { c } { e ^ { -t } } \\ { e ^ { -t } } \end{array} \right) = e^{-2t}\left( \begin{array} { r } { \cos(t) + \sin(t) } \\ { \cos(t) - \sin(t) } \end{array} \right)$$
+    This leaves us with the following independent, homogeneous differential equations in one variable:
+    $$x^\prime = e^{-2t}\cos(t) + e^{-2t}\sin(t)$$
+    $$y^\prime = e^{-2t}\cos(t) - e^{-2t}\sin(t)$$
+    Integrating both sides with respect to $t$, we can solve for $x$ and $y$:
+    $$x(t) = \int e^{-2t}\cos(t) dt + \int e^{-2t}\sin(t) dt = -\frac{1}{5} e^{-2 t} (\sin (t)+3 \cos (t))$$
+    $$y(t) = \int e^{-2t}\cos(t) dt - \int e^{-2t}\sin(t) dt = -\frac{1}{5} e^{-2 t} (\cos (t)-3 \sin (t))$$
+    $$ \Rightarrow \mathbf { v } ( t ) = -\frac{1}{5} e^{-2 t} \left( \begin{array} { r } { \sin (t)+3 \cos (t) } \\ { \cos (t)-3 \sin (t) } \end{array} \right)$$
+    $$\mathbf{x}_p(t) = \Phi ( t ) \mathbf { v } ( t ) = -\frac{1}{5} e^{-t} \left( \begin{array} { c c } { c_1\cos(t) }  & { -c_2\sin(t) } \\ { c_1\sin(t) } & { c_2\cos(t) } \end{array} \right) \left( \begin{array} { r } { 3\cos(t) + \sin(t)} \\ { \cos (t)-3 \sin (t) } \end{array} \right)$$
+    Multiplying the matrices and using trigonometric identities simplifies the result as follows:
+    $$\mathbf{x}_p(t) = \left( \begin{array} { r } { c_1 e^t \cos (t) -c_2 e^t \sin (t) -\frac{3 e^{-t}}{5} } \\ { c_1 e^t \sin (t)+c_2 e^t \cos (t)-\frac{e^{-t}}{5} } \end{array} \right)$$
+    \end{flushleft}
+    \newpage
+    \item Find the set of initial conditions at $t = 0$ so that $\lim_{t\rightarrow\infty}(x(t),y(t)) = (0,0)$ whenever $t\mapsto(x(t),y(t))$ satisfies one these initial conditions. \newline
+    
+    \begin{flushleft}
+    Let us first write the general solution in terms of $x(t)$ and $y(t)$:
+    $$x(t) = c_1 e^t \cos(t) - c_2 e^t \sin(t) - \frac{3 e^{-t}}{5}$$
+    $$y(t) = c_1 e^t \sin(t) + c_2 e^t \cos(t) - \frac{e^{-t}}{5}$$
+    Let us define the initial conditions at $t = 0$ as the following: $x(0) = x_0$ and $y(0) = y_0$. Let us then set these initial conditions into the equations we found in part (a) and solve for the constants $c_1$ and $c_2$:
+    $$x_0 = x(0) = c_1 e^0 \cos(0) - c_2 e^0 \sin(0) - \frac{3 e^{0}}{5} = c_1 - \frac{3}{5}$$
+    $$y_0 = y(0) = c_1 e^0 \sin(0) + c_2 e^0 \cos(0) - \frac{e^{0}}{5} = c_2 - \frac{1}{5}$$
+    $$\Rightarrow c_1 = x_0 + \frac{3}{5} \text{ and } c_2 = y_0 + \frac{1}{5}$$
+    Substituting these constants back into the general solution gives us:
+    $$x(t) = (x_0 + \frac{3}{5})e^t \cos(t) - (y_0 + \frac{1}{5}) e^t \sin(t) - \frac{3 e^{-t}}{5}$$
+    $$y(t) = (x_0 + \frac{3}{5})e^t \sin(t) + (y_0 + \frac{1}{5}) e^t \cos(t) - \frac{e^{-t}}{5}$$
+    If we take the limit as $t \rightarrow \infty$ the terms with $e^{-t}$ vanish, leaving us with:
+    $$\lim_{t \rightarrow \infty} x(t) = e^t \left[ (x_0 + \frac{3}{5}) \cos(t) - (y_0 + \frac{1}{5}) \sin(t) \right]$$
+    $$\lim_{t \rightarrow \infty} y(t) = e^t \left[ (x_0 + \frac{3}{5}) \sin(t) + (y_0 + \frac{1}{5}) \cos(t) \right]$$
+    Since $\cos(t)$ and $\sin(t)$ are bounded by $[0,1]$, the terms $(x_0 + \frac{3}{5})$ and $(y_0 + \frac{1}{5})$ must both equal 0 for the equations to converge to 0. Therefore, the set of initial conditions $(x_0, y_0)$ must equal $(-3/5, -1/5)$.
+    \end{flushleft}
+\end{enumerate}
+\newpage
+\item[(15)] Excercise 2.73 on page 181 in Chicone's book: \newline
+
+\begin{flushleft}
+Suppose that $A$ is an $n\times n$-matrix all of whose eigenvalues have negative real parts. (a) Find a (smooth) function $f:\R\rightarrow\R$ so that a solution of the scalar equation $\dot{x} = -x + f(t)$ is not bounded for $t\geq0$. (b) Show that there is a (smooth) function $f:\R\rightarrow\R^n$ so that a solution of the system $\dot{x} = Ax + f(t)$ is not bounded for $t\geq0$. (c) Show that if the system $\dot{x} = Ax + f(t)$ does have a bounded solution, then all solutions are bounded. \newline
+\end{flushleft}
+
+\begin{enumerate}
+    \item Let us consider the scalar equation $\dot{x} = -x + f(t)$ and first solve the corresponding homogeneous equation $\dot{x} = -x$:
+    $$\int -\frac{dx}{x} = \int dt = -\ln(x) = t + C$$
+    Taking $e$ to the power of both sides gives us the general solution $x(t) = c_1e^{-t}$. Let us consider the general variation of parameters formula below:
+    $$\phi(t) = \Phi(t)\Phi^{-1}(t_0)\phi(t_0) + \Phi(t)\int_{t_0}^t \Phi^{-1}(s)f(s)ds$$
+    For our system, we can substitute for $\Phi(t) = e^{-t}$ and $\Phi^{-1}(t) = e^t$ and simplify:
+    $$x(t) = x_0e^{t_0 - t} + \int_{t_0}^t e^{s-t}f(s)ds$$
+    The first term clearly tends to 0 as $t \rightarrow \infty$ but we can easily find many functions $f(t)$ that would dominate the overall solution to make it unbounded for $t \geq 0$. For example, let us set $f(t) = 3e^{2t}$ and substitute:
+    $$x(t) = x_0e^{t_0 - t} + e^{-t}\int_{t_0}^t 3e^{3s}ds = x_0e^{t_0 - t} + e^{-t}\left[e^{3t} \Big|_{t_0}^t\right]$$
+    $$ = x_0e^{t_0 - t} + e^{-t}\left[ e^{3t} - e^{3t_0} \right]  = x_0e^{t_0 - t} - e^{3t_0 - t} + e^{2t}$$
+    As $\lim(x(t))_{t\rightarrow\infty}$, the $e^{2t}$ term will dominate and so $x(t)$ will unbounded for $t \geq 0$.
+    \newline
+    
+    \item Since all of the eigenvalues of $A$ have negative real parts, we can make several deductions from that fact alone. First of all, the system is asymptotically stable and we can find $c$ and $\lambda$ such that: $\left\| e ^ { A t } \right\| \leq c e ^ { - \lambda t }$. The solution to the homogeneous system $\dot{x} = Ax$ is given by: $\Phi(t) = e^{At}$. Using the variation of parameters formula we can write the general solution as follows:
+    $$\phi(t) = e^{A(t-t_0)}\phi(t_0) + e^{At}\int_{t_0}^t e^{-As}f(s)ds$$
+    Using the bounds from above we can substitute into the general solution:
+    $$\phi(t) \leq c e^{\lambda(t-t_0)}\phi(t_0) + ce^{-\lambda t}\int_{t_0}^t ce^{\lambda s}f(s)ds$$
+    We can clearly see that as long as $f(t)$ is less than or equal to $e^{\lambda t}$, then $\phi(t)$ will stay bounded. However, this also shows an easy example for an unbounded function $f(t)$ for $t \geq 0$. Once $\lambda$ and $c$ are set as upper bounds for $e^{At}$, we can set $f(t) = \frac{3}{c\lambda} e^{\lambda t}$. This would then result in the following bound for $\phi(t)$:
+    $$\phi(t) \leq c e^{\lambda(t-t_0)}\phi(t_0) + ce^{-\lambda t}\int_{t_0}^t \frac{3}{c\lambda} e^{2\lambda s}ds$$
+    $$= c e^{\lambda(t-t_0)}\phi(t_0) + e^{-\lambda t}\left[e^{3 \lambda t} \Big|_{t_0}^t\right] = c e^{\lambda(t-t_0)}\phi(t_0) + e^{\lambda(3 t_0 - t)} + e^{2 \lambda t}$$
+    As $t \rightarrow \infty$, the second term vanishes and the third term will dominate the first:
+    $$\lim_{t \rightarrow \infty} \phi(t) = e^{\lambda t}(c e^{-\lambda t_0}\phi(t_0) + e^{\lambda t}) \rightarrow e^{2 \lambda t}$$
+    This shows that there are indeed many smooth functions that are solutions to the system $\dot{x} = Ax + f(t)$ that are not bounded for $t \geq 0$.
+    \newline
+    
+    \item If the system $\dot{x} = Ax + f(t)$ does have a bounded solution, we can show that all solutions are bounded. Without loss of generality, let $\phi(x)$ represent the bounded solution with $x(0) = x_0$
+    $$\phi(x) = e^{At}x_0 + e^{At}\int_0^t e^{-As}f(s)ds$$
+    Since $\phi(x)$ is bounded, we know that both $e^{At}$ and $e^{At}\int_0^t e^{-As}f(s)ds$ must be bounded. If we let $y(0) = y_0$ represent another generic solution to the system, we can see that $\phi(y)$ must also be bounded:
+    $$\phi(y) = e^{At}y_0 + e^{At}\int_0^t e^{-As}f(s)ds$$
+\end{enumerate}
+\newpage
+\item[(16)] Consider the planar system which in polar coordinates is given by
+$$\dot{r} = 2r(1-r) \quad \text{and} \quad \dot{\theta} = 2\sin^2(\theta/2),$$
+where as usual we have $x = r\cos(\theta)$ and $y = r\sin(\theta)$.\newline
+\begin{enumerate}
+    \item Find all equilibrium points of this system and determine their stability properties \newline
+    
+    \begin{flushleft}
+    To find the equilibrium points we set the derivatives of each variable to 0 and solve for $r$ and $\theta$.
+    $$\dot{r} = 0 = 2r(1-r) \Rightarrow r = 0,1$$
+    $$\dot{\theta} = 0 = 2\sin^2\left(\frac{\theta}{2}\right) \Rightarrow \frac{\theta}{2} = 0, \pi, 2\pi, 3\pi, \ldots, k\pi, k \in \Z$$
+    Therefore, there are two sets of equilibrium points, $(r, \theta) = (0, 2k\pi)$ and $(1, 2k\pi)$ for $k \in \Z$. To determine their stability properties we must first determine the general Jacobian:\newline
+    \renewcommand\arraystretch{1.5}
+    $$J(r,\theta) = \left[ \begin{array} { r r } { \pd[]{\dot{r}}{r} } & { \pd[]{\dot{r}}{\theta} } \\ {\pd[]{\dot{\theta}}{r} } & { \pd[]{\dot{\theta}}{\theta} } \end{array} \right] = \left[ \begin{array} { c c } { 2 - 4r } & { 0 } \\ { 0 } & { \sin(\theta) } \end{array} \right]$$
+    $$\pd[]{\dot{r}}{r} = \pd[]{(2r-r^2)}{r} = 2 - 4r$$
+    $$\pd[]{\dot{\theta}}{\theta} = \pd[]{(2\sin^2(\theta/2))}{\theta} = 4\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)\frac{1}{2} = \sin(\theta)$$
+    Meanwhile, the both cross-terms $\pd[]{\dot{r}}{\theta}$ and $\pd[]{\dot{\theta}}{r}$ equal 0 as the system is independent with respect to $r$ and $\theta$. We then plug the equilibrium points into the Jacobian and find the corresponding eigenvalues:
+    $$J(0,2\pi k) = \left[ \begin{array} { c c } { 2 } & { 0 } \\ { 0 } & { 0 } \end{array} \right] \Rightarrow \lambda = 0, 2$$
+    If one eigenvalue is 0 and the other is positive, the origin is unstable and there exists a line of unstable equilibria.
+    $$J(1,2\pi k) = \left[ \begin{array} { c c } { -2 } & { 0 } \\ { 0 } & { 0 } \end{array} \right] \Rightarrow \lambda = 0, -2$$
+    If one eigenvalue equals 0 and the other is negative, the origin is stable but not asymptotically stable. Therefore there exists a line of stable equilibria.\newline
+    \end{flushleft}
+    \newpage
+    \item Rewrite the system in terms of the usual coordinates $x$ and $y$.\newline
+    \begin{flushleft}
+    We know that $r^2 = x^2 + y^2$ by definition and so $r\dot{r} = x\dot{x} + y\dot{y}$. Similarly, $r^2\dot{\theta} = x\dot{y} - y\dot{x}$. Substituting in the planar system from above, we get: $r\dot{r} = r(2r(1-r)) = 2r^2 - 2r^3$. Similarly, $r^2\dot{\theta} =$ $ r^2(2\sin^2(\theta/2)) =$ $r^2(1-\cos(\theta)) = r^2(1- \cos(\arctan(y/x)))$. Since $\cos(\arctan(x)) = \frac{1}{\sqrt{1 = x^2}}$, $\cos(\arctan(\frac{y}{x})) = \frac{1}{\sqrt{1 + \frac{y^2}{x^2}}} = \frac{x}{\sqrt{x^2 + y^2}}$. Therefore, $r^2\dot{\theta} = r^2(1- \cos(\arctan(y/x))) = r^2 \frac{r-x}{r} = r^2 - rx$. Combining results we get:
+    $$ x\dot{x} + y\dot{y} =  2r^2 - 2r^3$$
+    $$ x\dot{y} - y\dot{x} =  r^2 - rx$$
+    $$ \Rightarrow -2x\dot{y} + 2y\dot{x} = -2r^2 + 2rx$$
+    $$ \Rightarrow x\dot{x} + y\dot{y} - 2x\dot{y} + 2y\dot{x} = 2rx - 2r^3 = 2r(x-r^2)$$
+    $$ \Rightarrow x\dot{x} + y\dot{y} - 2x\dot{y} + 2y\dot{x} = 2(x-x^2-y^2)\sqrt{x^2 + y^2}$$
+    \end{flushleft}
+\end{enumerate}
+\newpage
+\item[(17)] Let $f:\R^n\rightarrow\R^n$ be Lipschitz continuous, and assume that $g: \R\rightarrow\R^n$ is continuous and $T$-periodic, i.e., assume $g(t+T) = g(t)$ for all $t \in \R$. Furthermore, suppose that the differential equation
+$$\dot{x} = f(x) + g(t)$$
+has a uniquely determined bounded solution $\mu: \R \rightarrow \R^n$. Show that $\mu$ has to be $T$-periodic as well.
+\newline
+\begin{flushleft}
+    Since $\mu$ is bounded, we can set strict upper and lower bounds on the solutions over the interval $[0,T]$ as follows:
+    $$\mu^-(t) \leq \mu(t) \leq \mu^+(t) \text{ for all } 0 \leq t \leq T$$
+    Without loss of generality, we can set:
+    $$\mu^-(0) \leq \mu^-(T) \text{ and } \mu^+(0) \geq \mu^+(T)$$
+    Let us define the interval $J = [\mu^-(0),\mu^+(0)]$. Let $\mu(t,x)$ be the solution to the differential equation with $\mu(0,x) \in J$. Since $\mu(0,x)$ is bounded, $\mu(T,x)$ is also bounded within $[\mu^-(T),\mu^+(T)]$, which is a subset of $[\mu^-(0),\mu^+(0)]$. Therefore, $\mu(0,x) \mapsto \mu(T,x)$ maps $J$ onto itself. Since $f$ is Lipschitz continuous and $g$ is continuous, the mapping is also continuous and so it has a fixed point. This follows from the intermediate value theorem as applied to continuous functions and closed, bounded intervals. Therefore, there exists a point $x^*$ in the interval $J$ such that $\mu(T,x^*) = \mu(0,x^*)$. This means that $\mu(t,x^*)$ is also $T$-periodic.
+\end{flushleft}
+\end{enumerate}
+\end{document}

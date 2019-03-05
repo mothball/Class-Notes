@@ -1,0 +1,67 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\norm}[1]{\left\vert #1 \right \vert}	
+\newcommand{\Norm}[1]{\left\Vert #1 \right \Vert}
+\renewcommand{\span}{\operatorname{span}}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 11}
+\centerline{Sumanth Ravipati - 11/27/2018}
+\vspace{.15in}
+
+\begin{enumerate}[1.]
+\item Let $V$ be a normed real vector space and $F: V\rightarrow \R$ a linear functional. Prove that $F$ is continuous if and only if $N(F)$ is closed. %(Hint: The forward direction requires no work at all; for the backward direction, assume $F$ is not bounded and show that $N(F)$ is not closed by perturbing a non-zero point.)%
+\begin{flushleft}
+($\Rightarrow$)Let $V$ be a normed real vector space and if you assume that $F$ is continuous, need to show that $N(F)$ is closed. If $F$ is continuous, then $F$ is bounded. The kernel, $N(F)$ is defined as the set $\{v \in V : Fv = 0\}$. Since $\{0\}$ is closed in $\R$, $F$ is the continuous inverse of a closed set in $V$ and so $N(F)$ is closed. ($\Leftarrow$) We need to show that if $N(F)$ is closed, then $F$ is continuous, however this is equivalent to: if $F$ is not continuous, then $N(F)$ is not closed. Assume that $F$ is not continuous and so $F$ is not bounded. Therefore, there exists a bounded sequence $(x_n)$ with $\Norm{x_n} \leq 1$ such that $\norm F(x_n) \norm \rightarrow \infty$. Let $a \not\in N(F)$ and define: $x_n^\prime = a - \frac{F(a)}{F(x_n)}x_n$. We then get that $F(x_n^\prime) = F(a) - \frac{F(a)}{F(x_n)}F(x_n) = 0$. Therefore, $F(x_n^\prime) = 0$ and so $x_n^\prime \in N(F)$. However, $x_n^\prime \rightarrow a \not\in N(F)$ and so $N(F)$ is not closed. Therefore if $F$ is not continuous, then $N(F)$ is not closed. This is the contrapositive to desired statement: if $N(F)$ is closed, then $F$ is continuous. $\Box$
+\end{flushleft}
+\item Prove that each of the following functionals is continuous on $C_\infty[0,1]$ and compute its norm:
+\begin{enumerate}
+\item $f(x)=ax(0)+bx(1)$,
+\begin{flushleft}
+We know that $\Norm{f - 0}_\infty \Leftrightarrow \Norm{f}_\infty < \delta$. We let $\delta = \frac{\epsilon}{|a|+|b|}$ and calculate the norm of the functional as follows. $\Norm{(f(x)} = \Norm{ax(0) + bx(1)} \leq \Norm{ax(0)} + \Norm{bx(1)} \leq |a|\Norm{x(0)} + |b|\Norm{x(1)}$ $\leq |a|\delta + |b|\delta = \delta(|a|+|b|) = \epsilon$. Therefore, $\Norm{f}_\infty < \delta \Rightarrow \Norm{f(x)} \leq \epsilon$ and so the functional $f(x)$ is continuous on $C_\infty[0,1]$.By definition, $\Norm{f} = \sup\{|f(x)| : \Norm{x}_\infty \leq 1\}$. In our case, $\Norm{f(x)} = |ax(0) + bx(1)| \leq$ $|ax(0)| + |bx(1)| \leq |a||x(0)| + |b||x(1)| \leq |a| + |b|$. If we let $y \equiv 1$ so that $y(0) = 1 = y(1)$, then: $|f(y)| = |ay(0) + by(1)| \leq |ay(0)| + |by(1)| \leq |a||y(0)| + |b||y(1)| = |a| + |b|$. Therefore we get that $\Norm{f} \geq |f(y)| = |a| + |b|$ and from the first part we have: $\Norm{f} \leq |a| + |b|$. Therefore the norm, $\Norm{f}$ equals  $|a| + |b|$.
+\end{flushleft}
+\item $g(x)=\int_0^{1/2}x(t)dt - \int_{1/2}^1 x(t)dt$
+\begin{flushleft}
+We know that $\Norm{g - 0}_\infty \Leftrightarrow \Norm{g}_\infty < \delta$. We let $\delta = \epsilon$ and calculate the norm of the functional as follows. $\Norm{g(x)} = \Norm{\int\limits_0^{1/2}x(t)dt - \int\limits^1_{1/2}x(t)dt} \leq \Norm{\int\limits_0^{1/2}x(t)dt} + \Norm{\int\limits^1_{1/2}x(t)dt}$ $\leq \int\limits_0^{1/2}\Norm{x(t)}dt + \int\limits^1_{1/2}\Norm{x(t)}dt$ $\leq \delta(\int\limits_0^{1/2}dt + \int\limits_{1/2}^1 dt)$ $=\delta( t\Big|_0^{1/2} + t\Big|_{1/2}^1 )$ $= \delta(\frac{1}{2} - 0 + 1 - \frac{1}{2}) = \delta = \epsilon$. Therefore $g(x)$ is a continuous functional. By definition, $\Norm{g} = \sup\{|g(x)| : \Norm{x}_\infty \leq 1\}$. In our case, $|g(x)| = |\int_0^{1/2}x(t)dt - \int_{1/2}^1 x(t)dt|$ $\leq \int\limits_0^{1/2}|x(t)|dt + \int\limits_{1/2}^1|x(t)|dt$ $\leq \int\limits_0^{1/2}dt + \int\limits_{1/2}^1 dt$ $= \frac{1}{2} - 0 + 1 - \frac{1}{2} = 1$. Therefore $\Norm{g} \leq 1$. Now we let $y(t) = 1$ for $0 \leq t \leq 1/2$ and $y(t) = -1$ for $1/2 \leq t \leq 1$. Then we have $|g(y)| = |\int\limits_0^{1/2}1 dt + \int\limits_{1/2}^1 1 dt|$ $= |\frac{1}{2} - 0 + 1 - \frac{1}{2}| = 1$. Therefore $\Norm{g} \geq |g(y)| = 1$ and so combining results we get: $\Norm{g} = 1$. 
+\end{flushleft}
+\end{enumerate}
+\item Prove that if $p<q$ and $f$ is a linear functional on $C_p[a,b]$ then it is also continuous on $C_q[a,b]$.
+\begin{flushleft}
+Let $E$ be a countably normed space with norms $\Norm{\cdot}_n$ and let $E^*$ be the set of all continuous linear functionals on $E$. If we define $E_n^*$ as the set of continuous linear functionals on $E$ with respect to $\Norm{\cdot}_n$, then we are looking to prove that if $p<q$, then $E_p^* \subset E_q^*$. If $f$ is a continuous linear functional on $E_p^*$, then there is a neighborhood $U$ of $0$ in which $f$ is bounded. Since $\Norm{x}_p \leq \Norm{x}_q$ if $p<q$, then $\exists \epsilon > 0$ and since $q \in \Z_{>0}$, such that the open sphere $\Norm{x}_q < \epsilon$ is contained in $U$. Since $f$ is bounded on the sphere, $f$ is bounded and continuous with respect to $\Norm{\cdot}_q$. Therefore $E_p^* \subset E_q^*$ and so if $p<q$ and $f$ is a linear functional on $C_p[a,b]$ then it is also continuous on $C_q[a,b]$. $\Box$
+\end{flushleft}
+\item Give an example (with justification) of a linear functionals $f$ and $g$ on $C[a,b]$ such that:
+\begin{enumerate}
+\item $f$ is continuous with respect to $d_\infty$ but not $d_1$.
+\begin{flushleft}
+Let $f$ be the linear functional on $(C[a,b], \Norm{\cdot})$ defined as $f(x) = x(c)$ where $c = 0$. We also take the sequence of functions $x_n(t) = 0$ if $-1 \leq t \leq -1/n$ or $1/n \leq t \leq 1$ and equals $1 + nt$ if $-1/n \leq t \leq 0$ and equals $1-nt$ when $0 \leq t \leq 1/n$. If we compute the 1-norm of this sequence we get the following sequence of integrals: $\int\limits_{-1/n}^0 1+nt dt + \int\limits_0^{1/n} 1 -nt dt =$ $1/n - 1/2n + 1/n - 1/2n = 1/n$. This tends to 0 as $n \rightarrow \infty$. However $f(x_n) = 1$ for every $n$ since $x_n(0) = 1$ for every $n$. Therefore $f(x_n) = 1$ does not converge to $f(0) = 0$, and so $f$ is not continuous with respect to $d_1$. This same functional is continuous on $d_\infty$ as the it will always equal 1 on any domain that includes 0.
+\end{flushleft}
+\item $g$ is continuous with respect to $d_2$ but not $d_1$.
+\begin{flushleft}
+Let $g$ be the linear functional that maps points to their reciprocals but only for integer terms. Since the harmonic series diverges, $g$ is unbounded with respect to $d_1$. However since $d_2$ is defined as $\sqrt{\int\limits_a^b |x_i|^2}$, the square of terms will converge since the sum of squares of reciprocal integers converges. Therefore $g$ is continuous with respect to $d_2$ but not $d_1$.
+\end{flushleft}
+\end{enumerate}
+\item Let $V_0$ be a normed real vector space and $V$ its completion. Prove that $V_0^*$ and $V^*$ are  isomorphic  Banach spaces.
+\begin{flushleft}
+If $V_0$ is a normed real vector space, it's completion is a Banach space $V$ and $V_0$ is dense subspace of $V$. For $v \in V_0^*$, $v$ extends uniquely due to density to a corresponding $\bar{v} \in V^*$ and clearly $\Norm{v} = \Norm{\bar{v}}$. To prove the inverse, notice that if $\bar{v} \in V^*$, then its restriction  to $V_0$ is a bounded linear functional on $V_0$. Therefore $V_0^*$ and $V^*$ are  isomorphic  Banach spaces. We can also prove the result by realizing that a vector space is isometric to its dual and so the completion of one is isometric to the completion of the other.
+\end{flushleft}
+\end{enumerate}
+\end{document}

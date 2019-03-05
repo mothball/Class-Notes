@@ -1,0 +1,52 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=0.4in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 5}
+\centerline{Sumanth Ravipati}
+\centerline{9/25/2018}
+\vspace{.15in}
+\begin{enumerate}[1.]
+\item Suppose two metric spaces $X$ and $Y$ are bi-Lipschitz equivalent. Prove that that $X$ is complete if and only if $Y$ is complete.
+\begin{flushleft}
+We can prove that $Y$ is complete if $X$ is complete and since the relation is bi-directional, the converse is proven simultaneously without loss of generality. Let $\{y_k\}$ be a Cauchy sequence in $Y$, which means that given any $\epsilon_1 > 0$, $\exists N \in \N$ such that if $n, m \geq N$, $d_Y(y_n, y_m) < \epsilon_1$. Since $X$ and $Y$ are bi-Lipschitz equivalent, we have: $\frac{1}{K}d_X(x_1, x_2) \leq d_Y(f(x_1), f(x_2)) \leq Kd_X(x_1, x_2)$ with a continuous surjective function $f$. Equivalently, this can be stated as: $d_X(f^{-1}(y_1), f^{-1}(y_2)) \leq Kd_Y(y_1, y_2)$. For the Cauchy sequence $\{y_k\}$ we get: $d_X(f^{-1}(y_n), f^{-1}(y_m)) \leq Kd_Y(y_n, y_n) \leq K\epsilon_1 = \epsilon_1$. Since $d_X(f^{-1}(y_n), f^{-1}(y_m)) \leq \epsilon_2$ for any given $\epsilon_2 > 0$, $\{f^{-1}(y_k)\}$ forms a Cauchy sequence in $X$ and converges to some $x \in X$ as $X$ is complete by assumption. $f(f^{-1}(y_k)) = y_k$ converges to $f(x) = y \in Y$ since $f$ is a continuous function. Since we have shown that any arbitrary Cauchy sequence $\{y_k\}$ converges to a point $y \in Y$, $Y$ is proven to be complete. $\Box$
+\end{flushleft}
+\item Give an example of homeomorphic metric spaces $X$ and $Y$ such that $X$ is complete but $Y$ isn't. (Hint: $\arctan$.)
+\begin{flushleft}
+Let $X = \R$, which is a complete metric space while we let $Y = (0,1)$, an incomplete metric space. $Y$ is incomplete since there exists a Cauchy sequence in $Y$ such as $\{x_n\} = \frac{1}{n}$ but does not converge to a point in $Y$, as $\lim_{n\rightarrow\infty}x_n = 0 \not\in Y$. These spaces are still homeomorphic via the map $f:Y\rightarrow X: f(y) = \tan(\pi(y-\frac{1}{2}))$, which maps the pre-image $(0,1)$ to the image $\R$. $\Box$
+\end{flushleft}
+\item Following Example 5 in Section 7.1, prove that $\ell_\infty$ is complete.
+\begin{flushleft}
+Let us denote the elements of $\ell_\infty$ as follows: $x^k = (x^k_1, x^k_2, \ldots)$. Let $x^1, x^2, \ldots$ be a Cauchy sequence in $\ell_\infty$ and if it converges to an element $x \in \ell_\infty$, then we have proven that the space is complete. Since $x^k$ is a Cauchy sequence, for every $\epsilon > 0$, there exists $N > 0$ such that $d_\infty(x^n, x^m) < \epsilon$ for all $n, m > N$. Using the sup norm, we have $\sup|x^n_j - x^m_j| < \epsilon \Rightarrow |x^n_j - x^m_j| < \epsilon$ for all $j$. For a fixed $j$, we have a Cauchy sequence in $\R$, which we know converges in $\R$ denoted by: $\lim_{j\rightarrow\infty}x^k_j = x_j$. Since for each $k$ we get a $x_j$, we can think of the sequence $x_1, x_2, \ldots$ as element of the $\ell_\infty$ metric space. We can show that this Cauchy sequence of real numbers converges by selecting a smaller $\epsilon_1 = \epsilon/2$ where we know there exists $N > 0$ such that $|x^n_j - x^m_j| < \epsilon_1$ for all $n, m > N\text{ and for all }j$. As $m \rightarrow \infty$, we get $|x^n_j - x_j| < \epsilon_1$ for all $n > N\text{ and for all }j \Rightarrow \sup|x^n_j - x_j| = d_\infty(x^n, x) < \epsilon_1 < \epsilon$. Therefore the sequence $x^k$ converges in $\ell_\infty$, proving that $\ell_\infty$ is complete. $\Box$
+\end{flushleft}
+\newpage
+\item Let $X$ be a metric space, and $Y$ the completion of $X$ defined in class. Let $\{y_i\}$ be a sequence of points of $Y$, and for each $i$ let $\{x_i^j\}_{j=1}^\infty$ be a Cauchy sequence representing. 
+\begin{enumerate}[(i)]
+\item  Prove that the diagonal sequence $z_i=x_i^i$ is Cauchy.
+\begin{flushleft}
+
+\end{flushleft}
+\item Let $y$ be the limit point of $z_i$. Prove that the sequence $y_i$ converges to $y$.
+\begin{flushleft}
+
+\end{flushleft}
+\end{enumerate}
+\end{enumerate}
+\end{document}

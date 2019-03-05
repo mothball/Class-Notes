@@ -1,0 +1,156 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 625\quad
+    HW 1\quad
+    Sumanth Ravipati\quad
+    February 6, 2019}
+\end{center}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.3] Show that if a matrix is orthogonal and triangular, then it is diagonal. What are its diagonal elements?
+\begin{flushleft}
+A matrix $A$ is orthogonal if its transpose is equal to its inverse: $ A^{\mathrm{T}}=A^{-1} $. It is also a square matrix where $AA^{\mathrm{T}} = A^{\mathrm{T}}A = I$. A triangular matrix is a square matrix where all the entries above or below the main diagonal are zero. We shall consider the two cases where $A$ is a lower triangular matrix and where $A$ is an upper triangular matrix. Let $A$ have the entries $a_{i,J}$ to signify the $i$th row and $j$th column. If $A$ is a lower triangular matrix, then $a_{i,j} = 0$ if $i < j$. The transpose of $A$ can be written with the indices reverse as $a_{j,i}$. The generic product of two matrices $(C = A \times B)$ can be expressed as component-wise multiplication as follows: $ c_{i j}=a_{i 1} b_{1 j}+\cdots+a_{i m} b_{m j}=\sum_{k=1}^{m} a_{i k} b_{k j} $. The product $B = AA^{\mathrm{T}}$ can be calculated component-wise as $b_{i,j} =a_{i 1} b_{1 j}+\cdots+a_{i m} b_{m j}=\sum_{k=1}^{m} a_{i k} b_{k j}$.
+
+$$AA^T = A^TA = I$$
+
+$$\begin{bmatrix} { a _ { 11 } } & { \dots } & { a _ { 1 n } } \\ { } & { \ddots } & { \vdots } \\ { } & { } & { a _ { n n } } \end{bmatrix} \begin{bmatrix} { a _ { 11 } } & { } & { } \\ { \vdots } & { \ddots } & { } \\ { a _ { 1 n } }  & { \ldots } & { a _ { n n } } \end{bmatrix} = \begin{bmatrix} { a _ { 11 } } & { } & { } \\ { \vdots } & { \ddots } & { } \\ { a _ { 1 n } }  & { \ldots } & { a _ { n n } } \end{bmatrix} \begin{bmatrix} { a _ { 11 } } & { \dots } & { a _ { 1 n } } \\ { } & { \ddots } & { \vdots } \\ { } & { } & { a _ { n n } } \end{bmatrix} = \begin{bmatrix} { 1 } & { \dots } & { 0 } \\ { } & { \ddots } & { \vdots } \\ { } & { } & { 1 } \end{bmatrix}$$
+
+\end{flushleft}
+\item[1.5] Let $\| \cdot \|$ be a vector norm on $\R^m$ and assume that $C \in \R^{m\times n}$. Show that if rank$(C) = n$, then $\| x \|_C \equiv \| C_x \|$ is a vector norm.
+\begin{flushleft}
+
+\end{flushleft}
+\item[1.9] Consider the figure below. It plots the function $y = \log(1+x)/x$ computed in two different ways. Mathematically, y is a
+smooth function of $x$ near $x = 0$, equaling 1 at 0. But if we compute $y$ using this formula, we get the plots on the left (shown in the ranges $x \in [-1, 1]$ on the top left and $x \in [-10^{-15} , 10^{-15}]$ on the bottom left). This formula is clearly unstable near $x = 0$. On the other hand, if we use the algorithm
+
+\begin{lstlisting}
+d = 1+x
+if d=1 then
+    y=1
+else
+    y = log(d)/(d-1)
+end if
+\end{lstlisting}
+
+we get the two plots on the right, which are correct near x = 0. Explain this phenomenon, proving that the second algorithm must compute an accurate answer in floating point arithmetic. Assume that the log function returns an accurate answer for any argument. (This is true of any reasonable implementation of logarithm.) Assume IEEE floating point arithmetic if that makes your argument easier. (Both algorithms can malfunction on a Cray machine.)
+\begin{flushleft}
+
+\end{flushleft}
+\item[1.16] Prove all parts except 7 of Lemma 1.7.
+\begin{enumerate}
+    \item[(1)] $ \| A x\| \leq \| A\| \cdot \| x\| $ for a vector norm and its corresponding operator norm, or the vector two-norm and matrix Frobenius norm.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(2)] $ \|A B\| \leq\|A\| \cdot\|B\| $ for any operator norm or for the Frobenius norm. In other words, any operator norm (or the Frobenius norm) is mutually consistent with itself.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(3)] The max norm and Frobenius norm are not operator norms.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(4)] $\|QAZ\| = \|A\|$ if $Q$ and $Z$ are orthogonal or unitary for the Frobenius norm and for the operator norm induced by $\|\cdot \|_2$. This is really just the Pythagorean theorem.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(5)] $ \|A\|_{\infty} \equiv \max _{x \neq 0} \frac{\|A x\|_{\infty}}{\|x\|_{\infty}}=\max _{i} \sum_{j}\left|a_{i j}\right| = $ maximum absolute row sum.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(6)] $ \|A\|_{1} \equiv \max _{x \neq 0} \frac{\|A x\|_{1}}{\|x\|_{1}}=\left\|A^{T}\right\|_{\infty}=\max _{j} \sum_{i}\left|a_{i j}\right|= $ maximum absolute column sum.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(8)] $ \|A\|_{2}=\left\|A^{T}\right\|_{2} $
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(9)] $ \|A\|_{2}=\max _{i}\left|\lambda_{i}(A)\right|  $ if $  A  $ is normal, $  i . e ., A A^{*}=A^{*} A $
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(10)] If $  A  $ is n-by-n, then $  n^{-1 / 2}\|A\|_{2} \leq\|A\|_{1} \leq n^{1 / 2}\|A\|_{2} $
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(11)] If $  A  $ is n-by-n, then $  n^{-1 / 2}\|A\|_{2} \leq\|A\|_{\infty} \leq n^{1 / 2}\|A\|_{2} $
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(12)] If $  A  $ is n-by-n, then $  n^{-1}\|A\|_{\infty} \leq\|A\|_{1} \leq n\|A\|_{\infty} $
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[(13)] If $  A  $ is n-by-n, then $ \|A\|_{1} \leq\|A\|_{F} \leq n^{1 / 2}\|A\|_{2} $
+    \begin{flushleft}
+
+    \end{flushleft}
+\end{enumerate}
+\item[1.20] We will use a Matlab program to illustrate how sensitive the roots of polynomial can be to small perturbations in the coefficients. The program is available at HOMEPAGE/Matlab/polyplot.m. Polyplot takes an input polynomial specified by its roots $r$ and then adds random perturbations to the polynomial coefficients, computes the perturbed roots, and plots them. The inputs are:\newline
+
+\quad r = vectors of the roots of the polynomial,
+
+\quad e = maximum relative perturbation to make to each coefficient of the polynomial,
+
+\quad m = number of random polynomials to generate, whose roots are
+plotted. \newline
+\begin{enumerate}
+    \item[1.] The first part of your assignment is to run this program for the following inputs. In all cases choose m high enough that you get a fairly dense plot but don't have to wait too long. m = a few hundred or perhaps 1000 is enough. You may want to change the axes of the plot if the graph is too small or too large.
+    \begin{itemize}
+        \item r=(1:10); e = le-3, le-4, le-5, le-6, le-7, le-8,
+        \begin{flushleft}
+
+        \end{flushleft}
+        \item r= (1:20); e = 1e-9, le-11, le-13, le-15,
+        \begin{flushleft}
+
+        \end{flushleft}
+        \item r=[2,4,8,16,..., 1024]; e=le-1, le-2, le-3, le-4.
+        \begin{flushleft}
+
+        \end{flushleft}
+    \end{itemize}
+    Also try your own example with complex conjugate roots. Which roots are most sensitive?
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[2.] The second part of your assignment is to modify the program to compute the condition number $c(i)$ for each root. In other words, a relative perturbation of $e$ in each coefficient should change root $r(i)$ by at most about $e*c(i)$. Modify the program to plot circles centered at $r(i)$ with radii $e*c(i)$, and confirm that these circles enclose the perturbed roots (at least when $e$ is small enough that the linearization used to derive the condition number is accurate). You should turn in a few plots with circles and perturbed eigenvalues, and some explanation of what you observe.
+    \begin{flushleft}
+
+    \end{flushleft}
+    \item[3.] In the last part, notice that your formula for $c(i)$ "blows up" if $p'(r(i)) = 0$. This condition means that $r(i)$ is a \textit{multiple root} of $p(x) = 0$. We can still expect some accuracy in the computed value of a multiple root, however, and in this part of the question, we will ask how sensitive a multiple root can be: First, write $p(x) = q(x) \cdot (x - r(i))^m$, where $q(r(i)) \not= 0$ and $m$ is the multiplicity of the root $r(i)$. Then compute the $m$ roots nearest $r(i)$ of the slightly perturbed polynomial $p(x) - q(x)\epsilon$, and show that they differ from $r(i)$ by $|\epsilon|^{1/m}$. So that if $m = 2$, for instance, the root $r(i)$ is perturbed by $\epsilon^{1/2}$ , which is much larger than $\epsilon$ if $|\epsilon| \ll 1$. Higher values of $m$ yield even larger perturbations. If $\epsilon$ is around machine epsilon and represents rounding errors in computing the root, this means an $m$-tuple root can lose all but $1/m$-th of its significant digits.
+    \begin{flushleft}
+
+    \end{flushleft}
+\end{enumerate}
+\begin{flushleft}
+
+\end{flushleft}
+\item[1.21] Apply Algorithm 1.1, Bisection, to find the roots
+of $p(x) = (x - 2)^9 = 0$, where $p(x)$ is evaluated using Horner's rule. Use the Matlab implementation in HOMEPAGE/Matlab/bisect.m, or else write your own. Confirm that changing the input interval slightly changes the computed root drastically. Modify the algorithm to use the error bound discussed in the text to stop bisecting when the roundoff error in the computed value of $p(x)$ gets so large that its sign cannot be determined.
+\begin{flushleft}
+
+\end{flushleft}
+\end{enumerate}
+\end{document}

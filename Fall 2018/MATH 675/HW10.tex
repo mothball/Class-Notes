@@ -1,0 +1,51 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{geometry}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+\newcommand{\norm}[1]{\left\vert #1 \right \vert}	
+\newcommand{\Norm}[1]{\left\Vert #1 \right \Vert}
+\renewcommand{\span}{\operatorname{span}}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 10}
+\centerline{Sumanth Ravipati - 11/14/2018}
+\vspace{.25in}
+
+\begin{enumerate}[1.]
+\item Prove that the functional $F(f)=\int_a^b f(t) \cos(t)dt$ is a continuous functional on $C_\infty[a,b]$. What could we replace $\cos(t)$ with?
+\begin{flushleft}
+If $f$ is an infinitely continuous function from $a$ to $b$, it must also be bounded on that interval. We know that $cos(t)$ is also bounded and so the product of the function is also bounded and infinitely differentiable. A bounded functional is also continuous over that same interval. We could replace $cos(t)$ with any differentiable function over that interval as the integral could be split up using integration by parts.
+\end{flushleft}
+\item Give an example of an inner product space $V$ and an orthonormal system $\{e_i\}$ such that $V$ contains no non-zero element orthogonal to every $e_i$, even though $\{e_i\}$ does not span $V$.
+\begin{flushleft}
+Let $V$ be the inner product space of convergent sequences $(a_1, a_2, \ldots)$ for which the limit $a_n$ exists as $n$ goes to infinity. Let $\{e_i\}$ be the orthonormal system where $e_i = (0, \ldots, 0, 1, 0, \ldots)$ where the $i$th term is 1. $V$ contains no non-zero element orthogonal to every $e_i$ as every non-zero element must have at least one non-zero component and therefore it cannot be orthogonal to every $e_i$. However the system $\{e_i\}$ does not span $V$ as the sequence $(1, 1, \ldots, 1, \ldots)$ is in $V$ and converges to 1 but every sequence $e_i$ converges to 0 and so it cannot span all of $V$.
+\end{flushleft}
+\item Prove that both of the following are subspaces of $\ell^2$:
+\begin{enumerate}
+\item The set of all $(x_i)$ such that $x_1=x_2$.\begin{flushleft}
+To prove that a subset is a subspace, it must have the following properties: closed under addition, closed under scalar multiplication, and the element 0 is in the subset. If $x_1 = x_2$, we have the following sequences: $A = (x_1, x_1, x_3, \ldots, x_n, \ldots)$ where $\sum\limits_1^n |x_i|^2 < \infty$. If we let $a = (a_1, a_1, a_3, \ldots, a_n, \ldots)$ and $b = (b_1, b_1, b_3, \ldots, b_n, \ldots)$, we can see it is closed under addition and scalar multiplication. $a + b = (a_1 + b_1, a_1 + b_1, a_3 + b_3, \ldots, a_n + b_n, \ldots) \in A$ since $a_1 + b_1 = a_1 + b_1$. Also, $\lambda a = (\lambda a_1, \lambda a_1, \lambda a_3, \ldots, \lambda a_n, \ldots)$ and $\lambda a_1 = \lambda a_1$ so $\lambda a \in A$. $A$ contains the 0 element as $(0, 0, \ldots) \in A$ since $x_1 = 0 = x_2$. Therefore the set is a subspace of $\ell^2$.
+\end{flushleft}
+\item The set of all $(x_i)$ such that $x_k=0$ for all even $k$.
+\begin{flushleft}
+Let $B$ be the subset where $x_k=0$ for all even $k$ and let $a = (a_1, 0, a_3, 0, \ldots, a_{2n-1}, 0, a_{2n+1}, \ldots)$ and let $b = (b_1, 0, b_3, 0, \ldots, b_{2n-1}, 0, b_{2n+1}, \ldots)$. The set is closed under addition since $a + b = (a_1 + b_1, 0, a_3 + b_3, 0, \ldots, a_{2n-1} + b_{2n-1}, 0, a_{2n+1} + b_{2n+1}, \ldots) \in B$ since all the even terms equal 0. The set is closed under scalar multiplication since $\lambda a =$ $(\lambda a_1, 0, \lambda a_3, 0, \ldots,$ $\lambda a_{2n-1}, 0, \lambda a_{2n+1}, \ldots) \in B$ because all the even terms are still 0. The subset contains the 0 elements as $0 = (0, 0, \ldots ) \in B$ as the even (as well as the odd) elements are 0. Therefore, the set is a subspace of $\ell^2$.
+\end{flushleft}
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

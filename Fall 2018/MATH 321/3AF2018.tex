@@ -1,0 +1,172 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+%\usepackage{times}
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IB}{\mathbb{B}}
+\newcommand{\IC}{\mathbb{C}}
+\newcommand{\ID}{\mathbb{D}}
+\newcommand{\IE}{\mathbb{E}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IG}{\mathbb{G}}
+\newcommand{\IH}{\mathbb{H}}
+\newcommand{\II}{\mathbb{I}}
+%\renewcommand{\IJ}{\mathbb{J}}
+\newcommand{\IK}{\mathbb{K}}
+\newcommand{\IL}{\mathbb{L}}
+\newcommand{\IM}{\mathbb{M}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IO}{\mathbb{O}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IS}{\mathbb{S}}
+\newcommand{\IT}{\mathbb{T}}
+\newcommand{\IU}{\mathbb{U}}
+\newcommand{\IV}{\mathbb{V}}
+\newcommand{\IW}{\mathbb{W}}
+\newcommand{\IX}{\mathbb{X}}
+\newcommand{\IY}{\mathbb{Y}}
+\newcommand{\IZ}{\mathbb{Z}}
+\newcommand{\excise}[1]{}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#3A}
+\centerline{Sumanth Ravipati}
+\centerline{9/10/2018}
+\vspace{.25in}
+
+Reading: Read Chapters 1 and 2 in Gallian.
+
+Answer the questions below. All answers should be in complete sentences, with good grammar. You may answer the questions briefly.
+\begin{enumerate}
+\item Cut out a rectangle of paper or obtain a notecard. Mark the four corners $A, B, C, D$ {\em on both sides}. The corner marked $A$ on one side should also be marked $A$ on the back side, and similarly for the other corners. Use this card to play around with the symmetries discussed in this chapter -- Are there symmetries of the square that are not symmetries of a general rectangle? Which ones?
+
+\begin{flushleft}
+There are several symmetries of a square that are not symmetries of a general rectangle. The reflections through the diagonals only exist for a square as well as the 90 and 270 degree rotations. The remaining symmetries (180 degree rotation as well as reflections through the x and y axis) are shared by both shapes.
+\end{flushleft}
+
+
+\item  How does Gallian's use of the word ``symmetry" compare with
+whatever take on the word you had before?
+
+\begin{flushleft}
+Gallian uses several equivalent formulations of the word ``symmetry", several of which are more precise than my more intuitive take. His definition of plane symmetry, where the distances between any two points in the plane are preserved is the same as the corresponding distances in the image, is more precise than just observing lines of symmetry in a given figure. This formulation seems to allow for the translation between the algebraic and geometry viewpoints of symmetry. 
+\end{flushleft}
+
+\item Do (all) the symmetries of an equilateral triangle commute? Explain why or why not. This group is called $D_3$.
+
+\begin{flushleft}
+The symmetries of an equilateral group are not commutative in general as can be observed through various counter-examples. Let us label $F_C$ the flip across the perpendicular bisector from point $C$ and $R_{120}$, the counterclockwise rotation of 120 degrees about the origin. If we first flip using the $F_C$ operation followed by the $R_{120}$ rotation, this is equivalent to $F_B$, or the perpendicular bisector from point $B$. This can be stated as $R_{120} \circ F_C = F_B$. If we take the opposite order of operations, where we rotate using $R_{120}$ and then flip using $F_C$, this is equivalent to $F_A$, or a flip across the perpendicular bisector from point $A$. Since $F_B \not= F_A$, we can have shown that $F_C$ and $R_{120}$ are not commutative. $R_{120} \circ F_C = F_B \not= F_A = F_C \circ R_{120}$ The full table is shown below and we can see by looking across the main diagonal that only the rotations commute with each other and all the operation commute with the identity $R_0$ operation.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+$\circ$      & $R_0$   & $R_{120}$ & $R_{240}$ & $F_A$   & $F_B$   & $F_C$   \\ \hline
+$R_0$   & $R_0$   & $R_{120}$ & $R_{240}$ & $F_A$   & $F_B$   & $F_C$   \\ \hline
+$R_{120}$ & $R_{120}$ & $R_{240}$ & $R_0$   & $F_C$   & $F_A$   & $F_B$   \\ \hline
+$R_{240}$ & $R_{240}$ & $R_0$   & $R_{120}$ & $F_B$   & $F_C$   & $F_A$   \\ \hline
+$F_A$   & $F_A$   & $F_B$   & $F_C$   & $R_0$   & $R_{120}$ & $R_{240}$ \\ \hline
+$F_B$   & $F_B$   & $F_C$   & $F_A$   & $R_{240}$ & $R_0$   & $R_{120}$ \\ \hline
+$F_C$   & $F_C$   & $F_A$   & $F_B$   & $R_{120}$ & $R_{240}$ & $R_0$ \\ \hline
+\end{tabular}
+\end{table}
+\end{flushleft}
+
+\item Do the set of symmetries of the square form a group? Why or why not?
+
+\begin{flushleft}
+Yes, the set of symmetries of the square form a group. The set satisfies all of the defining properties of a group: closure, identity, inverses, and associativity. The operation of performing a symmetry has an identity element of $R_0$, which keeps the square as is. The inverse of the reflection symmetries are themselves and the inverse of the rotations is the complementary rotation which add up to 360 degrees. The set is closed under these operations as any pair of symmetry transformations leaves the square in another state that can described by another symmetry transformation.
+\end{flushleft}
+
+\item  Confirm that $U(10)$ has the elements $\{1,3,7,9\}$. How does one confirm that $U(10)$ has a binary operation? Was this exercise obvious to you before you started?
+
+\begin{flushleft}
+$U(10)$ is the set of numbers less than 10 and
+relatively prime to 10 under the operation multiplication modulo 10. The prime factors of 10 are 2 and 5, and so the numbers 2, 4, 5, 6, 8 are all multiples of these prime factors. This leaves, 1, 3, 7, and 9 as the remaining elements in $U(10)$. This group under the operation modulo 10 is in fact, a binary operation as seen in the table below:
+\end{flushleft}
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+$\circ$ & 1 & 3 & 7 & 9 \\ \hline
+1 & 1 & 3 & 7 & 9 \\ \hline
+3 & 3 & 9 & 1 & 7 \\ \hline
+7 & 7 & 1 & 9 & 3 \\ \hline
+9 & 9 & 7 & 3 & 1 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{flushleft}
+All of the entries are within the original $U(10)$ set, so the operation is closed under multiplication modulo 10. Therefore $U(10)$ does in fact have a binary operation. This was not obvious before constructing the table as there is no reason that two entries could not have produced a 5 in the table.
+\end{flushleft}
+
+\item Consider the example of matrices with nonzero determinant, under the operation of multiplication. Why is having nonzero determinant important in order for this set and operation to form a group?
+
+\begin{flushleft}
+Having a nonzero determinant is important because only these matrices are invertible and have an inverse. One of the defining properties of a group is that every element in the set must have a corresponding inverse. This set with only matrices with nonzero determinants satisfies all the requirements for a group: closure, identity, inverses, and associativity. The identity element is the identity matrix and all matrices must be square to even have inverses. These matrices are closed and associative under the multiplication operator and so they in fact, form a group.
+\end{flushleft}
+
+\item Did you know that you could take an inverse of nonzero complex numbers? Find value of $\frac{1}{2-3i}$.
+
+\begin{flushleft}
+Yes, I knew that nonzero complex numbers have multiplicative inverses and these can be found by multiplying and dividing by the complex conjugate of the initial number.
+
+$$\frac{1}{2-3i} = \frac{1}{2-3i} \cdot \frac{2+3i}{2+3i} = \frac{2+3i}{4 + 6i - 6i - 9i^2} = \frac{2+3i}{13} = \frac{2}{13} + \frac{3}{13}i$$
+\end{flushleft}
+
+\newpage
+\item Of all the examples of groups, which one is the most intuitive? And which is the most confusing?
+
+\begin{flushleft}
+The most intuitive examples of groups draw from years of intuition built up with arithmetic. The most intuitive group is the set of integers, together with addition. This is so intuitive that it serves as a mental analog when determining if another set and operation form a group. The most confusing example are higher dimensional analogs of the geometric shapes under the operation of composition. It has been difficult to picture which operations are associative, even if they are not commutative.
+\end{flushleft}
+
+\item Feedback: Come up with a couple of explicit questions or comments on what you found interesting or confusing. Write them down.
+
+\begin{flushleft}
+\begin{enumerate}
+    \item Is there a more systematic way to prove the associative property for a given set and operation? Can it be quickly observed by looking at the table of binary operations between all of the elements of a set?
+    \item I found it interesting to think of all of the various groups as being fundamentally equivalent and to picture the sets and operations simply as particular manifestations of the same underlying structure.
+    \item If two sets and operations share the exact same properties, in what way, if any, are they actually different? My instinct is to think of them as being the same set and operation with just different labels applied.
+\end{enumerate}
+\end{flushleft}
+\end{enumerate}
+\end{document} 

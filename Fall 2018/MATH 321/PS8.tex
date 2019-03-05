@@ -1,0 +1,129 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#8}
+\centerline{Sumanth Ravipati}
+\centerline{10/22/2018}
+
+\begin{enumerate}
+    \item Let $\R^+$ be the group of positive real numbers under multiplication. Show that the mapping $\phi(x) = \sqrt{x}$ is an automorphism of $\R^+$
+    \begin{flushleft}
+    First, we shall show that $\phi$ is one-to-one. If $\phi(a) = \phi(b), \sqrt{a} = \sqrt{b}$, and so $a = b$ as desired, since $a, b$ are both $> 0$. Next we shall show that $\phi$ is onto. Let $\phi(a) = b$ for any given element $b$ in $\R^+$. Then $\sqrt{a} = b$ and so $a = b^2$. If $b$ is an element of $\R^+$, $a = b^2$ is also an element of $\R^+$ so that $\phi(a) = b$, as desired. Finally, notice that $\phi(ab) = \sqrt{ab} = \sqrt{a}\sqrt{b} = \phi(a)\phi(b)$, as desired to preserve multiplication under the mapping $\phi(x) = \sqrt{x}$. Therefore, the mapping is an automorphism of $\R^+$ under multiplication.
+    \end{flushleft}
+    \item Prove that isomorphism is an equivalence relation. That is, for any groups $G , H ,$ and $K$
+    \begin{enumerate}
+        \item $G \approx G$
+        \begin{flushleft}
+        If $\alpha$ is an isomorphism from $G$ to $G$, we must show that $\alpha$ is an isomorphism from $G$ to $G$. If $\alpha$ is one-to-one, onto, and preserves the group operation, it maps $G$ onto itself and so $\alpha$ is an automorphism of $G$ and therefore $G \approx G$.
+        \end{flushleft}
+        \item $G \approx H$ implies $H \approx G$
+        \begin{flushleft}
+        If $\alpha$ is an isomorphism from $G$ to $H$, we must show that there exists a mapping $\beta$ that is an isomorphism from $H$ to $G$. If $\alpha$ is one-to-one and onto, then it has an inverse $\beta$ that maps $H$ to $G$ that is also one-to-one and onto. If $a, b$ are in $G$, $\alpha(ab) = \alpha(a)\alpha(b)$. Let $c, d$ be generic elements in $H$ where $\alpha(a) = c$ and $\alpha(b) = d$ so that $\beta(c) = a$ and $\beta(d) = b$. Since $\alpha(ab) = \alpha(a)\alpha(b)$, $\beta(\alpha(ab)) = \beta(\alpha(a)\alpha(b)) = \beta(\alpha(a))\beta(\alpha(b))$. Therefore $\beta(cd) = \beta(c)\beta(d)$ and so $\beta$ preserves the group operation. We can then conclude that the mapping $\beta$ is an isomorphism from $H$ to $G$, or $H \approx G$.
+        \end{flushleft}
+        \item $G \approx H$ and $H \approx K$ implies $G \approx K$
+        \begin{flushleft}
+        If $\alpha$ is an isomorphism from $G$ to $H$ and $\beta$ is an isomorphism from $H$ to $K$, then we must show that there exists a mapping $\gamma$ that is an isomorphism from $G$ to $K$. If $\alpha$ and $\beta$ are one-to-one and onto, $\gamma = \alpha\beta$ is also one-to-one and onto.  Let $a, b$ be generic elements in $G$ and let $\gamma(a), \gamma(b)$ be generic elements in $K$. Notice that $\gamma(ab) = ( \alpha \beta ) ( a b ) =$ $ \alpha ( \beta ( a b ) ) =$ $ \alpha ( \beta ( a ) \beta ( b ) ) =$ $ \alpha ( \beta ( a ) ) \alpha ( \beta ( b ) ) = ( \alpha \beta ) ( a ) ( \alpha \beta ) ( b ) = \gamma(a)\gamma(b)$. Therefore $\gamma = \alpha\beta$ preserves the group operation and so $\gamma$ is an isomorphism from $G$ to $K$.
+        \end{flushleft}
+    \end{enumerate}
+    Since (a), (b), and (c) are satisfied, we have shown that isomorphism is an equivalence relation.
+    \item Let $G$ be a group. Prove that the mapping $\alpha(g) = g^{-1}$ for all $g$ in $G$ is an automorphism if and only if $G$ is Abelian.
+    \begin{flushleft}
+    First we shall show that if $\alpha(g) = g^{-1}$ for all $g$ in $G$ is an automorphism, $G$ is Abelian. Notice that $gh$ is an element of $G$ since it is closed under the binary operation. Therefore $\alpha(g)\alpha(h) = \alpha(gh) = (gh)^{-1} = h^{-1}g^{-1} = \alpha(h)\alpha(g)$. Since $\alpha(g)$ is one-to-one and onto, $ \alpha(h), \alpha(g)$ correspond to 2 generic elements of $G$. Therefore $ab = ba$ for every $a, b$ in $G$. Next, we shall show that if $G$ is Abelian, the mapping $\alpha(g) = g^{-1}$ for all $g$ in $G$ is an automorphism. If $G$ is Abelian, $gh = hg$ for all $g, h$ in $G$. If $\alpha(g) = \alpha(h)$, then $g^{-1} = h^{-1}$. Multiplying by $h$ on the left and $g$ on the right gives us: $hg^{-1}g = hh^{-1}g$. This gives us, $he = eg$ and so $h = g$, as desired to show that $\alpha(g)$ is one-t-one. To show that $\alpha(g)$ is onto, let $\alpha(g) = h$ for any given $h$ in $G$. Then $g^{-1} = h$ and multiplying both sides by $g$ on the left gives us: $gg^{-1} = gh$ and so $e = gh$. Therefore $g = h^{-1}$ so that $\alpha(h^{-1}) = h$ since $h^{-1}$ exists for every element $h$ in any group $G$. Finally, notice that $\alpha(gh) = (gh)^{-1} = h^{-1}g^{-1} = g^{-1}h^{-1} = \alpha(g)\alpha(h)$ and so $\alpha(g)$ preserves the group operation. Since $\alpha(g)$ is one-to-one, onto and preservers the group operation, the mapping is automorphism of $G$.
+    \end{flushleft}
+    \item Prove or disprove that $U(20)$ and $U(24)$ are isomorphic.
+    \begin{flushleft}
+    $U(20) = \left\{1, 3, 7, 9, 11, 13, 17, 19\right \}$ and $U(24) = \left\{1, 5, 7, 11, 13, 17, 19, 23\right\}$. $3^2=9, 3^3=27 \equiv 7, 3^4 = 81 \equiv 1$, so $|3| = 4$. However, every element of $U(24)$ has order 1 or 2: $5^2 = 25 \equiv 1, 7^2 = 49 \equiv 1, 11^2 = 121 \equiv 1, 13^2 = 169 \equiv 1, 17^2 = 289 \equiv 1, 19^2 = 361 \equiv 1, 23^2 = 529 \equiv 1$. Therefore, $|1| = 1, |5| = |7| = |11| = |13| = |17| = |19| = |23| = 2$. According to the theorem of properties of isomorphisms acting on elements, the order of every element of $G$ must correspond to the order of an element of $\bar{G}$ so that $|a| = |\phi(a)|$ for all $a$ in $G$. However, since no element of $U(24)$ has order 4, the two groups are not isomorphic.
+
+    \end{flushleft}
+    \item Show that the mapping $\phi(a + b i) = a - b i$ is an automorphism of the group of complex numbers under addition. Show that $\phi$ preserves complex multiplication as well- that is, $\phi(x y) = \phi(x) \phi(y)$ for all $x$ and $y$ in $\mathbf{C}$ (This exercise is referred to in Chapter $15.)$
+    \begin{flushleft}
+    First, we shall show that $\phi$ is one-to-one. If $\phi(a + bi) = \phi(c + di)$, $a - bi = c - di$, and so $a = c$ and $b = d$. Therefore $a + bi = c + di$, as desired. Next, we shall show that $\phi$ is onto. Let $\phi(a + bi) = c + di$ for any given $c + di$ in $\C$. Then $a - bi = c + di$ and so $a = c$ and $b = -d$. Therefore, $\phi(c - di) = c + di$ to produce any given complex number. Finally, notice that $\phi((a + bi)+(c + di)) = \phi((a+c) + (b+d)i) = (a+c) - (b+d)i = a - bi + c - di = \phi(a+bi) + \phi(c+di)$. Therefore $\phi(x + y) = \phi(x) + \phi(y)$ for all elements $x, y$ in $\C$. Since the mapping $\phi$ is one-to-one, onto and preserves complex addition, it is an automorphism of the group of complex numbers under addition. For complex multiplication, we can see that $\phi((a + bi)(c + di)) = \phi((ac - bd)+(ad+bc)i) = (ac - bd) - (ad+bd)i = (a - bi)(c - di) = \phi(a+bi)\phi(c+di)$. Therefore $\phi(xy) = \phi(x)\phi(y)$ for all elements $x, y$ in $\C$.
+    \end{flushleft}
+    \item Suppose that $\phi : \Z_{50} \rightarrow \Z_{50}$ is an automorphism with $\phi(7) = 13$. Determine a formula for $\phi(x)$.
+    \begin{flushleft}
+    We see that $\phi(7) = 7\phi(1) = 13$. Since $\gcd(50,7) = 1$ and $7 \cdot 43 = 301 \equiv 1$, $7^{-1}$ is in $\Z_{50}$ and equals 43. Therefore $\phi(1) = 7^{-1} \cdot 13 = 43 \cdot 13 = 559 \equiv 9$. In general, $\phi(x) = \phi(x \cdot 1) = x\phi(1) = 9x$.
+    \end{flushleft}
+    \item Prove that $\Z$ under addition is not isomorphic to $\Q$ under addition.
+    \begin{flushleft}
+    The set of integers $\Z$ is cyclic with the generator $\langle1\rangle = \Z$. However, $\Q$ is not cyclic as it has no generator. If $\Q = \langle\frac{a}{b}\rangle$ for any given $\frac{p}{q}$ in $\Q$, but $\frac{p}{2q}$ in $\Q$ cannot be generated by $\langle\frac{a}{b}\rangle$. According to the theorem of properties of isomorphisms acting on groups, if the two groups $G$ and $\bar{G}$ are isomorphic, then $G$ is cyclic if and only if $\bar{G}$ is cyclic. Since $\Z$ is cyclic but $\Q$ is not cyclic, $\Z$ under addition is not isomorphic to $\Q$ under addition.
+    \end{flushleft}
+    \item Explain why $S_8$ contains subgroups isomorphic to $\Z_{15} , U (16),$ and $D_8$.
+    \begin{flushleft}
+    The group $\Z_{15} = \{ 1, 2, 4, 7, 8, 11, 13, 14 \}$ under multiplication. If $\phi(x)$ is defined as multiplication by $x$, $\phi(1) = (1)(2)(4)(7)(8)(11)(13)(14) = (1)$. $\phi(2) = (1, 2, 4, 8)(7, 14, 13, 11)$. $\phi(4) = (1, 4)(2, 8)(7, 13)(11, 14)$. $\phi(7) = (1, 7, 4, 13)(2, 14, 8, 11)$. $\phi(8) = (1, 8, 4, 2)(7, 11, 13, 14)$. $\phi(11) = (1, 11)(2, 7)(4, 14)(8,13)$. $\phi(13) = (1, 13, 4, 7)(2, 11, 8, 14)$. $\phi(14) = (1, 14)(2, 13)(4, 11), (7,8)$. Since the mapping $\phi(x)$ is a set of permutation of the 8 elements of $\Z_{15}$, $\Z_{15}$ is isomorphic to a subgroup of $S_8$. \newline
+    
+    The group $U(16) = \{ 1, 3, 5, 7, 9, 11, 13, 15 \}$ under multiplication. If $\phi(x)$ is defined as multiplication by $x$, $\phi(1) = (1)(3)(5)(7)(9)(11)(13)(15) = (1)$. $\phi(3) = (1, 3, 9, 11)(5, 15, 13, 7)$. $\phi(5) = (1, 5, 9, 13)(3, 15, 11, 7)$. $\phi(7) = (1, 7)(3, 5)(13, 11)(9, 15)$. $\phi(9) = (1, 9)(3, 11)(5, 13)(7, 15)$. $\phi(11) = (1, 11, 9, 3)(5, 7, 13, 15)$. $\phi(13) = (1, 13, 9, 5)(3, 7, 11, 15)$. $\phi(15) = (1, 15)(3, 13)(5, 11), (7,9)$. Since the mapping $\phi(x)$ is a set of permutation of the 8 elements of $U(16)$, $U(16)$ is isomorphic to a subgroup of $S_8$. \newline
+    
+    The group $D_8 = \{ e, r, r^2, r^3, s, sr, sr^2, sr^3 \}$ under composition. If $\phi(x)$ is defined as composition by $x$, $\phi(e) = (e)(r)(r^2)(r^3)(s)(sr)(sr^2)(sr^3) = (e)$. $\phi(r) = (e, r, r^2, r^3)(s, sr, sr^2, sr^3)$. $\phi(r^2) = (e, r^2)(r, r^3)(s, sr^2)(sr, sr^3)$. $\phi(r^3) = (e, r^3, r^2, r^2)(s, sr^3, sr^2, sr)$. $\phi(s) = (e, s)(r, sr)(r^2, sr^2)(r^3, sr^3)$. $\phi(sr) = (e, sr, r^2, sr^3)(r, sr^2, r^3, s)$. $\phi(sr^2) = (e, sr^2)(r, sr^3)(r^2, s)(r^3, sr)$. $\phi(sr^3) = (e, sr^3, r^2, sr)(r, s, r^3, sr^2)$. Since the mapping $\phi(x)$ is a set of permutation of the 8 elements of $D_8$, $D_8$ is isomorphic to a subgroup of $S_8$.
+    \end{flushleft}
+    \item Let $H = \{ 0 , \pm 3 , \pm 6 , \pm 9 , \ldots \} .$ Find all the left cosets of $H$ in $\Z$.
+    \begin{flushleft}
+    Notice that the elements of $H$ can be written as $3m$, where $m$ is any element in $\Z$. Any element $a$ in $\Z$ can be written as $3n, 3n+1,$ or $3n+2$. If $a = 3n$, $ah = 3n + 3m = 3(n+m) = H$. If $a = 3n + 1$, $ah = 3n + 1 + 3m = 3(n+m) + 1 = H + 1$. If $a = 3n + 2$, $ah = 3n + 2 + 3m = 3(n+m) + 2 = H + 2$. Therefore all of the left cosets of $H$ in $\Z$ are $H, H + 1,$ and $H+2$.
+    \end{flushleft}
+    \item Rewrite the condition $a^{-1}b \in H$ given in property 6 of the lemma on page 139 in additive notation. Assume that the group is Abelian.
+    \begin{flushleft}
+    The condition $a^{-1}b$ is equivalent to $(-a) + b = b -a$ since $a^{-1} = -a$. Therefore the equivalent condition would be $b - a \in H$.
+    \end{flushleft}
+    \item Let $H$ be as in Exercise 9. Use Exercise 10 to decide whether or not the following cosets of $H$ are the same.
+    \begin{enumerate}
+        \item $11 + H$ and $17 + H$
+        \begin{flushleft}
+        Since $17 - 11 = 6$ is in $H$, the 2 cosets are equivalent.
+        \end{flushleft}
+        \item $- 1 + H$ and $5 + H$
+        \begin{flushleft}
+         Since $5 - (-1) = 6$ is in $H$, the 2 cosets are equivalent.
+        \end{flushleft}
+        \item $7 + H$ and $23 + H$
+        \begin{flushleft}
+         Since $23 - 7 = 16$ is not in $H$, the 2 cosets not are equivalent.
+        \end{flushleft}
+    \end{enumerate}
+    \item Find all of the left cosets of $\{ 1,11 \}$ in $U(30)$
+    \begin{flushleft}
+    $U(30) = \{ 1, 7, 11, 13, 17, 19, 23, 29 \}$ and let us determine $aH$ where $H = \{ 1, 11\}$ for each element $a$ in $U(30)$. Clearly $1H = H$. $7H = \{ 7, 77 \} \equiv \{ 7, 17\}$. $11H = \{ 11, 121 \} \equiv \{ 1, 11\}$. $13H = \{ 13, 143 \} \equiv \{ 13, 23\}$. $17H = \{ 17, 187 \} \equiv \{ 7, 17\}$. $19H = \{ 19, 209 \} \equiv \{ 19, 29\}$. $23H = \{ 23, 253 \} \equiv \{ 13, 23\}$. $29H = \{ 29, 319 \} \equiv \{ 19, 29\}$. Therefore, all of the left cosets of $\{ 1,11 \}$ in $U(30)$ are $\{ 1, 11\}, \{ 7, 17\}, \{ 13, 23\}$, and $\{ 19, 29\}$.    
+    \end{flushleft}
+    \item Suppose that $a$ has order $15$. Find all of the left cosets of $\left\langle a^5 \right\rangle$ in $\langle a \rangle$
+    \begin{flushleft}
+    Since $|a| = 15$, $\langle a\rangle = \{ e, a, a^2, a^3, a^4, a^5, a^6, a^7, a^8, a^9, a^{10}, a^{11}, a^{12}, a^{13}, a^{14} \}$. Also $\langle a^5 \rangle = \{ e, a^5, a^{10} \}$. The exponents ${0, 1, \ldots, 14}$ can be written as $5n, 5n+1, 5n+2, 5n+3,$ or $5n+4$. $\langle a^{5n} \rangle$ = $\{ e, a^5, a^{10}\}$. $\langle a^{5n+1} \rangle$ = $\{ a, a^6, a^{11}\}$. $\langle a^{5n+2} \rangle$ = $\{ a^2, a^7, a^{12}\}$. $\langle a^{5n+3} \rangle$ = $\{ a^3, a^8, a^{13}\}$. $\langle a^{5n+4} \rangle$ = $\{ a^4, a^9, a^{14}\}$. Therefore all of the left cosets of $\left\langle a^5 \right\rangle$ in $\langle a \rangle$ are: $\{ e, a^5, a^{10}\}$, $\{ a, a^6, a^{11}\}$, $\{ a^2, a^7, a^{12}\}$, $\{ a^3, a^8, a^{13}\}$, and $\{ a^4, a^9, a^{14}\}$.
+    \end{flushleft}
+\end{enumerate}
+\end{document} 

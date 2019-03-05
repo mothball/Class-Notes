@@ -1,0 +1,131 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#10}
+\centerline{Sumanth Ravipati}
+\centerline{11/4/2018}
+
+\begin{enumerate}
+    \item[\#1.]In class, we showed that if H is a normal subgroup, then there is a well-defined product on the set of left cosets, G/H. What is meant by a well-defined product?
+    
+    \begin{flushleft}
+    According to the Factor Groups theorem by Holder, if H is a normal subgroup of G. The set G/H = $\{aH | a \in G\}$ is a group under the operation $(aH)(bH) = abH$. This operation with the set G/H forms a group and so it must be well-defined. In this context, well-defined means that the operation assigns an unambiguous value for a given input. Here, the left coset multiplication is well-defined by the equation $(aH)(bH) = abH$.
+    \end{flushleft}
+
+    \item[\#2.]In class we showed that, if $H$ is normal, then whenever $g_1H = g_2H$, we have $g_1HgH = g_2HgH$ for any coset $gH$, provided the multiplication is given by $aHbH = abH$. Argue that whenever $H$ is normal, $gHg_1H = gHg_2H$ as well.
+    
+    \begin{flushleft}
+    Given that $H$ is normal and $g_1H = g_2H$, it is obvious that $gH = gH$ as well. Since $g_1H$ is an arbitrary coset, we can also multiply $gH$ by $g_1H$ to give us $gHg_1H = gHg_1H$. Since $g_1H = g_2H$, we can substitute on the right hand side to give us  $gHg_1H = gHg_2H$, as desired.
+    \end{flushleft}
+
+    \item[\#3.]If H is not normal, can the multiplication still work out for some H and some G? Why or why not?
+    
+    \begin{flushleft}
+    The converse of the Factor Group theorem by Holder is also true. Therefore, if the correspondence $aHbH = abH$ defines a group operation on the set of left cosets of $H$ in $G$, then $H$ is normal in $G$. Therefore, based on the contrapositive of the converse, if $H$ is not normal in $G$, the correspondence does not define a group operation on the set of left cosets of $H$ in $G$.
+    \end{flushleft}
+
+    \item[\#4.]Suppose G is Abelian, and H is a subgroup. Why is H always normal? (Think about the set elements).
+    
+    \begin{flushleft}
+    If $G$ is Abelian, then $ah = ha$ for all $a, h$ in $G$. If we restrict $h$ to be elements only the subgroup $H$, then we can say $ah = ha$ for all $a$ in $G$ and $h$ in $H$. Therefore, $aha^{-1} = h$ and so $aHa^{-1} \subset H$, which means that $H$ passes the normal subgroup test. Therefore, $H$ is always normal  if $G$ is Abelian, as desired.
+    \end{flushleft}
+
+    \item[\#5.]If H is normal, so there is a well-defined product on G/H, what else would you need to convince yourself that G/H forms a group under this operation?
+    
+    \begin{flushleft}
+    Beyond having a well-defined product, we must show that it has the identity, inverses and the product is associative. $eH = H$ is the identity while for any given $a$ in $H$, $a^{-1}H$ is the inverse of $aH$. $(aHbH)cH = (ab)HcH =$ $(ab)cH = a(bc)H = aH(bc)H = aH(bHcH)$. Therefore the operation is also associative since the corresponding operation in $G$ is also associative.
+    \end{flushleft}
+
+    \item[Ch 8 \#11.]How many elements of order 4 does $\Z_4 \bigoplus \Z_4$ have? (Do not do this by examining each element.) Explain why $\Z_4 \bigoplus \Z_4$ has the same number of elements of order 4 as does $\Z_{8000000} \bigoplus \Z_{400000}$. Generalize to the case $\Z_m \bigoplus \Z_n$.
+    
+    \begin{flushleft}
+    Using the theorem for an order of an element in a direct product, we know that the order of an element in a direct product of a finite number of finite groups is the least common multiple of the orders of the components of the elements. For our our case, we know that $|(g_1, g_2)| = lcm(|g_1|,|g_2|)$. We are looking for the number of elements $(a,b)$ in $\Z_4 \bigoplus \Z_4$ such that $|(a,b)| = 4$. Therefore either $|a| = 4$ and $|b| = 1, 2$ or $4$, or $|b| = 4$ and $|a| = 1$ or 2. If $|a|$ or $|b| =  4$, the possible values for $a$ and $b$ are 1 and 3. If $|a|$ or $|b| =  2$, then $a$ and $b = 2$. If $|a|$ or $|b| =  1$, $a$ and $b$ must be the identity, 0. Considering the possible combinations of $|a|$ and $|b|$, we see that $(a,b)$ can equal $(1,0), (1,1) (1,2), (1,3), (3,0)$, $ (3,1), (3,2), (3,3), (0,1), (0,3), (2,1), (2,3)$, for a total of 12 elements.
+    \newline
+    
+    Even for $\Z_{8000000} \bigoplus \Z_{400000}$, $|(a,b)| = 4$ if and only if $| a | = 4$ and $| b | = 1,2$ or 4 or if $| b | = 4$ and $| a | = 1$ or 2. In the first case, there are $\phi(4) = 2$ choices for $a$ and $\phi(4) + \phi(2) + \phi(1) = 4$ choices for $b$ for a total of $4 \times 2 = 8$ elements. In the second case, there are $\phi(4) = 2$ choice for $b$ and $\phi(2) + \phi(1) = 2$ choices for $a$ for a 4 more elements and a total of 12. In the general case, as long as 4 divides $m$ and $n$, you will get the same number of elements, 12.
+    \end{flushleft}
+
+    \item[Ch 8 \#15.]Prove that the group of complex numbers under addition is isomorphic to $R \bigoplus R$.
+    
+    \begin{flushleft}
+    We know that $R \bigoplus R = R^2$. We can define a map $\phi$ such that $a + bi \mapsto (a,b)$. We shall show that $\phi$ is well defined, one-to-one, onto and preserves the group operation. $\phi$ is well-defined since for every input $a + bi$ in $\C$, there will be an unambiguous output $(a,b)$ in $\R \bigoplus \R$. If $\phi(a + bi) =$ $\phi(c + di)$, then $(a,b) = (c,d)$ and so $a=c$, $b=d$ and so $\phi$ is one-to-one since $a + bi = c + di$. For every $(a,b)$ in $\R \bigoplus \R$, there exists $a + bi$ such that $\phi(a + bi) = (a,b)$ and so $\phi$ is onto since. $\phi((a + bi)+(c + di)) =$ $\phi((a+c)+(b+d)i) = (a+c, b+d) = (a,b) + (c,d) = \phi(a + bi) + \phi(c + di)$. Therefore $\phi(x + y) = \phi(x) + \phi(y)$ and so $\phi$ preserves the group operation. Since there exists such a map $\phi$, the group of complex numbers under addition is isomorphic to $R \bigoplus R$.
+    \end{flushleft}
+
+    \item[Ch 8 \#35.]Prove that $\R^* \bigoplus \R^*$ is not isomorphic to $\C^*$. (Compare this with Exercise 15.)
+    
+    \begin{flushleft}
+    Note that $\R^* \bigoplus \R^*$ does not include the x-axis or y-axis. Since the set is $\C^*$, we assume that the group operation is multiplication. If there was an isomorphism, it would preserve the order of the elements. In $\C^*$, the element -1 is the only one with order 2 while in $\R^* \bigoplus \R^*$, there are 3 such elements: $(1, -1), (-1, 1), (-1, -1)$. Since the isomorphism would have to be one-to-one, they all can't map back to -1. Therefore, $\R^* \bigoplus \R^*$ is not isomorphic to $\C^*$.
+    \end{flushleft}
+
+    \item[Ch 8 \#16.]Suppose that $G_1 \approx G_2 \text { and } H_1 \approx H_2.$ Prove that $G_1 \oplus H_1 \approx G_2 \oplus H_2$. State the general case.
+    
+    \begin{flushleft}
+    Let $\alpha$ map $G_1$ to $G_2$ and let $\beta$ map $H_1$ to $H_2$. We can define a function $\phi$ that maps  $G_1 \oplus H_1$ to $G_2 \oplus H_2$ by mapping $(g_1, h_1) \mapsto (g_2, h_2)$ component-wise via $\alpha(g_1) = g_2$ and $\beta(h_1) = h_2$. This can stated as follows: $\phi((g_1, h_1)) = (\alpha(g_1), \beta(h_1)) = (g_2, h_2)$ for all $g_1$ in $G_1$ and $h_1$ in $H_1$. This will extend to any number of groups and so we can generalize this as follows: Suppose $G_{1_1} \approx G_{1_2}$, $G_{2_1} \approx G_{2_2}$, $\ldots, G_{n_1} \approx G_{n_2}$. Then $G_{1_1} \oplus G_{2_1} \oplus \cdots \oplus G_{n_1} \approx G_{1_2} \oplus G_{2_2} \oplus \cdots \oplus G_{n_2}$.
+    \end{flushleft}
+
+    \item[Ch 9 \#8.]Viewing $\langle3\rangle$ and $\langle12\rangle$ as subgroups of $\Z$, prove that $\langle3\rangle/\langle12\rangle$ is isomorphic to $\Z_4$. Similarly, prove that $\langle8\rangle/\langle48\rangle$ is isomorphic to $\Z_6$. Generalize to arbitrary integers $k$ and $n$.
+    
+    \begin{flushleft}
+    Since 3 divides 12, $\langle3\rangle/\langle12\rangle$ is a cyclic group of order $12/3 = 4$, which is then isomorphic to $\Z_4$. Similarly, since 8 divides 48, $\langle8\rangle/\langle48\rangle$ is a cyclic group of order $48/8 = 6$, which is isomorphic to $\Z_6$. In general, if $k$ divides $n$, $\langle k\rangle/\langle n\rangle$ is a cyclic group of order $n/k$, which is isomorphic to $\Z_{n/k}$.
+    \end{flushleft}
+    \newpage
+    \item[Ch 9 \#9.]Prove that if $H$ has index 2 in $G$, then $H$ is normal in $G$.
+    
+    \begin{flushleft}
+    Given an element $a$ in $G$, if $a$ is also an element of $H$, then due to the properties of cosets, $aH = H$.
+    
+    Let $a$ be an arbitrary element of $G$. Since the index of $H$ is 2, we know that $H$ partitions $G$ into 2 left cosets, $aH$ and $H$ and into 2 right cosets $Ha$ and $H$. If $a$ is in $H$, then due to the properties of cosets, we know that $aH = H = Ha$ since $H$ is a subgroup of $G$. If $a$ is not in $H$, then $aH = G\setminus H = Ha$. So in either case, $aH = Ha$ for all $a$ in $G$ and so $H$ is normal in $G$.
+    \end{flushleft}
+
+    \item[Ch 9 \#12.]Prove that a factor group of an Abelian group is Abelian.
+    
+    \begin{flushleft}
+    For any factor group, the set $G/H$ is a group under the operation $(aH)(bH) = abH$. If $G$ were Abelian, then we know that $ab = ba$ and so $abH = baH = (bH)(aH)$. Therefore, we get that $(aH)(bH) = (bH)(aH)$ and so the factor group would also be Abelian.
+    \end{flushleft}
+
+    \item[Ch 9 \#18.]What is the order of the factor group $\Z_{60}/\langle15\rangle$?
+    
+    \begin{flushleft}
+    Note that $\langle15\rangle = \{15, 30, 45, 0\}$ has an order of 4. The order of the factor group is simply the order of the group divided by the order of the subgroup, which is $60/4 = 15$.
+    \end{flushleft}
+
+\end{enumerate}
+\end{document} 

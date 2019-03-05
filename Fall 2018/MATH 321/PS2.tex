@@ -1,0 +1,111 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=1in}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+%
+\begin{document}
+%
+\centerline{\Large Math 321 Homework 2}
+\centerline{Sumanth Ravipati}
+\centerline{9/4/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item Let $a, b$ be positive integers. Prove that $a \leq ab$.
+
+\begin{flushleft}Since $b$ is a positive integer, $b \geq 1$, subtracting $1$ from both sides gives $(b - 1) \geq 0$. Since $a$ is also a positive integer, $a \geq 1$. The product of 2 numbers which are $\geq 0$ is also $\geq 0$. Multiplying the previous inequalities gives us $a(b-1) \geq 0$. By the distributive property, this is equivalent to $ab - a \geq 0$. Adding $a$ to both sides gives us $a \leq ab$. $\Box$
+\end{flushleft}
+
+\item Determine $gcd(2^4 \cdot 3^2 \cdot 5 \cdot 7^2, 2 \cdot 3^3 \cdot 7 \cdot 11)$ and $lcm(2^3 \cdot 3^2 \cdot 5,2 \cdot 3^3 \cdot 7 \cdot 11)$.
+\begin{enumerate}
+    \item $gcd(2^4 \cdot 3^2 \cdot 5 \cdot 7^2, 2 \cdot 3^3 \cdot 7 \cdot 11)$
+    \begin{flushleft}
+    To determine the greatest common divisor among a set of numbers, one takes minima of each of the exponents in the prime decomposition. The resulting product gives the gcd.\newline
+    \end{flushleft}
+        \begin{center}
+            \begin{tabular}{|c c c c|} 
+                \hline
+                Prime & Exponent in 1st number & Exponent in 2nd number & Smallest \\ 
+                \hline
+                2 & 4 & 1 & 1 \\ 
+                \hline
+                3 & 2 & 3 & 2 \\
+                \hline
+                5 & 1 & 0 & 0 \\
+                \hline
+                7 & 2 & 1 & 1 \\
+                \hline
+                11 & 0 & 1 & 0 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        $$gcd(2^4 \cdot 3^2 \cdot 5 \cdot 7^2, 2 \cdot 3^3 \cdot 7 \cdot 11) = 2^1 \cdot 3^2 \cdot 5^0 \cdot 7^1 \cdot 11^0 = 126$$
+    \item $lcm(2^3 \cdot 3^2 \cdot 5,2 \cdot 3^3 \cdot 7 \cdot 11)$
+    \begin{flushleft}
+    To determine the least common multiple among a set of numbers, one takes maxima of each of the exponents in the prime decomposition. The resulting product gives the lcm.\newline
+    \end{flushleft}
+        \begin{center}
+            \begin{tabular}{|c c c c|} 
+                \hline
+                Prime & Exponent in 1st number & Exponent in 2nd number & Largest \\ 
+                \hline
+                2 & 3 & 1 & 3 \\ 
+                \hline
+                3 & 2 & 3 & 3 \\
+                \hline
+                5 & 1 & 0 & 1 \\
+                \hline
+                7 & 0 & 1 & 1 \\
+                \hline
+                11 & 0 & 1 & 1 \\ 
+                \hline
+            \end{tabular}
+        \end{center}
+        
+        $$lcm(2^3 \cdot 3^2 \cdot 5,2 \cdot 3^3 \cdot 7 \cdot 11) = 2^3 \cdot 3^3 \cdot 5^1 \cdot 7^1 \cdot 11^1 = 83{,}160$$
+\end{enumerate}
+
+\item Find integers $s$ and $t$ such that $1 = 7 \cdot s + 11 \cdot t$ . Show that $s$ and $t$ are not unique.
+$$7 \cdot (-3) + 11 \cdot 2 = -21 + 22 = 1$$
+$$7 \cdot 8 + 11 \cdot (-5) = 56 - 55 = 1$$
+$$1 = 7 \cdot (-3) + 11 \cdot 2 = 7 \cdot 8 + 11 \cdot (-5)$$
+Therefore both $(-3, 2)$ and $(8, -5)$ are solutions (in the form $(s,t)$) to the original equation. Since we have shown that there is more than 1 solution to the equation, $s$ and $t$ are not unique.
+\newpage
+\item Determine $7^{1000} \mod 6$ and $6^{1001} \mod 7$.
+\begin{enumerate}
+    \item $7^{1000} \mod 6$
+    \begin{flushleft}
+    $$7^{1000} \mod 6 \equiv (7 \mod 6)^{1000} = 1^{1000} = 1$$
+    Therefore, $7^{1000} \mod 6 = 1$
+    \end{flushleft}
+    
+    \item $6^{1001} \mod 7$
+    \begin{flushleft}
+    $$6^{1001} \mod 7 \equiv (6 \mod 7)^{1001} = (-1)^{1001} = -1 \equiv 6 \mod 7$$
+    Therefore, $6^{1001} \mod 7 \equiv 6 \mod 7$
+    \end{flushleft}
+\end{enumerate}
+
+\item (Generalized Euclid’s Lemma) If $p$ is a prime and $p$ divides $a_1 a_2 \cdot\cdot\cdot a_n$ , prove that $p$ divides $a_i$ for some $i$.
+
+\begin{flushleft}
+We shall use the principle of general induction to prove this result. If $n = 2$, we have: if $p$ is a prime and $p \mid a_1 a_2$, then $p \mid a_1$ or $p \mid a_2$. To prove this base case, suppose $p \nmid a_1 \Rightarrow gcd(p,a_1) = 1$. Therefore, there exist integers $m$ and $n$ such that: $m\cdot a_1 + n\cdot p = 1$. Multiplying both sides by $a_2$ gives us: $m\cdot a_1\cdot a_2 + n\cdot p\cdot a_2 = a_2$. Since $p \mid a_1a_2$ and $p \mid p$, it can divide both terms on the left hand side of the previous equation and it can also divide the sum of the terms, which is the right side of the equation: $p \mid a_2$. Let us assume that the Lemma holds for $n$, where if $p$ is a prime and $p$ divides $a_1 a_2 \cdot\cdot\cdot a_n$ , then $p$ divides $a_i$ for some $i$. We shall now show that it holds for $n+1$: we are given that $p$ is a prime and $p \mid a_1 a_2 \cdot\cdot\cdot a_n \cdot a_{n+1} = (a_1 a_2 \cdot\cdot\cdot a_{n}) \cdot a_{n+1}$. If we set $a_1 a_2 \cdot\cdot\cdot a_{n} = a$ and $a_{n+1} = b$, we get $p \mid ab$. Using the base case, we know that $p \mid a_1 a_2 \cdot\cdot\cdot a_n$ or $p \mid a_{n+1}$. If $p \mid a_{n+1}$, then we are done since $p$ divides $a_i$ when $i = n+1$. If $p \mid a_1 a_2 \cdot\cdot\cdot a_n$, this is equivalent to the inductive hypothesis and therefore, $p$ divides $a_i$ for some $i$. $\Box$
+\end{flushleft}
+
+\end{enumerate}
+\end{document} 

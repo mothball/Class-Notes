@@ -1,0 +1,61 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+
+
+
+\begin{center}\large{
+    MATH 631\quad
+    HW 1\quad
+    Sumanth Ravipati\quad
+    January 28, 2019}
+\end{center}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] Let X be a set. Define a collection of subsets of X to be \textit{closed}. Assume that
+\begin{enumerate}
+    \item If $A$ and $B$ are closed sets, then $A \cup B$ is closed.
+    \item If $\{A_i | i \in I \}$ is a collection of closed sets, then $\cap_{i \in I} A_i$ is closed.
+    \item $\emptyset$ and $X$ are closed. \newline
+\end{enumerate}
+Prove that if we define open sets on $X$ to be the complement of closed sets, then this makes $X$ into a topological space (as we defined on the first day).
+\begin{flushleft}
+
+\end{flushleft}
+Conversely, if $X$ is a topological space, show that closed sets (with respect to the topology on $X$) satisfy the above three axioms.
+\begin{flushleft}
+
+\end{flushleft}
+\item[2.] Let $X$ be any set. Define $d : X \times X \rightarrow \R$ by $d(x,y) = 1$ if $x \not= y$ and $d(x,y) = 0$ if $x=y$. Prove that $d$ is a metric. Then prove that the topology induced from this metric is the discrete topology.
+\begin{flushleft}
+
+\end{flushleft}
+\item[3.] Let $d(x,y) = |x-y|$ for $x,y \in \R$. Prove that this defines a metric on $\R$. We call the induced topology from this metric the \textit{standard} topology on $\R$. Whenever we do not stipulate a topology on $\R$ we mean the standard one.
+\begin{flushleft}
+
+\end{flushleft}
+\item[4.] Let $(X,d)$ be a metric space and $x_0 \in X$. Prove that $f : X \rightarrow \R$ given by $f(x) = d(x,x_0)$ is continuous.
+\begin{flushleft}
+
+\end{flushleft}
+\item[5.] Let $(X,d)$ be a metric space, and let $A \subset X$. Define $d_A : X \rightarrow \R$ by $d_A(x) = \inf\{d(x,y) | y \in A\}$. The value $d_A(x)$ is called the \textit{distance from $x$ to} $A$. Prove that $d_A$ is continuous.
+\begin{flushleft}
+
+\end{flushleft}
+\end{enumerate}
+\end{document}

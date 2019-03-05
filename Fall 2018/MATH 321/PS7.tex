@@ -1,0 +1,78 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\Z}{\mathbb Z}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#7}
+\centerline{Sumanth Ravipati}
+\centerline{10/15/2018}
+
+\begin{enumerate}
+    \item If two groups are isomorphic, are they the same group, or might they different? Explain.
+    \begin{flushleft}
+    If two groups are isomorphic, they are structurally equivalent in every way. Even the group the behavior of the group operation is identical. The main distinction between the two would be the specific elements in the underlying sets. To explore possible differences, we must clearly define what "same" and "different" even mean. As the book phrases it: "the groups differ in notation only." If we consider varying labels for the same underlying object equivalent, then there would be no differences.
+    \end{flushleft}
+    \item What is the significance of Cayley’s theorem?
+    \begin{flushleft}
+    Cayley's theorem shows the underlying mathematics for permutation groups is identical to the notions for abstract groups in general. Because of this equivalence, progress in one field can quickly be transferred over to the other. The theorem also allows us to concretely construct an isometric group for any group in general, no matter how abstract it may be. Another significant aspect of Cayley's theorem is how it could be generalized to groups with infinite order as well.
+    \end{flushleft}
+    \item Do you find Cayley’s theorem, or any of the examples in this reading, surprising?
+    \begin{flushleft}
+    The construction of the automorphic maps $T_g: G \rightarrow G$ and the fact that this collection is a permutation was a surprising way to conceptualize functions. The fact that every group is isomorphic to a group of permutations seems to be setup from the way we have been introduced to both concepts. All of the properties of groups seem to exists for permutation groups. If one were to have studied the much older field of permutations first and then be introduced to group theory, I suspect it would be more of a revelation.
+    \end{flushleft}
+    \item What is the connection between an automorphism of $\Z_n$ and multiplication?
+    \begin{flushleft}
+    For any given positive integer n, the automorphism of $\Z_n$ under composition is isomorphic to $U(n)$ under multiplication. This relation is denoted as $Aut(\Z_n) \approx U(n)$ and the operations are assumed by context.
+    \end{flushleft}
+    \item Four explicit questions or comments on what you found interesting or confusing.
+    \begin{enumerate}
+        \item The text presented the following examples for automorphisms: $\phi(a,b) = \phi(b,a)$ and $\phi(a+bi) = \phi(a-bi)$. Both seemed to have a symmetry around the 0 element. Is this a requirement for all automorphisms in general?
+        \item For the inner automorphism induced by an element, the general form is given as $axa^{-1}$ for all $x$ in a group. What is the reason for having the order be that way instead of $a^{-1}xa$?
+        \item The following seems to be the relation between the various types of isomorphisms: Inner Automorphisms $\subset$ Automorphisms $\subset$ Isomorphisms $\subset$ Homeomorphisms. It would be helpful to comparing and constrast these classes and to discuss the relationships between these types of equivalences.
+        \item If one can define an equivalence between 2 groups (or any mathematical object in general), what tools and strategies could we use to explore which properties are preserved and which are lost?
+    \end{enumerate}
+    \newpage
+    \item Let $H = \{ \beta \in S _ { 5 } | \beta ( 1 ) = 1$ and $\beta ( 3 ) = 3 \}$. Prove that $H$ is a subgroup of $S_5$. How many elements are in $H$? Is your argument valid when $S_5$ is replaced by $S_n$ for $n \geq 3$? How many elements are in $H$ when $S_5$ is replaced by $A_n$ for $n \geq 4$?
+    \begin{enumerate}
+        \item By the finite subgroup test, we can show that $H$ is closed under composition. Let a, b be any elements of $H$. a(b(1)) = a(1) = 1 and a(b(3)) = a(3) = 3. Since a and b both map 1 and 3 to themselves, we have shown that their composition also preserves that mapping. Therefore $H$ is closed under the operation of $S_5$ and so $H$ is a subgroup of $S_5$.
+        \item Since the elements 1 and 3 are mapped to themselves in $H$, that leaves the remaining 3 elements free to be mapped to anything else. There will then be 3! possible permutations for these elements as 3 elements could be mapped to slot 2, and the remaining 2 elements could be mapped to slots 4 and 5. For $H \subset S_5$ we list out the 3! = 6 elements here:
+        $$\{(12345), (12354), (14325), (14352), (15324), (15342)\}$$
+        \item One can easily generalize the arguments for $S_n$, $n \geq 3$ as follows: The elements 1 and 3 will always be fixed, leaving n-2 elements to fill the remaining n-2 slots, so there will be (n-2)! such permutations. Therefore $|H| = (n-2)!$.
+        \item If $S_n$ is replaced by $A_n$ for $n \geq 4$, the order of $H$ will be $(n-2)!/2$. This is because since 1 and 3 are fixed, the remaining (n-2) elements form an alternating group of order (n-2) and there will $(n-2)!/2$ such permutations.
+    \end{enumerate}
+\end{enumerate}
+\end{document} 

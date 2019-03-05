@@ -1,0 +1,146 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+%\usepackage{times}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#5B}
+\centerline{Sumanth Ravipati}
+\centerline{9/26/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+    \item Let $Q$ be the group of rational numbers under addition and let $Q^*$ be the group of nonzero rational numbers under multiplication. In $Q$, list the elements in $\langle\frac{1}{2}\rangle$. In $Q^*$, list the elements in $\langle\frac{1}{2}\rangle$.
+    \begin{enumerate}
+        \item For $Q$, we have $\langle\frac{1}{2}\rangle = \{n(\frac{1}{2}) | n \in Z\} = \{\ldots, -2, -\frac{3}{2}, -1, -\frac{1}{2}, 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \ldots\}$
+        \item For $Q^*$, we have $\langle\frac{1}{2}\rangle = \{(\frac{1}{2})^n | n \in Z\} = \{\ldots, 16, 8, 4, 1, \frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \frac{1}{16}, \ldots\}$
+    \end{enumerate}
+    \item What can you say about a subgroup of $D_3$ that contains $R_{240}$ and a reflection $F$? What can you say about a subgroup of $D_3$ that contains two reflections?
+    \begin{flushleft}
+    Let us begin by listing out all of the elements of $D_3$ for reference: $\{R_0, R_{120}, R_{240}, R_{120}F, R_{240}F, F\}$. If a subgroup contains $R_{240}$ and $F$, by the one-step subgroup test, it must also contain $R_{240}F^{-1}$ and $FR_{240}^{-1}$. The inverse of $F$ is $F$ itself and the inverse of $R_{240}$ is $R_{120}$ in the group $D_3$ and in any of its subgroups. Referring to the group's Cayley table, we see that $FR_{240}^{-1} = FR_{120} = R_{240}F$ and $R_{240}F^{-1} = R_{240}F$. We can apply the one-step subgroup test once again to show that if $R_{240}$ is an element, $R_{240}R_{240}^{-1} = R_{240}R_{120} = R_0$ must also be an element. Using the 2-step subgroup test, we know that $R_{240}^{-1} = R_{120}$ is also an element. We can finally use closure to show that since $R_{120}$ and $F$ are elements, $R_{120}F$ must also be an element. We have thus show that this subgroup must contain all of the distinct element of parent group $D_3$ and it must equal $D_3$.\newline
+    If a subgroup of $D_3$ has 2 distinct reflections, then using the closure property $FF^\prime = R_{120}$ or $R_{240}$ must also be element.. We can use the same argument as above to show that with $F$ and either rotation element, we can require every other element of $D_3$.
+    \end{flushleft}
+    \item Prove that if $a$ is the only element of order $2$ in a group, then $a$ lies in the center of the group
+    \begin{flushleft}
+    Let $G$ denote the group and let $g$ be a generic element of $G$. We know that $e = gg^{-1} = geg^{-1}$. Since $a$ has order $2$, we can substitute using $e = a^2$ as follows: $geg^{-1} = ga^2g^{-1} = gaeag^{-1} = gag^{-1}gag^{-1} = (gag^{-1})^2$. Since we have $(gag^{-1})^2 = e$, $(gag^{-1})^2$ has either order 2 or is the identity element $e$ with order 1. We can rule out the order 1 case via a simple contradiction: if $gag^{-1} = e \Rightarrow ga = eg = g \Rightarrow a = g^{-1}g = e$, which is impossible since $a$ has order 2. Therefore, $gag^{-1}$ has order 2 and since since $a$ is the only element of order 2, $gag^{-1} = a \Rightarrow ga = ag$. This is the only requirement for $a$ to be the center of the group: for all $g \in G$, $ga = ag$. Therefore, $a$ lies in the center of the group.
+    \end{flushleft}
+    \item Suppose that $a$ is a group element and $a^6 = e$. What are the possibilities for $|a|$? Provide reasons for your answer.
+    \begin{enumerate}
+        \item $|a| = 0$: Since we are given that the identity element exists, in the group, we know that the corresponding set cannot be the empty set. Therefore $0$ is not a possibility for $|a|$.
+        \item $|a| = 1$: Since $a^6 = e$, it is possible that $a = e$ so that $a^6 = e^6 = e$ as required. In this scenario the only required element of the group is $e$ with an order of $1$.
+        \item $|a| = 2$: If $a$ has an order of $2$, this means that $a^2 = e$, which would then imply $a^6 = (a^2)^3 = e^3 = e$, as required. Therefore $2$ is a possibility for $|a|$.
+        \item $|a| = 3$: If $a$ has an order of $3$, this means that $a^3 = e$, which would then imply $a^6 = (a^3)^2 = e^2 = e$, as required. Therefore $3$ is a possibility for $|a|$.
+        \item $|a| = 4$: If $a$ has an order of $4$, this means that $a^4 = e$, which would then imply $a^6 = a^2a^4 = a^2e = a^2 = e$, so the order would actually be $2$. Therefore $4$ is not a possibility for $|a|$.
+        \item $|a| = 5$: If $a$ has an order of $5$, this means that $a^5 = e$, which would then imply $a^6 = aa^5 = ae = a = e$, so the order would actually be $1$. Therefore $5$ is not a possibility for $|a|$.
+        \item $|a| = 6$: If $a$ has an order of $6$, this means that $a^6 = e$, as already required. Therefore $6$ is a possibility for $|a|$.
+        \item $|a| > 6$: If $a$ has an order $> 6$, this means that $a^n = e$ for $n > 6$, which would then imply $a^n = a^{n-6}a^6 = a^{n-6}e = a^{n-6} = e$, so the order would actually be $n-6$. This process can be repeated until $n-6$ falls under one of the cases above. Therefore $n > 6$ is not a possibility for $|a|$ and we have covered all possible cases.
+    \end{enumerate}
+    \item Show that $U(14) = \langle3\rangle = \langle5\rangle$. [Hence, $U(14)$ is cyclic.] Is $U(14) = \langle11\rangle$?
+    \begin{flushleft}
+    Let us begin by constructing $U(14)$. We know that it consists of all positive integers that are relatively prime to $14$. Therefore, $U(14) = \{1, 3, 5, 9, 11, 13\}$. For the generators below, we know that once a particular power produces the identity element, it will repeat and further powers need not be calculated.
+    \begin{enumerate}
+        \item $\langle3\rangle$
+        $$\langle3\rangle = \{3, 3^2=9, 3^3=27\equiv13, 3^4=81\equiv11, 3^5=243\equiv5, 3^6=729\equiv1\} = U(14)$$
+        \item $\langle5\rangle$
+        $$\langle5\rangle = \{5, 5^2=25\equiv11, 5^3=125\equiv13, 5^4=625\equiv9, 5^5=3125\equiv3, 5^6=729\equiv1\} = U(14)$$
+        \item $\langle11\rangle$
+        $$\langle11\rangle = \{11, 11^2=121\equiv9, 11^3=1331\equiv1\} \not= U(14)$$
+    \end{enumerate}
+    \end{flushleft}
+    \item If $H$ and $K$ are subgroups of $G$, show that $H\cap K$ is a subgroup of $G$. (Can you see that the same proof shows that the intersection of any number of subgroups of $G$, finite or infinite, is again a subgroup of $G$?)
+    \begin{flushleft}
+    At the very least, the identity element must be present in any possible subgroup of $G$ so $e \in H \cap K \Rightarrow H \cap K \not= \emptyset$. For any given elements $x,y \in H \cap K \Rightarrow (x,y \in H) \wedge (x,y\in K)$. Also, using the one-step subgroup test, if $x,y \in H \Rightarrow xy^{-1} \in H$ and if $x,y \in K \Rightarrow xy^{-1} \in K$. By the definition of intersection, $(xy^{-1} \in H) \wedge (xy^{-1} \in K) \Rightarrow xy^{-1} \in H \cap K$. Therefore, if $x,y \in H \cap K \Rightarrow xy^{-1} \in H \cap K$. This condition means that $H \cap K$ passes the one-step subgroup test and is indeed a subgroup of $G$. We can extend this proof to any any number of subgroups but using the principle of induction since the intersection operator is associative with itself. For example, the intersection of 3 sets, can be broken down into the intersection of the first 2 sets computed separately using this method and then the result is intersected pairwise with the remaining set. In general, n intersecting sets can be thought of as the pairwise intersection of the first (n-1) sets with the nth set.
+    \end{flushleft}
+    \item If $H$ is a subgroup of $G$, then by the centralizer $C(H)$ of $H$ we mean the set $\{x \in G | xh = hx$ for all $h \in H\}$. Prove that $C(H)$ is a subgroup of $G$.
+    \begin{flushleft}
+    We can leverage theorem 3.5 from the text, which states that: "The center of a group $G$ is a subgroup of $G$". By this theorem, we know that since $C(H)$ is the center of $H$, it must be a subgroup of $H$. We must now that that it is a subgroup of $G$. Since $C(H)$ is a subgroup of $H$ and $H$ is a subgroup of $G$, then $C(H)$ is also a subgroup of $G$. We can see this by noting that any subgroup inherits closure from the parent group, since if $a, b \in C(H) \Rightarrow ab^{-1} \in C(H)$, by the one-step subgroup test to show that $C(H)$ is a subgroup of $H$. Since all elements of $C(H)$ are also in $G$, $C(H)$ is also a non-empty subset of $H$.
+    \end{flushleft}
+    \item Let $G$ be the symmetry group of a circle. Show that $G$ has elements of every finite order as well as elements of infinite order.
+    \begin{flushleft}
+    Let us first consider the finite order cases. for any positive integer $n$, there exists a corresponding rotation of $\frac{360}{n}$ degrees, which has an order of n. This is true since $R_{360/n}^n$ corresponds to a net rotation of $\frac{360}{n}\cdot n = 360$ degrees, which is equivalent to the identity element of $G$. To prove that $G$ has elements of infinite order, I can simply construct a specific rotation and show that it cannot be finite. Let us consider $R_{\pi}$, which is a rotation by $\pi$ degrees. Since $\pi$ is irrational, it cannot be reduced to a ratio of integers. Therefore, $R_{360/\pi}^n$, which corresponds to a net rotation of $\frac{360}{\pi}\cdot n$ degrees, can never be a rational number, including 0, which is required for the rotation to have a finite order of $n$. Since the order cannot be a finite $n$, it must be infinite, and now we have shown that $G$ has elements of every finite order as well as elements of infinite order.
+    \end{flushleft}
+    \item Prove that a group of even order must have an element of order 2
+    \begin{flushleft}
+    Let us prove this by contradiction. Let us suppose that a given group $G$ has an even order and yet every element has order greater than 2 or is the identity element, $e$. For any given element $a \in G$, $a$ and $a^{-1}$ have the same order and we can pair these distinct elements. They must by distinct since $e = aa^{-1} \not= a^2$ since they cannot have an order of 2. Since each element is paired in this way, there must be an even number of non-identity element in the group along with a unique identity. Since this results in a group of odd order ($2n + 1$), we know that this construction is a contradiction and so there must be an element of order 2.
+    \end{flushleft}
+    \item List the elements of the subgroups $\langle3\rangle$ and $\langle15\rangle$ in $Z_{18}$. Let $a$ be a group element of order 18. List the elements of the subgroups $\langle a^3\rangle$ and $\langle a^{15}\rangle$. \newline\newline
+    The general strategy used is to raise the generators to successive powers until we reach the identity element. We know that this process will then repeat as it inherits the properties of modular arithmetic.
+    \begin{enumerate}
+        \item $\langle3\rangle$
+        $$\langle3\rangle = \{3, 6, 9, 12, 15, 18\equiv0\}$$
+        \item $\langle15\rangle$
+        $$\langle15\rangle = \{15, 30\equiv12, 45\equiv9, 60\equiv6, 75\equiv3, 90\equiv0\}$$
+        \item $\langle a^3\rangle$
+        $$\langle a^3\rangle = \{a^3, a^6, a^9, a^{12}, a^{15}, a^{18}\equiv e\}$$
+        \item $\langle a^{15}\rangle$
+        $$\langle a^{15}\rangle = \{a^{15}, a^{30}\equiv a^{12}, a^{45}\equiv a^9, a^{60}\equiv a^6, a^{75}\equiv a^3, a^{90}\equiv e\}$$
+    \end{enumerate}
+    \item Let a be an element of a group and let $|a| = 15$. Compute the orders of the following elements of $G$.
+    \newline\newline
+    The same general strategy from above is used by raising the generators to successive powers until we reach the identity element. We note that the order of the generated subgroups is divisible of the order of the parent group.
+    \begin{enumerate}
+        \item $a^3, a^6, a^9, a^{12}$
+        \begin{enumerate}
+            \item $a^3$
+        $$|\langle a^3\rangle| = |\{a^3, a^6, a^9, a^{12}, a^{15}\equiv e\}| = 5$$
+            \item $a^6$
+        $$|\langle a^6\rangle| = |\{a^6, a^{12}, a^{18}\equiv a^3, a^{24}\equiv a^9, a^{30}\equiv e\}| = 5$$
+            \item $a^9$
+        $$|\langle a^9\rangle| = |\{a^9, a^{18}\equiv a^3, a^{27}\equiv a^{12}, a^{36}\equiv a^6, a^{45}\equiv e\}| = 5$$
+            \item $a^{12}$
+        $$|\langle a^{12}\rangle| = |\{a^{12}, a^{24}\equiv a^9, a^{36}\equiv a^6, a^{48}\equiv a^3, a^{60}\equiv e\}| = 5$$
+        \end{enumerate}
+        \item $a^5, a^{10}$
+        \begin{enumerate}
+            \item $a^5$
+        $$|\langle a^5\rangle| = |\{a^5, a^{10}, a^{15}\equiv e\}| = 3$$
+            \item $a^{10}$
+        $$|\langle a^{10}\rangle| = |\{a^{10}, a^{20}\equiv a^5, a^{30}\equiv e\}| = 3$$
+        \end{enumerate}
+        \item $a^2, a^4, a^8, a^{14}$
+        \begin{enumerate}
+            \item $a^2$ \newline
+        $|\langle a^2\rangle| = |\{a^2, a^4, a^6, a^8, a^{10}, a^{12}, a^{14}, a^{16}=a, a^{18}=a^3, a^{20}=a^5, a^{22}=a^7, a^{24}=a^9, a^{26}=a^{11}, a^{28}=a^{13}, a^{30}=e\}| = 15$
+            \item $a^4$ \newline
+        $|\langle a^4\rangle| = |\{a^4, a^8, a^{12}, a^{16}=a, a^{20}=a^5, a^{24}=a^9, a^{28}=a^{13}, a^{32}=a^2, a^{36}=a^6, a^{40}=a^{10}, a^{44}=a^{14}, a^{48}=a^3, a^{52}=a^7, a^{56}=a^{11}, a^{60}=e\}| = 15$
+            \item $a^8$ \newline
+        $|\langle a^8\rangle| = |\{a^8, a^{16}=a, a^{24}=a^9, a^{32}=a^2, a^{40}=a^{10}, a^{48}=a^3, a^{56}=a^{11}, a^{64}=a^4, a^{72}=a^{12}, a^{80}=a^5, a^{88}=a^{13}, a^{96}=a^6, a^{104}=a^{14}, a^{112}=a^7, a^{120}=e\}| = 15$
+            \item $a^{14}$ \newline
+        $|\langle a^{14}\rangle| = |\{a^{14}, a^{28}=a^{13}, a^{42}=a^{12}, a^{56}=a^{11}, a^{70}=a^{10}, a^{84}=a^9, a^{98}=a^8, a^{112}=a^7, a^{126}=a^6, a^{140}=a^5, a^{154}=a^4, a^{168}=a^3, a^{182}=a^2, a^{196}=a, a^{210}=e\}| = 15$
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+\end{document} 

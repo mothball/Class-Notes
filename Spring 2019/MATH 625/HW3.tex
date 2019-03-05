@@ -1,0 +1,77 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{lscape}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 625\quad
+    HW 3\quad
+    Sumanth Ravipati\quad
+    March 20, 2019}
+\end{center}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[2.10] Let $A$ be $n$-by-$m$ with $n \geq m$. Show that $\|A^TA\|_2 = \|A\|_2^2$ and $\kappa_2(A^TA) = \kappa(A)^2$.\newline
+Let $M$ be $n$-by-$n$ and positive definite and $L$ be its Cholsky factor so that $M = LL^T$. Show that $\|M\|_2 = \|L\|_2^2$ and $\kappa_2(M) = \kappa(L)^2$.
+\newline
+\begin{flushleft}
+
+\end{flushleft}
+\newpage
+
+\item[2.11] Let $A$ be symmetric and positive definite. Show that $|a_{ij}| < (a_{ii}a_{jj})^{1/2}$.
+\newline
+\begin{flushleft}
+Since $A$ is positive definite, by definition, $x^TAx > 0\, \forall x \in \R^n\setminus \{0\}$. Since $A$ is symmetric, $A = A^T$. Therefore $A$ will have the following general form:
+$$A = \begin{bmatrix} { a _ { 11 } } & {a _ { 12 } } & { \dots } & { a _ { 1 n } } \\ {a _ { 12 } } & {a _ { 22 } } & { \ldots } & { \vdots } \\ {\vdots } & {\vdots } & { \ddots } & { \vdots } \\ { } & { } & { } & { a _ { n n } } \end{bmatrix}$$
+\end{flushleft}
+\newpage
+
+\item[2.19] Matrix $A$ is called \textit{strictly column diagonally dominant}, or diagonally dominant for short, if
+$$|a_{ii}| > |a_{ji}|.$$
+\begin{itemize}
+    \item Show that $A$ is nonsingular.
+    \begin{flushleft}
+    
+    \end{flushleft}
+    \item Show that Gaussian elimination with partial pivoting does not actually permute any rows, i.e., that it is identical to Gaussian elimination without pivoting.
+    \begin{flushleft}
+    
+    \end{flushleft}
+\end{itemize}
+\newpage
+
+\item[3.2] This question will illustrate the difference in numerical stability among three algorithms for computing the QR factorization of a matrix: Householder QR (Algorithm 3.2), CGS (Algorithm 3.1), and MGS (Algorithm 3.1). Obtain the Matlab program QRStability.m from HOMEPAGE/Matlab/QRStability.m. This program generates random matrices with user-specified dimensions m and n and condition number end, computes their QR decomposition using the three algorithms, and measures the accuracy of the results. It does this with the \textit{residual} $\|A-Q\cdot R\|/\|A\|$, which should be around machine epsilon for a stable algorithm, and the \textit{orthogonality of Q} $\|Q^T \cdot Q - I\|$, which should also be around . Run this program for small matrix dimensions (such as m=6 and n=4), modest numbers of random matrices (samples=20), and condition numbers ranging from cnd = 1 up to cnd = $10^{15}$. Describe what you see. Which algorithms are more stable than others? See if you can describe how large $\|Q^T \cdot Q —I\|$ can be as a function of choice of algorithm, end and $\epsilon$.
+\newline
+\begin{flushleft}
+
+\end{flushleft}
+\newpage
+
+\item[3.4] \textit{Weighted least squares:} If some components of $Ax - b$ are more important than others, we can weight them with a scale factor $d_i$ and solve the weighted least squares problem min $\|D(Ax - b)\|_2$ instead, where $D$ has diagonal entries $d_i$. More generally, recall that if $C$ is symmetric positive definite, then $\|x\|_C \equiv (x^TCx)^{1/2}$ is a norm, and we can consider minimizing $\|Ax -b\|_C$ Derive the normal equations for this problem, as well as the formulation corresponding to the previous question.
+\newline
+\begin{flushleft}
+
+\end{flushleft}
+
+\end{enumerate}
+
+
+\end{document}

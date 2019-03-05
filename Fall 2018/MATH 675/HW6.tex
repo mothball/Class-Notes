@@ -1,0 +1,81 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=0.4in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\N}{\mathbb N}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 6}
+\centerline{Sumanth Ravipati}
+\centerline{9/29/2018}
+\vspace{.15in}
+\begin{enumerate}[1.]
+\item Give an example of a contraction that does not have a fixed point.
+\begin{flushleft}
+Let $f:[1,\infty) \rightarrow [1,\infty]$ be defined by $f(x) = x + \frac{1}{x}$ for all $x \geq 1$.
+$$|f(x) - f(y)| = \left|(x + \frac{1}{x}) - (y + \frac{1}{y})\right| = \left|x - y + \frac{1}{x} - \frac{1}{y}\right| = \left|(x - y) \left(1 - \frac{1}{xy} \right)\right| \leq |(x - y)|$$
+Since $|f(x) - f(y)| \leq |x - y|$, $f$ is indeed a contraction but repeated iterations of $f$ gives:
+$$(f(x))_{n\in\N} = \left(\frac{x^2+1}{x}\right)^n \geq x^n + \frac{1}{x^n}$$
+which diverges to $\infty$ for any $x \in [1,\infty)$ as $n\rightarrow\infty$. One could consider $\infty$ as the fixed point of this contraction, but it is excluded from the domain of the map.
+\end{flushleft}
+\vspace{.15in}
+\item The contraction theorem requires a mapping that is $L$-Lipschitz for $L<1$. Prove that the result is sharp. That is, allowing $L=1$ in the theorem would make it false.
+\vspace{.15in}
+\begin{flushleft}
+If $L=1$, we have $d(F(x),F(y)) \leq d(x,y)$ as the 1-Lipschitz condition with $F$ as the contraction mapping and $x,y \in X$, a complete metric space. If we iterate the map $n$ times, we get: $d(F^n(x),F^n(y)) \leq d(x,y)$. We shall show, using proof by contradiction, that there does not exist a unique, converging fixed point, or equivalently, $d(F^n(x),F^n(y)) \not= 0$ as $n \rightarrow \infty$. Suppose a converging fixed point existed, then $(F^n(x))_{n\in\N}$ would be a Cauchy sequence. This means that for any given $\epsilon > 0$ there exists an integer $N$ such that $m>n>N$ implies that $d(F^m(x),F^n(x)) < \epsilon$. Using the definition of the map and the 1-Lipschitz condition, we have: $d \left(F^{m}(x),F^{n}(x)\right) \leq \sum\limits_{k=0}^{m-n-1} d \left(F^{n+k+1}(x), F^{n+k}(x) \right) \leq \sum\limits_{k=0}^{m-n-1} d(F(x),(x))$. Unless $F(x) = x$, the sum cannot be less than any arbitrary $\epsilon$ and so the sequence $(F^n(x))_{n\in\N}$ does not converge and so is not Cauchy. If $F(x) = x$, then every point would be a fixed point and it would not be unique. If the sequence is not Cauchy, there is not a unique, converging fixed point in the given metric space. Therefore allowing $L=1$ makes the contraction theorem false. $\Box$
+\end{flushleft}
+\vspace{.15in}
+\item Prove that a closed subset of a complete space is complete.
+\vspace{.15in}
+\begin{flushleft}
+Let $A$ be a closed subset of a complete space $M$ with metric $d$ and let $(x_n)$ be a Cauchy sequence in $A$. Then $(x_n)$ is a Cauchy sequence in $(M,d)$. So $x_n\rightarrow x \in M$. Since $A$ is closed, it contains all of its limit points. So $x \in A$ and therefore, $(A,d)$ is complete. $\Box$\newline
+\end{flushleft}
+\item Use the Picard Theorem to find a few approximate solutions to the differential equation $\frac{dy}{dx}=y$, with $y_0=1$, $x_0=0$, and initial guess of $\phi_0(x)=0$. Then write down the solution as a series.
+\begin{flushleft}
+$$y_1(x) = y_{0} + \int_{x_{0}}^{x} f(t, y_0(t)) dt = 1 + \int_0^{x} f(t, 0) dt = 1 + \int_0^{x} 0 dt = 1$$
+$$y_2(x) = y_{0} + \int_{x_{0}}^{x} f(t, y_1(t)) dt = 1 + \int_0^{x} 1 dt = 1 + x$$
+$$y_3(x) = y_{0} + \int_{x_{0}}^{x} f(t, y_2(t)) dt = 1 + \int_0^{x} 1 + t dt = 1 + x + \frac{x^2}{2}$$
+$$y_4(x) = y_{0} + \int_{x_{0}}^{x} f(t, y_3(t)) dt = 1 + \int_0^{x} 1 + t + \frac{t^2}{2} dt = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}$$
+$$y_n(x) = y_{0} + \int_{x_{0}}^{x} f(t, y_{n-1}(t)) dt = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \ldots + \frac{x^{n-1}}{(n-1)!} = \sum\limits_{i=0}^{n-1} \frac{x^i}{i!}$$
+$$y(x) = \lim_{n\rightarrow\infty}y_n(x) = \lim_{n\rightarrow\infty}\sum\limits_{i=0}^{n-1} \frac{x^i}{i!} = e^x$$
+Therefore the solution of the differential equation $\frac{dy}{dx}=y$ is the limit of the series, $e^x$. $\Box$
+\newline
+\end{flushleft}
+\item Prove that a closed subset of a compact space is compact. (Hint: its complement is an open set.)
+\vspace{.15in}
+\begin{flushleft}
+Let $A$ be a closed subset of a compact space $X$ and let $\mathcal{U} = \{U_i\}$ be an open cover of $A$. Let us define $\mathcal{V} = \{U_i\} \cup \{X\setminus A\}$. Since $A$ is closed, $X\setminus A$ is open and so is its union with the open cover $\mathcal{U}$. Since the union contains both $A$ and $X\setminus A$, it is an open cover of the compact space $X$. Since $\mathcal{V}$ is an open cover of a compact space, it has a finite subcover denoted as $\{U_{i_k}\}_{k=1}^n \cup \{X\setminus A\}$. Since the finite subcover covers the entire space, $\{U_{i_k}\}_{k=1}^n$ must cover the closed subset $A$. Since $A$ is covered by a finite subcover, $A$ must be compact. $\Box$\newline
+\end{flushleft}
+\item Let $A, B\subset X$ be two compact subsets of a metric space $X$. Prove that $A\cup B$ and $A\cap B$ are both compact.
+\vspace{.15in}
+\begin{flushleft}
+Proof that $A\cup B$ is compact:\newline
+Let $\mathcal{U} = \{U_\gamma\}$ be an arbitrary open cover of $A \cup B$. By the definition of open cover, this means that $A \cup B \subset \mathcal{U}$ and so both $A \subset \mathcal{U}$ and $B \subset \mathcal{U}$. Therefore $\mathcal{U}$ is an open cover of both $A$ and $B$. Since $A$ and $B$ are compact subsets, it implies every open cover of $A$ and $B$ has a finite subcover. Denote the finite subcover of $A$ as $\mathcal{U}_A = \bigcup\limits_{i=1}^n \mathcal{U}_{\alpha_i}$ and the finite subcover of $B$ as $\mathcal{U}_B = \bigcup\limits_{i=1}^m \mathcal{U}_{\beta_i}$. Since the union of two finite sets is finite, $\mathcal{U}_A \cup \mathcal{U}_B$ is also finite and specifically, is a finite subcover for $A \cup B$. Since there exists a finite subcover for any arbitrary open cover for $A \cup B$, we have shown that $A \cup B$ is compact. $\Box$\newline
+
+Proof that $A\cap B$ is compact:\newline
+Lemma 1: The union of two open sets is open.\newline
+Proof: Let $A_1$ and $A_2$ be two arbitrary open sets. $x \in A_1 \cup A_2 \Rightarrow x \in A_1 \vee x \in A_2$. Without loss of generality if $x \in A_1$, and since $A_1$ is open, there exists an $\epsilon > 0$ such that $B_\epsilon(x) \subset A_1$. Since $A_1 \subset A_1 \cup A_2$, $B_\epsilon(x) \subset A_1 \cup A_2$. Therefore the union $A_1 \cup A_2$ is open.\newline
+
+Lemma 2: The intersection of two closed sets is closed.\newline
+Proof: Let $B_1$ and $B_2$ be two arbitrary closed set. The complement of the intersection is equal to the union of the complements. Symbolically, $(B_1 \cap B_2)^c = B_1^c \cup B_2^c$. Since $B_1$ and $B_2$ are closed, $B_1^c$ and $B_2^c$ are open by definition. Using lemma 1, we know that the union of two open sets is open. Therefore $(B_1 \cap B_2)^c$ is open and so $B_1 \cap B_2$ is closed.\newline
+
+In a metric space, all compact sets are closed as well. Since $A$ and $B$ are compact subsets, they are also closed subsets of $X$. Using lemma 2, we know that $A \cap B$ is also closed. From \#5 above, we know that the closed subset of a compact space is compact. Given that $A \cap B \subset A$, $A \cap B$ is closed, and $A$ is compact, we have proven that $A \cap B$ is compact. $\Box$\newline
+
+%As before, since $A$ and $B$ are compact subsets, it implies every open cover of $A$ and $B$ has a finite subcover. Denote the finite subcover of $A$ as $\mathcal{V} = \bigcup\limits_{i=1}^n \mathcal{U}$, the finite subcover of $B$ as $\mathcal{W} = \bigcup\limits_{i=1}^m \mathcal{U}$ and let $\mathcal{Y}$ be an arbitrary open cover for $A \cap B$. Since $A \cap B \subset A$ and $A \cap B \subset B$, we know that $\mathcal{Z} \subset \mathcal{V}$ and $\mathcal{Z} \subset \mathcal{W}$. Since $\mathcal{V}$%
+\end{flushleft}
+\end{enumerate}
+\end{document}

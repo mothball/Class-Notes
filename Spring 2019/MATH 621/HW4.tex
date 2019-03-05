@@ -1,0 +1,106 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{booktabs}
+\usetikzlibrary{arrows.meta}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\id}{\mathrm{id}}
+\pgfplotsset{compat=1.15}
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 621\quad
+    HW 4\quad
+    Sumanth Ravipati\quad
+    February 25, 2019}
+\end{center}
+\vspace{.15in}
+\begin{flushleft}
+Note: No sources or people were used to complete this assignment
+\end{flushleft}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] A group $G$ is called \textit{solvable} if there is a normal chain, or sequence
+$$G = G_0 \triangleright G_1 \triangleright \cdots \triangleright G_n = \{ e \},$$
+with each $G_{i+1}$ normal in $G_i$ and each quotient $G_i/G_{i+1}$ abelian. If $G$ is a solvable group, show that any subgroup of $G$ is solvable and that any homomorphic image of $G$ is solvable.
+\newline
+
+\begin{flushleft}
+Since $H \leq G$, $H \subseteq G$ and $H_0 = H \cap G_0 = H$. We can define the series $H_i$ according to $G$ as follows: $H_i := H \cap G_i$. We first wish to show that $G_{i+1} \leq G_i \Rightarrow H_{i+1} \leq H_i$. By definition, $H_{i+1} := H \cap G_{i+1}$ and since $G_{i+1} \leq G_i$, $G_{i+1} \cup G_i = G_{i+1}$. This implies that $H_{i+1}$ = $H \cap G_{i+1}$ = $H \cap (G_{i+1} \cup G_i)$ = $(H \cap G_{i+1}) \cup (H \cap G_i)$ = $H_{i+1} \cup H_i$. Since $H_{i+1} = H_{i+1} \cup H_i$, we know that $H_{i+1} \subseteq H_i$. Since the group operation is preserved in $H$ and $G_{i+1}$, we know that it is preserved in their intersection $H_{i+1}$ and so $H_{i+1} \leq H_i$ as desired.
+\newline
+
+Our next step is show that $G_i \triangleright G_{i+1} \Rightarrow H_i \triangleright H_{i+1}$. Let $a \in H_{i+1}$ and $b \in H_i$. Since both $H_{i+1}$ and $H_i$ are subsets of $H$, both $a, b \in H$. Due to closure within $H$, $b^{-1} \in H$ and $bab^{-1} \in H$. We are given that $G_i \triangleright G_{i+1}$, which implies that $G_i \leq G_{i+1}$ and $G_i \subseteq G_{i+1}$. Since $a \in H_{i+1}$, $a \in H \cap G_{i+1}$, and equivalently, $a \in H \wedge a \in G_{i+1}$. Therefore $a \in H_{i+1} \Rightarrow a \in G_{i+1}$, which means that $H_i \subseteq G_i$ for any $i$. If $x, y \in H_i = H \cap G_i$, both are elements of $H$ and $G_i$. Since $H$ and $G_i$ are subgroup, the product $xy$ must be an element of $H$ and $G_i$ as well. Therefore, the group operation is closed within $H_i$ and so $H_i$ is also a subgroup of $G_i$.
+\newline
+
+Using the definition of normal subgroups, $G_i \triangleright G_{i+1}$ implies that $g^{-1}G_{i+1}g = G_{i+1}\, \forall g \in G_i$. Since $b \in H_i \subseteq G_i$, we see that $b^{-1}G_{i+1}b = G_{i+1}\, \forall b \in H_i$. Similarly for $a$, $a \in H_{i+1} \subseteq G_{i+1}$ and so it can serve as the representative element where $b^{-1}ab = G_{i+1}\, \forall b \in H_i$. We have therefore shown that $bab^{-1}$ is an element of both $H$ and $G_{i+1}$ and so $bab^{-1} \in H \cap G_{i+1} = H_{i+1}\, \forall b \in H_i$. Since $a$ is any element in $H_{i+1}$, we can rewrite the statement as $bH_{i+1}b^{-1} = H_{i+1}\, \forall b \in H_i$, which equivalent to the definition of normal subgroups and so $H_i \triangleright H_{i+1}$. Therefore we have shown that $G_i \triangleright G_{i+1} \Rightarrow H_i \triangleright H_{i+1}$. Since this is true for any $i$ and $G$ is solvable, we now know that $H = H_0 \triangleright H_1 \triangleright \cdots \triangleright H_n = \{ e \}$.
+\newline
+
+Since $H_i \leq G_i$ and $G_{i+1} \leq G_i$ with $G_{i+1}$ normal in $G_i$, we can apply the 2nd isomorphism theorem as follows: $\frac{H_i}{G_{i+1} \cap H_i} \cong \frac{G_{i+1}H_i}{G_{i+1}}$. We can simplify the left denominator as follows: $G_{i+1} \cap H_i$ = $G_{i+1} \cap (H \cap G_{i})$ = $(G_{i+1} \cap G_{i}) \cap H$ = $G_{i+1} \cap H = H_{i+1}$. For the right hand side, we know that $G_{i+1}$ and $H_i$ are subgroups of $G_i$ with $G_i \triangleright G_{i+1}$ and so their product $G_{i+1}H_i$ is also a subgroup of $G_i$. Since $G_{i+1}H_i \leq G_i$, it follows that $\frac{G_{i+1}H_i}{G_{i+1}} \leq \frac{G_i}{G_{i+1}}$. Since $\frac{G_{i+1}H_i}{G_{i+1}}$ is a subgroup of an abelian group $\frac{G_i}{G_{i+1}}$, it must also be an abelian group. We can now write the congruence as follows: $\frac{H_i}{H_{i+1}} \cong \frac{G_{i+1}H_i}{G_{i+1}}$. Since $\frac{H_i}{H_{i+1}}$ is congruent to an abelian group, it must also be abelian. Since $\frac{H_i}{H_{i+1}}$ is ableian and $H_i \triangleright H_{i+1}$ for any $i$, we know that $H \leq G$ is also solvable, as was to be shown. $\Box$
+\end{flushleft}
+
+\newpage
+\item[2.] Let $G$ be a group with a subgroup $H$. Show that for any $g \in G$, the set $gHg^{-1}$ is also a subgroup of $G$ and that $H \cong gHg^{-1}$. Show further that if $|H| = k$ and $G$ has only one subgroup of order $k$ then $H$ is normal in $G$.
+\newline
+
+\begin{flushleft}
+We are given that $G$ is a group and that $H$ is a subgroup of $G$ and we wish to show that $gHg^{-1}$ is also a subgroup of $G$. The set $gHg^{-1}$ is equivalently written as $\{ghg^{-1} : h \in H\}$ and is nonempty since it contains the identity element. Since $e \in H$, $geg^{-1} \in gHg^{-1}$ and can be simplifies as follows: $geg^{-1} = gg^{-1} = e$. Let $ghg^{-1}$ be a generic element of $gHg^{-1}$ and so $e(ghg^{-1}) = (ghg^{-1})e = ghg^{-1}$. Therefore $e$ is in fact the identity element of $gHg^{-1}$.
+\newline
+
+We shall next prove closure by letting $a, b \in gHg^{-1}$ and showing that $ab \in gHg^{-1}$. Let $a = ghg^{-1}$ and $b = gig^{-1}$, where $h, i \in H$. Then $ab = ghg^{-1}gig^{-1}$ = $gh(g^{-1}g)ig^{-1}$ = $ghig^{-1}$. Since $H$ is closed, $hi \in H$ and so $ab \in gHg^{-1}$. Therefore $gHg^{-1}$ is also closed.
+\newline
+
+Next we wish to show that for any $a \in gHg^{-1}$, $\exists a^{-1} \in gHg^{-1}$ such that $aa^{-1} = a^{-1}a = e$. Let $a \in gHg^{-1}$ and so $a = ghg^{-1}$ for some $h \in H$. We claim that $a^{-1}$ = $( ghg^{-1})^{-1}$ = $gh^{-1}g^{-1}$, which we know is an element of $gHg^{-1}$ since $\exists h^{-1} \in H$ for every $h \in H$. We confirm by noting that $aa^{-1} = (ghg^{-1})(gh^{-1}g^{-1})$ = $gh(g^{-1}g)h^{-1}g^{-1}$ = $g(hh^{-1})g^{-1}$ = $gg^{-1} = e$. Similarly, $a^{-1}a = (gh^{-1}g^{-1})(ghg^{-1})$ = $gh^{-1}(g^{-1}g)hg^{-1}$ = $g(h^{-1}h)g^{-1}$ = $gg^{-1} = e$. Therefore we have shown that every element of $gHg^{-1}$ does have an inverse in the group. Since $gHg^{-1}$ also contains the identity and has closure, we have shown that $gHg^{-1}$ is indeed a subgroup of $G$. $\Box$
+\newline
+
+Next, we wish to prove that $H \cong gHg^{-1}$, which is equivalent to stating that $H$ is isomorphic to $gHg^{-1}$. This is same as saying that there exists an isomorphism $\phi: H \rightarrow gHg^{-1}$. Equivalently, $\exists$ a bijective homomorphism $\phi: H \rightarrow gHg^{-1}$. Therefore, such a $\phi$ must be a homomorphism, injective, and surjective. Let us suppose that $\phi(a) := gag^{-1}\, \forall g \in G$, where $a \in H$.
+\newline
+
+To show that $\phi$ is homomorphic, let us suppose that $a, b \in H$ and since $H$ is a group, the group operation is closed and so $ab \in H$. Given the above definition for $\phi$, we know that $\phi(ab) = gabg^{-1}$. Alternatively, $\phi(a)\phi(b)$ = $(gag^{-1})(gbg^{-1})$ = $ga(g^{-1}g)bg^{-1}$ = $gabg^{-1}$. By the transitivity of equality, we have shown that $\phi(ab) = \phi(a)\phi(b)$, and so $\phi$ is a homomorphism.
+\newline
+
+Let us next show that $\phi$ is injective by supposing that $\phi(a) = \phi(b)$, where $a, b \in H$. Evaluating the function on both sides gives us $gag^{-1} = gbg^{-1}$ and multiplying both sides on the left by $g^{-1}$ and on the right by $g$ gives us $g^{-1}gag^{-1}g = g^{-1}gbg^{-1}g$. Simplifying both sides finally gives us our desired result that $a = b$. Since $\phi(a) = \phi(b) \Rightarrow a = b$, $\phi$ is indeed injective.
+\newline
+
+To prove surjectivity, we show that for any element $x \in gHg^{-1}$, $x = gag^{-1}$ for some $a \in H$. Therefore $\phi(a) = gag^{-1} = x$. Since $\exists a \in H$ for any given $x \in gHg^{-1}$ such that $\phi(a) = x$, we see that $\phi$ is in fact surjective. Since $\phi$ is a homomorphism, injective, and surjective, by definition $\phi: H \rightarrow gHg^{-1}$ is an isomorphism. Therefore, we have shown that $H \cong gHg^{-1}$. $\Box$
+\newline
+
+Finally, we wish to show that $H$ is normal in $G$ given that $|H| = k$ and $G$ has only one subgroup of order $k$. Since $\phi: H \rightarrow gHg^{-1}$ was shown to be bijective for any given $g \in G$, we also know its inverse also exists where $\phi^{-1}: gHg^{-1} \rightarrow H$. When applied to the same subgroup $H$, we shall show that $\phi^{-1}(h) = g^{-1}hg$, for any given $g \in G$. To prove that it is the inverse, we shall show that $\phi \circ \phi^{-1} = \phi^{-1} \circ \phi = Id$, where $Id$ is the identity function where $Id(h) = h\, \forall h \in H$. We see that $\phi^{-1}(\phi(H))$ = $\phi^{-1}(gHg^{-1})$ = $g^{-1}(gHg^{-1})g$ = $(g^{-1}g)H(g^{-1}g) = H$. Similarly, $\phi(\phi^{-1}(H))$ = $\phi(g^{-1}Hg)$ = $g(g^{-1}Hg)g^{-1}$ = $(gg^{-1})H(gg^{-1}) = H$. Therefore we have seen that $\phi^{-1}$ is indeed the inverse of $\phi$.
+\newline
+
+To show that $H$ is normal in $G$, we can prove the equivalent statement that $g^{-1}Hg = H\, \forall g \in G$. The first step involves proving that $g^{-1}Hg$ is a subgroup of $G$. Similar to the proof above for $gHg^{-1}$, we can write $g^{-1}Hg$ as $\{g^{-1}hg : h \in H\}$ to more explicitly see representative members of the group. Since $e \in H$, $g^{-1}eg = g^{-1}g = e$ and so $e \in g^{-1}Hg$.
+\newline
+
+To prove closure in $g^{-1}Hg$, let us start with $a, b \in g^{-1}Hg$ and show that $ab \in g^{-1}Hg$. Since every element in $g^{-1}Hg$ is of the form $g^{-1}hg$, we let $a = g^{-1}hg$ and $b = g^{-1}ig$, where $h, i \in H$. We then see that $ab = (g^{-1}hg)(g^{-1}ig)$ = $g^{-1}h(gg^{-1})ig$ = $g^{-1}hig$. Since $H$ is closed, $hi \in H$ and so $ab \in g^{-1}Hg$. Therefore $g^{-1}Hg$ is also closed, as was to be shown.
+\newline
+
+Next, we wish to show that for any $a \in g^{-1}Hg$, $\exists a^{-1} \in g^{-1}Hg$, such that $aa^{-1} = a^{-1}a = e$. If we let $a = g^{-1}hg$ for some $h \in H$, we claim that $a^{-1} = (g^{-1}hg)^{-1} = g^{-1}h^{-1}g$, which is an element of $g^{-1}Hg$ since $\exists h^{-1} \in H$ for every $h \in H$. We confirm by noting that $aa^{-1} = (g^{-1}hg)(g^{-1}h^{-1}g)$ = $g^{-1}h(gg^{-1})h^{-1}g$ = $g^{-1}(hh^{-1})g$ = $g^{-1}g = e$. Similarly, $a^{-1}a = (g^{-1}h^{-1}g)(g^{-1}hg)$ = $g^{-1}h^{-1}(gg^{-1})hg$ = $g^{-1}(h^{-1}h)g$ = $g^{-1}g = e$. Therefore we have shown that every element of $g^{-1}Hg$ does have an inverse in the group. Since $g^{-1}Hg$ also contains the identity and has closure, we have shown that $g^{-1}Hg$ is indeed a subgroup of $G$.
+\newline
+
+Next we shall prove that $g^{-1}Hg$ is isomorphic to $H$ in order to show that $|g^{-1}Hg| = |H| = k$. We shall show that the inverse of $\phi$ is an isomorphism from $\phi^{-1}: H \rightarrow g^{-1}Hg$. Since $\phi$ is bijective, its inverse is also bijective so all that is left to be proven is that $\phi^{-1}$ is a homomorphism from $H$ to $g^{-1}Hg$. To show that $\phi^{-1}$ is homomorphic, let us suppose that $a, b \in H$ and since $H$ is a group, the group operation is closed and so $ab \in H$. Given the above definition for $\phi^{-1}$, we know that $\phi^{-1}(ab) = g^{-1}abg$. Alternatively, $\phi^{-1}(a)\phi^{-1}(b)$ = $(g^{-1}ag)(g^{-1}bg)$ = $g^{-1}a(gg^{-1})bg$ = $g^{-1}abg$. By the transitivity of equality, we have shown that $\phi^{-1}(ab) = \phi^{-1}(a)\phi^{-1}(b)$, and so $\phi^{-1}$ is indeed a homomorphism and by extension an isomorphism.
+\newline
+
+Since there exists an isomorphism $\phi^{-1} : H \rightarrow g^{-1}Hg$ for any $g \in G$, $H \cong g^{-1}Hg$. As the order of a group is preserved under isomorphism, we know that $|g^{-1}Hg| = |H| = k$. Since $G$ only has one subgroup of order $k$, we then would know that $g^{-1}Hg = H$ for any $g \in G$. This is by definition equivalent to stating that $H$ is normal in $G$, as was to be shown. $\Box$
+ 
+\end{flushleft}
+
+\end{enumerate}
+\end{document}

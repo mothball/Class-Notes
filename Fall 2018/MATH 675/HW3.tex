@@ -1,0 +1,83 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=0.4in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 3}
+\centerline{Sumanth Ravipati}
+\centerline{9/12/2018}
+
+Let $A\subset X$ be a subset of a metric space $(X,d)$. 
+\begin{enumerate}[1.]
+\item Prove that $x\in X$ is a limit point of $A$ if and only if for every $\epsilon>0$ the ball $B_\epsilon(x)$ contains a point of $A$ not equal to $x$.
+\begin{flushleft}
+From the text, a limit point is defined as follows:  A point $x \in X$ is called a limit point of a set $A \subset X$ if every neighborhood of $x$ contains infinitely many points of $A$. \newline $(\Rightarrow)$ Assume: $x \in X$ is a limit point of $A$ and need to show: $\forall \epsilon > 0$, $B_\epsilon(x)$ contains a point of $A$ not equal to $x$. By the definition of a limit point, $\forall \epsilon > 0$, $B_\epsilon(x)$ contains infinitely many points of $A$. Removing $x$ from this set still leaves infinitely many points of $A$. Therefore $B_\epsilon(x)$ contains a point of $A$ not equal to $x$.
+\newline $(\Leftarrow)$ Assume: $\forall \epsilon > 0$, $B_\epsilon(x)$ contains a point of $A$ not equal to $x$ and need to show: $x \in X$ is a limit point of $A \Leftrightarrow$ every neighborhood of $x$ contains infinitely many points of $A$. We shall prove this theorem via the proof of the following equivalent contrapositive statement: some neighborhood of $x$ contains finitely many points of $A \Rightarrow \exists \epsilon > 0$, $B_\epsilon(x)$ does not contains a point of $A$ not equal to $x$. Proof: Assume $\exists \epsilon > 0$ such that $B_\epsilon(x) \cap A$ contains finitely many points. Then, let $E = (B_\epsilon(x) \cap A)\setminus \{x\}$, which also has finitely many points. If $E = \emptyset$, we have shown our desired conclusion of $B_\epsilon(x)$ containing no point of $A$ not equal to $x$. If $E \not= \emptyset$, let $E = \{e_1, \ldots, e_n\}$ and let $D = \{d(e_1,x), \ldots, d(e_n, x)\}$, which will also be finite. If we take $\epsilon^\prime = \frac{1}{2} \min\{d(e_1,x), \ldots, d(e_n, x)\}$, then $B_{\epsilon^\prime}(x) \cap A = \emptyset$. $\epsilon^\prime < \epsilon \Rightarrow B_{\epsilon^\prime}(x) \subset B_\epsilon(x)$. Therefore, $B_{\epsilon^\prime}(x) \cap A = (B_{\epsilon^\prime}(x) \cap B_\epsilon(x))\cap A = B_{\epsilon^\prime}(x) \cap (B_\epsilon(x)\cap A) = B_{\epsilon^\prime}(x) \cap E = \emptyset$. So we have found a neighborhood of $x$ that contains no points of $A$, except for possibly $x$, so $\exists \epsilon > 0$, $B_\epsilon(x)$ does not contains a point of $A$ not equal to $x$, namely $\epsilon^\prime$. So we have proven via contrapositive, that if for every $\epsilon>0$ the ball $B_\epsilon(x)$ contains a point of $A$ not equal to $x$, then $x\in X$ is a limit point of $A$. Together with the first half, we have proven that $x\in X$ is a limit point of $A$ if and only if for every $\epsilon>0$ the ball $B_\epsilon(x)$ contains a point of $A$ not equal to $x$. $\Box$
+\end{flushleft}
+
+\item Prove that the closure of $A$ equals the union of the set of isolated points $A$ with the set of limit points of $A$.
+\begin{flushleft}
+Let $\bar{A}$ denote the closure of $A$, let $A_{limit}$ denote the limit points of $A$, and let $A_{isolated}$ denote the isolated points of $A$. We need to show that $\bar{A} = A_{limit} \cup A_{isolated}$. We shall show that by proving $(A_{limit} \cup A_{isolated}) \subset \bar{A}$ and $\bar{A} \subset (A_{limit} \cup A_{isolated})$. \newline Lemma 1: $A_{limit} \subset \bar{A}$ is true by the following proof by contradiction. Let $x \in A_{limit}$ be a limit point and let us suppose that $x \not\in \bar{A}$. The point $x$ would be in the complement of $\bar{A}$ and so it would have a neighborhood $B_\epsilon(x)$ disjoint from $\bar{A}$, which would contradict the definition of a limit point. Therefore, $x \in A_{limit} \Rightarrow x \in \bar{A}$. This proves our lemma that $A_{limit} \subset \bar{A}$.
+\newline Every isolated point of set $A$ is contained in set $A$. Therefore, $x \in A_{isolated} \Rightarrow x \in A \Rightarrow x \in \bar{A}$, or equivalently $A_{isolated} \subset A \subset \bar{A} \Rightarrow A_{isolated} \subset \bar{A}$. Combining the previous two results gives us: $A_{limit} \subset \bar{A} \wedge A_{isolated} \subset \bar{A} \Rightarrow (A_{limit} \cup A_{isolated}) \subset \bar{A}$
+\newline $\bar{A} \subset (A_{limit} \cup A_{isolated})$ is equivalent to: $x \in \bar{A} \Rightarrow (x \in A_{limit} \vee x \in A_{isolated})$. Let us take $x \in \bar{A}$, and if $x$ is a limit point, we are done since $x \in A_{limit}$, which satisfies the desired condition. So we must show that if $x$ is not a limit point, that it will be an isolated point of the set $A$. If $x$ is not a limit point, $\exists B_\epsilon(x)$ with finitely many points of $A$, $\{a_1, \ldots, a_n\}$. This this is a finite set, so is the set of distances from each point to $x$ namely, $\{d(a_1,x), \ldots, d(a_n, x)\}$. If we take $\epsilon^\prime = \frac{1}{2} \min\{d(a_1,x), \ldots, d(a_n, x)\}$, then $B_{\epsilon^\prime}(x) \cap A = \{x\}$, since $\epsilon^\prime$ is less than the distance to any of the other finite elements of $A$. This by definition means that $x \in A_{isolated}$. We have thus shown that $x \in \bar{A} \Rightarrow (x \in A_{limit} \vee x \in A_{isolated})$, or equivalently, $\bar{A} \subset (A_{limit} \cup A_{isolated})$. Combining our previous results gives us: $(A_{limit} \cup A_{isolated}) \subset \bar{A} \wedge \bar{A} \subset (A_{limit} \cup A_{isolated}) \Leftrightarrow \bar{A} = A_{limit} \cup A_{isolated}$, as desired. $\Box$
+\end{flushleft}
+
+\item Let $a<b\in \R$. Prove that the closed interval $[a,b]$ is also closed in the topological sense of the word.
+\begin{flushleft}
+Let $U = (-\infty, a) \cup (b, \infty)$. We shall prove that $U$ is an open set, whose complement with respect to $\R$ is $[a,b]$ and must be closed in the topological sense. By definition, $U$ is an open set in $M$ if and only if it is a neighborhood of each of its points. Equivalently, $U$ is open if for each point in $U$, we can find an $\epsilon > 0$ such that the corresponding open $\epsilon$-ball lies entirely inside $U$. Mathematically this is represented as: $\forall y \in U: \exists \epsilon \in \R_{>0}: B_\epsilon(y) \subset U$.
+\newline Lemma 1: $(a, b)$ is an open set of $\R$, where $a<b\in \R$.
+\newline Proof: let $c \in \R$ such that $a < c < b$ and let $\epsilon < \min \{b-c, c-a\} \Rightarrow \epsilon > 0$. Let $B_\epsilon(c) = (c-\epsilon, c+\epsilon)$ be an open $\epsilon$-ball around $c \Rightarrow a < c-\epsilon \wedge c+\epsilon < b \Rightarrow B_\epsilon(c) \subset (a,b)$. Therefore, $(a,b)$ is a neighborhood of $c \Rightarrow (a,b)$ is an open set.
+\newline By the previous lemma, we see that both the intervals $(-\infty, a)$ and $(b, \infty)$ are open sets. The union of two open sets is also open by the following simple proof: Let $S_1$ and $S_2$ be two arbitrary open sets. Without loss of generality, assume $x \in S_1$ and since $S_1$ is open, $\exists \epsilon > 0$ such that $B_\epsilon(x) \subset S_1 \subset (S_1 \cup S_2)$. Therefore, $(S_1 \cup S_2)$ and $U$ are also open sets. The complement of $U$ with respect to $\R$ is $[a,b]$.
+\newline Lemma 2: A subset $E$ of a metric space $X$ is closed if its complement ($E^C$) is open.
+\newline Proof: If $E^C$ is open, then for any limit point $x$ of $E$, no neighborhood of $x$ contains only points of $E^C$, so $x$ cannot be in $E^C$, and thus $E$ is closed.
+\newline By the previous lemma, we see that the set $[a,b]$ is also closed in the topological sense of the word. $\Box$
+\end{flushleft}
+
+\item What is the closure of $\Q\subset \R$? Prove that you are correct.
+\begin{flushleft}
+The closure of $\Q\subset \R$ is $\bar{\Q} = \R$. We shall prove this by proving that the complement of $\Q$ has an empty interior, and therefore $\bar{\Q} = \R$. \newline
+For any $p \in \R$, and $\forall \epsilon > 0$, $\exists q \in \Q$ such that $q \in (p-\epsilon,p+\epsilon) = B_\epsilon(p)$. This is true since $p-\epsilon$ and $p+\epsilon$ are real numbers and since $\Q$ is dense in $\R$, we can guarantee that such a $q \in \Q$ exists. Therefore, $p$ is a limit point of $\Q \, \forall p \in \R$ and so the set of limit points of $\Q$ is $\R$, which we denote as: $\Q_{limit} = \R$. By the definition of closure, $\bar{E} = E \cup E_{limit}$. Applied to the rationals, $\bar{\Q} = \Q \cup \Q_{limit} = \Q \cup \R = \R$. This proves that $\bar{\Q} = \R$, as desired. $\Box$\newline
+Alternatively, every open ball around $p \in \R$ contains a $q \in \Q$ and so the complement of $\Q$ has an empty interior. $\forall \epsilon > 0$, $B_\epsilon(p)$ is not contained in $\R - \Q$ and $\exists q \in \Q$ such that $q \in B_\epsilon(p) \forall p \in \R$. Therefore, $\R$ contains all the limit points of $\Q$ and so $\R = \Q \cup \Q^\prime = \bar{\Q}$. $\Box$
+\end{flushleft}
+
+\item Look up Lipschitz functions, and notice that definition of bi-Lipschitz is a generalization of the Lipschitz condition. Another common condition in real analysis is the H\"older condition. This leads to a notion of equivalence that is intermediate between bi-Lipschitz equivalence and homeomorphic equivalence.
+\begin{enumerate}[(a)]
+\item Define bi-H\"older equivalence between metric spaces, analogously to the definition of bi-Lipschitz equivalence.
+
+\begin{flushleft}
+The H\"older condition is defined as follows: $|f(x)-f(y)| \leq C\|x-y\|^\alpha$, where $C,\alpha \in \R_{>0}$. Therefore the bi-H\"older equivalence between metric spaces can be defined as:
+$$\frac{1}{C}d_X(x_1, x_2)^{1/\alpha} \leq d_Y(f(x_1),f(x_2)) \leq Cd_X(x_1, x_2)^\alpha$$
+\end{flushleft}
+
+\item Suppose $X$ and $Y$ are bi-Lipschitz equivalent. Prove that they are also bi-H\"older equivalent.
+
+\begin{flushleft}
+If $X$ and $Y$ are bi-Lipschitz equivalent, they must satisfy the following inequality:
+$$\frac{1}{C}d_X(x_1, x_2) \leq d_Y(f(x_1),f(x_2)) \leq Cd_X(x_1, x_2)$$
+This is just a special case of the bi-H\"older equivalence, where $\alpha = 1$. Therefore bi-Lipschitz equivalence $\subset$ bi-H\"older equivalence. Therefore, $X$ and $Y$ are bi-H\"older equivalent. $\Box$
+\end{flushleft}
+
+\item Suppose $X$ and $Y$ are bi-H\"older equivalent. Prove that they are also homeomorphic.
+
+\begin{flushleft}
+$X$ and $Y$ are homeomorphic if the functions $f:X\mapsto Y$ along with its inverse are continuous. We shall prove that $f$ is uniformly continuous using the $\delta, \epsilon$ method and that therefore, $X$ and $Y$ are homeomorphic. We are given that $d_Y(f(x_1),f(x_2)) \leq Cd_X(x_1, x_2)^\alpha$. Let $\epsilon > 0, x_1, x_2 \in X$ and $\delta < (\frac{\epsilon}{C})^{1/\alpha}$. Then, $d_X(x_1, x_2) < \delta \Rightarrow d_Y(f(x_1),f(x_2)) \leq Cd_X(x_1, x_2)^\alpha \leq C((\frac{\epsilon}{C})^{1/\alpha})^\alpha = \epsilon$. Therefore, $f$ is continuous. A similar argument can be made for the first inequality $\frac{1}{C}d_X(x_1, x_2)^{1/\alpha} \leq d_Y(f(x_1),f(x_2)) \Leftrightarrow d_X(f^{-1}(x_1), f^{-1}(x_2)) \leq Cd_Y(x_1,x_2)^\alpha$ using the inverse function $f^{-1}$. Therefore $X$ and $Y$ are homeomorphic. $\Box$
+\end{flushleft}
+
+\end{enumerate}
+\end{enumerate}
+\end{document}

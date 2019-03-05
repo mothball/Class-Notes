@@ -1,0 +1,118 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\id}{\mathrm{id}}
+\pgfplotsset{compat=1.15}
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 621\quad
+    HW 2\quad
+    Sumanth Ravipati\quad
+    February 11, 2019}
+\end{center}
+\vspace{.15in}
+\begin{flushleft}
+Sources: Proofread my edits with Abigail.
+\end{flushleft}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] Let $G$ be a group and $S \subseteq G$ a subset. Show that
+$$C ( S ) = \{ g \in G : g s = s g \text { for every } s \in S \}$$
+is a subgroup of $G$. If $S_1 \subseteq S_2$, what is the relationship between $C(S_1)$ and $C(S_2)$?
+\newline
+
+\begin{flushleft}
+$C(S)$ is nonempty since the identity element $e$ of $G$ is also the identity element of $C(S)$. This is because $es = se\, \forall s \in S$ and so $e \in C(S)$ as long as $S$ is nonempty. We shall then use the two-step subgroup test to show that $C(S)$ is a subgroup of $G$. By definition, if $b \in C(S)$, $bs = sb\, \forall s \in S$. Since $b \in C(S)$, $b \in G$, and so $b^{-1}$ exists. Multiplying the previous equation by $b^{-1}$ on the right and left gives us: $b^{-1}bsb^{-1} = b^{-1}sbb^{-1}$. Since $b^{-1}b = bb^{-1} = e$, this simplifies to: $esb^{-1} = b^{-1}se$. Since $e$ is the identity, $esb^{-1} = sb^{-1}$ and $b^{-1}se = b^{-1}s$ and so we get the desired equality: $sb^{-1} = b^{-1}s$. Therefore, $b^{-1}$ satisfies the definition of an element of $C(S)$. We can then conclude that $\forall b \in C(S), \exists b^{-1} \in C(S)$.
+\newline
+
+Next, let $a, b \in C(S)$ and we wish to show that $ab \in C(S)$. Since $a,b \in C(S)$, $as = sa$ and $bs = sb$ for every $s \in S$. Let us start with the product $(ab)s$ and since $a, b,$ and $g$ are all elements in $G$, we can freely apply the associative property to manipulate the product. We see that $(ab)s = a(bs) = a(sb)$, using the fact that $bs = sb$. Similarly, $a(sb) = (as)b = (sa)b = s(ab)$ since $as = sa$. Via the transitivity of equality, we see that $(ab)s = s(ab)\, \forall s \in S$. Therefore, the product $ab$ satisfies the properties of the set $C(S)$ and so $C(S)$ is closed under the group operation. Since there exists an identity for every element and the group is closed under the binary operation, we have shown that $C(S)$ is a subgroup of $G$ as long as $S$ is nonempty. $\Box$
+\newline
+
+If $S_1 \subseteq S_2$, we shall show that $C(S_2) \subseteq C(S_1)$. Let $a \in C(S_2)$, and so $as = sa\, \forall s \in S_2 = S_1 \cup S_2$. Since $S_1 \subseteq S_2$, This implies that $as = sa\, \forall s \in S_1$, which is equivalent to $a \in C(S_1)$. Therefore, for any $a \in C(S_2) \Rightarrow a \in C(S_1)$, which implies that $C(S_2) \subseteq C(S_1)$. $\Box$
+\end{flushleft}
+
+\newpage
+\item[2.] Let $G$ be a group such that the map $\phi : G \rightarrow G$ given by $\phi(g) = g^{-1}$ is an automorphism. Show that $G$ is abelian.
+\newline
+
+\begin{flushleft}
+We are given that $\phi(g)$ is an automorphism, which means that it is homomorphism and that it is a bijective map. We wish to show that $G$ is abelian, where $\forall a, b \in G$, $ab = ba$. Since $\phi(g)$ is a homomorphism, $\phi(ab) = \phi(a)\phi(b)\, \forall a, b \in G$. Applying the definition of $\phi(g) = g^{-1}$ to all the terms, we get: $(ab)^{-1} = \phi(ab) = \phi(a)\phi(b) = a^{-1}b^{-1}$.
+\newline
+
+As an aside, we shall try to find an alternative form for the inverse of the product $ba$ for any given $a,b \in G$. Since $G$ is a group, it is closed under the operation and so $ba \in G$, and since there exists an inverse for every element, $(ba)^{-1} \in G$. $(ba)(ba)^{-1} = e$ and pre-multiplying both sides by $a^{-1}b^{-1}$ gives us: $a^{-1}b^{-1}ba(ba)^{-1} = a^{-1}b^{-1}e$. We can group the terms on the left as follows to simplify: $a^{-1}b^{-1}ba(ba)^{-1}$ = $(a^{-1}(b^{-1}b)a)(ba)^{-1}$ = $(a^{-1}(e)a)(ba)^{-1} = (a^{-1}a)(ba)^{-1} = (e)(ba)^{-1} = (ba)^{-1}$. Finally, we can conclude that $(ba)^{-1} = a^{-1}b^{-1}\, \forall a, b \in G$.
+\newline
+
+Using the previous result, we see that $(ab)^{-1} = a^{-1}b^{-1} = (ba)^{-1}$. Since $\phi$ is bijective, we also know that it is injective and so $\phi(a) = \phi(b)$ implies that $a = b$. Using the equivalent $\phi$ formulation, we express our derived equality as $\phi(ab) = \phi(ba)$, which implies that $ab = ba\, \forall a, b \in G$. Thus, we have shown that $G$ is abelian, as desired. $\Box$
+\newline
+\end{flushleft}
+\newpage
+
+\item[3.] The \textit{general linear group} $GL_2 (\R)$ is the set of all $2 \times 2$ invertible matrices over $\R$. Viewing $GL_2 (\R)$ as a subset of the set $\mathcal{A}(\R^2)$ of all bijective maps $\R^2 \rightarrow \R^2$, show that $GL_2(\R)$ is a subgroup of $\mathcal{A}(\R^2)$.
+\newline
+
+\begin{flushleft}
+We shall use the two-step subgroup test to show that $GL_2(\R)$ is a subgroup of $\mathcal{A}(\R^2)$. For any given $B \in GL_2(\R)$, we can represent it as the following matrix: $B = \begin{bmatrix} e & f \\g & h \end{bmatrix}$, where $e, f, g, h \in \R$. The first step is to show that $GL_2(\R)$ is non-empty as it contains the identity. Under the group operation of matrix multiplication, the identity element is simply $I = \begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}$. For any given $B \in GL_2(\R)$, we have that $BI = \begin{bmatrix} e & f \\g & h \end{bmatrix}\begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}$ = $\begin{bmatrix} e & f \\g & h \end{bmatrix} = B$. We also see that $IB = \begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}\begin{bmatrix} e & f \\g & h \end{bmatrix}$ = $\begin{bmatrix} e & f \\g & h \end{bmatrix} = B$. We have now proven that $I$ is the identity element since $BI = IB = B$ for any $B \in GL_2(\R)$. We know that $I \in GL_2(\R)$ as $I$ is also invertible since $\det(I) = 1 \not= 0$.
+\newline
+
+Since $B$ is singular, $B^{-1}$ exists and is given by $\frac{1}{eh-fg}\begin{bmatrix} h & -f \\-g & e \end{bmatrix}$, where $\det(B) = eh - fg \not= 0$. We shall show that $B^{-1} \in GL_2(\R)$ by showing that $B^{-1}$ is invertible and its entries are all real numbers. The determinant of $B^{-1} = \frac{1}{(eh-fg)^2}(he-(-f)(-g)) = \frac{eh-fg}{(eh-fg)^2} = \frac{1}{eh-fg} = \frac{1}{\det(B)}$. Since $\det(B) \not= 0, \det(B^{-1}) = \frac{1}{\det(B)} \not =0$. Since $eh - fg \not= 0$, and the real numbers are closed under multiplication, division, and subtraction, all of the elements of $B^{-1}$ are real. Therefore $B^{-1} \in GL_2(\R)$.
+\newline
+
+We shall next show closure over matrix multiplication, where $AB \in GL_2(\R)\, \forall A, B \in GL_2(\R)$. Let $A = \begin{bmatrix} a & b \\c & d \end{bmatrix}$ and $B = \begin{bmatrix} e & f \\g & h \end{bmatrix}$, where $a, b, c, d, e, f, g, h \in \R$. Component-wise multiplication gives us: $AB = \begin{bmatrix} a & b \\c & d \end{bmatrix} \begin{bmatrix} e & f \\g & h \end{bmatrix} = \begin{bmatrix} ae+bg & af+bh \\ce+dg & cf+dh \end{bmatrix}$. We shall next show that $AB$ is invertible. $\det(AB) = (ae+bg)(cf+dh) - (ce+dg)(af+bh)$ = $acef + bcfg + adeh + bdgh - acef - adfg - bceh - bdgh = adeh - adfg - bceh + bcfg = ad(eh-fg) - bc(eh-fg) = (ad - bc)(eh - fg) = \det(A)\det(B) \not= 0$, since $\det(A) \not= 0$ and $\det(B) \not= 0$. Finally, we know that all the entries of $AB$ are real numbers since the reals are closed under addition and multiplication and so $AB \in GL_2(\R)$. Therefore we have shown that $GL_2(\R)$ is a subgroup of $\mathcal{A}(\R^2)$, as desired. $\Box$
+\newline
+\end{flushleft}
+
+\newpage
+\item[4.] The \textit{orthogonal group} $O_2(\R) \subseteq GL_2(\R)$ consists of all $2 \times 2$ matrices $A$ with $|A\tilde{x}| = |\tilde{x}|$ for every $\tilde{x} = (x,y) \in \R^2$. Here the norm $|\tilde{x}|$ is given by $|\tilde{x}| = \sqrt{x^2 + y^2}$. Show that $O_2(\R)$ is a subgroup of $GL_2(\R)$. Hint: one way to do this is to find an easier way to describe the matrices in $O_2(\R)$.
+\newline
+
+\begin{flushleft}
+Let us set $A = \begin{bmatrix} a & b \\c & d \end{bmatrix}$ and $\tilde{x} = \begin{bmatrix} x \\y \end{bmatrix}$. Multiplying, we get: $A\tilde{x} = \begin{bmatrix} a & b \\c & d \end{bmatrix} \begin{bmatrix} x \\y \end{bmatrix} = \begin{bmatrix} ax + by \\cx + dy \end{bmatrix}$.\newline
+For $A$ to be an element of $O_2(\R)$, $|A\tilde{x}| = \sqrt{(ax+by)^2+(cx+dy)^2} = \sqrt{x^2 + y^2} = |\tilde{x}|$.\newline
+Squaring both sides, $(ax+by)^2+(cx+dy)^2 = x^2 + y^2$. Expanding gives us: $a^2x^2 + b^2y^2 + 2axby + c^2x^2 + d^2y^2 + 2cxdy = x^2 + y^2$. Rearranging terms gives us: $x^2(a^2 + c^2 - 1) + y^2(b^2 + d^2 - 1) + 2xy(ab + cd) = 0$. This equation must be true for all values of $x$ and $y$ so we can examine several corner cases to find the relationship between $a, b, c,$ and $d$. If $x = 0, y \not= 0, y^2(b^2 + d^2 -1) = 0 \Rightarrow  b^2 + d^2 = 1$. If $y = 0, x \not= 0, x^2(a^2 + c^2 - 1) = 0 \Rightarrow a^2 + c^2 = 1$. Substituting these back into the equation gives us: $2xy(ab + cd) = 0$. If $x \not= 0, y \not= 0 \Rightarrow ab = -cd$. Squaring both sides leaves: $a^2b^2 = c^2d^2 = (1 - c^2)(1 - d^2) = 1 - c^2 - d^2 + c^2d^2 \Rightarrow c^2 + d^2 = 1$. Similarly we can obtain: $a^2b^2 = c^2d^2 = (1 - a^2)(1 - b^2) = 1 - a^2 - b^2 + a^2b^2 \Rightarrow a^2 + b^2 = 1$.
+\newline
+
+We now have a general form for $A = \begin{bmatrix} a & b \\c & d \end{bmatrix}$, where $a^2 + b^2 = a^2 + c^2 = b^2 + d^2 = c^2 + d^2 = 1$, $ab = -cd$ and $ad \not= bc$ since $A \in O_2(\R) \subseteq GL_2(\R)$ and so must be invertible. We can simply the entries by consolidating the equations: $a^2 + b^2 = 1 = a^2 + c^2 \Rightarrow b = \pm c$. Similarly, $a^2 + c^2 = 1 = c^2 + d^2 \Rightarrow a = \pm d$. Since $ab = -cd$, $A$ must take the form $\begin{bmatrix} a & b \\-b & a \end{bmatrix}$ or $\begin{bmatrix} a & b \\b & -a \end{bmatrix}$, where $a^2 + b^2 = 1 = \pm \det(A)$.
+\newline
+
+To show that $O_2(\R)$ is a subgroup of $GL_2(\R)$, we shall use the two-step subgroup test to check for inverses and closure under matrix multiplication. The first step is to show that $O_2(\R)$ is non-empty as it contains the identity. Under the group operation of matrix multiplication, the identity element is simply $I = \begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}$. If $A$ is of the form $\begin{bmatrix} a & b \\-b & a \end{bmatrix}$, $AI = \begin{bmatrix} a & b \\-b & a \end{bmatrix}\begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}$ = $\begin{bmatrix} a & b \\-b & a \end{bmatrix} = A$ and $IA = \begin{bmatrix} 1 & 0 \\0 & 1 \end{bmatrix}\begin{bmatrix} a & b \\-b & a \end{bmatrix} = A$. We have now proven that $I$ is the identity element since $AI = IA = A$ for any $A \in O_2(\R)$. We know that $I \in O_2(\R)$ as $I$ has the required form for $A$, where $a = 1, b = 0$.
+\newline
+
+Since $A \in GL_2(\R)$, $A^{-1}$ exists and can be obtained for either form of $A$. If $A = \begin{bmatrix} a & b \\-b & a \end{bmatrix}$, $A^{-1} = \frac{1}{a^2 + b^2}\begin{bmatrix} a & -b \\b & a \end{bmatrix} = \begin{bmatrix} a & -b \\-(-b) & a \end{bmatrix}$ and so $A^{-1} \in O_2(\R)$. If $A = \begin{bmatrix} a & b \\b & -a \end{bmatrix}$, $A^{-1} = \frac{1}{-(a^2 + b^2)}\begin{bmatrix} -a & -b \\-b & a \end{bmatrix} = \begin{bmatrix} a & b \\b & -a \end{bmatrix} = A$ and so $A^{-1} \in O_2(\R)$ Since $A^{-1}$ exists in either case and is of the desired form, the inverse of any element in $O_2(\R)$ is also in $O_2(\R)$.
+\newline
+
+We shall next show closure by letting $A, B \in O_2(\R)$, where $A = \begin{bmatrix} a & b \\-b & a \end{bmatrix}$ or $\begin{bmatrix} a & b \\b & -a \end{bmatrix}$ and $B = \begin{bmatrix} c & d \\-d & c \end{bmatrix}$ or $\begin{bmatrix} c & d \\d & -a \end{bmatrix}$, where $a^2 + b^2 = c^2 + d^2 = 1$.\newline
+
+Case 1: $AB = \begin{bmatrix} a & b \\-b & a \end{bmatrix} \begin{bmatrix} c & d \\-d & c \end{bmatrix} = \begin{bmatrix} ac-bd & ad+bc \\-(ad+bc) & ac-bd \end{bmatrix}$. $(ac-bd)^2 + (ad + bc)^2 = a^2c^2 + b^2d^2 - 2abcd + a^2d^2 + b^2 + 2abcd = (a^2 + b^2)(c^2 + d^2) = 1 \cdot 1 = 1$\newline
+
+Case 2: $AB = \begin{bmatrix} a & b \\-b & a \end{bmatrix} \begin{bmatrix} c & d \\d & -c \end{bmatrix} = \begin{bmatrix} ac+bd & ad-bc \\ad-bc & -(ac+bd) \end{bmatrix}$. $(ac + bd)^2 + (ad - bc)^2 = a^2c^2 + b^2d^2 + 2abcd + a^2d^2 + b^2 - 2abcd = (a^2 + b^2)(c^2 + d^2) = 1 \cdot 1 = 1$\newline
+
+Case 3: $AB = \begin{bmatrix} a & b \\b & -a \end{bmatrix} \begin{bmatrix} c & d \\-d & c \end{bmatrix} = \begin{bmatrix} ac-bd & ad+bc \\ad+bc & -(ac-bd) \end{bmatrix}$. $(ac-bd)^2 + (ad + bc)^2 = a^2c^2 + b^2d^2 - 2abcd + a^2d^2 + b^2 + 2abcd = (a^2 + b^2)(c^2 + d^2) = 1 \cdot 1 = 1$\newline
+
+Case 4: $AB = \begin{bmatrix} a & b \\b & -a \end{bmatrix} \begin{bmatrix} c & d \\d & -c \end{bmatrix} = \begin{bmatrix} ac+bd & ad-bc \\-(ad-bc) & ac+bd \end{bmatrix}$. $(ac+bd)^2 + (ad - bc)^2 = a^2c^2 + b^2d^2 + 2abcd + a^2d^2 + b^2 - 2abcd = (a^2 + b^2)(c^2 + d^2) = 1 \cdot 1 = 1$\newline
+
+In all for 4 cases, the product $AB$ is of the required form $\begin{bmatrix} a & b \\-b & a \end{bmatrix}$ or $\begin{bmatrix} a & b \\b & -a \end{bmatrix}$. We also saw that $a^2 + b^2 = 1$ in every scenario. Therefore the group is closed under matrix multiplication and since we have shown that inverses also exist in group, we have shown that $O_2(\R)$ is a subgroup of $GL_2(\R)$, as desired. $\Box$
+\end{flushleft}
+
+\end{enumerate}
+\end{document}

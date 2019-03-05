@@ -1,0 +1,210 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0in
+
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+%\usepackage{showkeys}
+\usepackage{amssymb}
+\usepackage{amscd}
+%\usepackage{psfig}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=blue
+}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+
+\geometry{letterpaper, portrait, margin=1in}
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\centerline{\Large Abstract Algebra (MATH 321): Problem Set \#11}
+\centerline{Sumanth Ravipati}
+\centerline{12/3/2018}
+
+\begin{enumerate}
+    \item[\#1.] Why do you think that elements of rings aren't guaranteed to have multiplicative inverses? Is that strange to you, and why or why not? Provide your favorite example of a ring and elaborate.
+    
+    \begin{flushleft}
+    Allowing rings to have elements that aren't guaranteed to have multiplicative inverses allows 0 to be an element without any issue. Many of the related definitions such as zero-divisor, integral domain and field specifically consider nonzero elements. This does not seems so strange as it will allow some very natural sets such as $\Z$ and $\R$ to be considered as rings. A favorite example of a ring is $\R[x]$ since it seems to describe a set of a higher order of cardinality. I'm not certain of the actual cardinality, but it can take on an infinite number of coefficients, each with an infinite possible value that describes a polynomial that can be evaluated at an infinite number of points.
+    \end{flushleft}
+    
+    \item[\#2.] Why don’t zero-divisors ruin rings, the way having a 0 would ruin a group under multiplication?
+    
+    \begin{flushleft}
+    In a group, we require that for each element $a$ in $G$, there is an inverse element $b$ in $G$ such that $ab = ba = e$. If $a = 0$, $ab = 0\cdot b = 0 = b \cdot 0 = ba$. Therefore there does not exist an element $b$ such that $ab = 0\cdot b= 1$ and so 0 has no multiplicative inverse. However, for rings, we don't require multiplicative inverses and so 0 does not ruin rings.
+    \end{flushleft}
+    
+    \item[\#3.] List at least four questions that arose as you read the chapters.
+    
+    \begin{enumerate}
+        \item Why not think of rings as groups with respect to addition and a weaker algebraic structure with respect to multiplication. What are the benefits of conceptualizing these things together?
+        \item As we construct a new ring $R$ from rings $R_1, R2, \ldots R_n$ it seems as they are transformed to a coordinate system of $n$ dimensions. Would this extend to an infinite number of rings? Could we conceptualize them as a set of sequences instead?
+        \item Why are characteristic of a ring restricted to being positive integers? What if the elements of the ring contain no positive integers itself?
+        \item Fields are hinted by the author to be a substantial conceptual leap from rings just as rings were from groups. However, fields seems to just be subsets of rings, so why are they studied so extensively?
+    \end{enumerate}
+    
+    \item[Chapter 12, \#4] Show, by example, that for fixed nonzero elements $a$ and $b$ in a ring, the equation $ax=b$ can have more than one solution. How does this compare with groups?
+    
+    \begin{flushleft}
+    As an example, the equation $4x=0$ has more than one solution in the ring $\Z_{12}$, namely 0, 3, 6 and 9. For groups, we would utilize inverses to solve for $x$: $x = a^{-1}b$.
+    \end{flushleft}
+    
+    \item[Chapter 12, \#9] Prove that the intersection of any collection of subrings of a ring $R$ is a subring of $R$.
+    
+    \begin{flushleft}
+    Let $A$ be the intersection of a collection of subrings of a ring $R$. We must show that $A$ is a subring of $R$. According to the subring test, if $A$ is closed under subtraction and multiplication, then $A$ is a subring of $R$. Let $a, b $ be in $ A$, then $a-b$ belongs to each subring in the collection and so $a-b $ is in $ A$. Similarly, if $ab$ belongs to $A$ as it belongs to every subring in the collection. Therefore, $A$ is a subring of $R$, as desired. $\Box$\newline
+    \end{flushleft}
+    
+    \item[Chapter 12, \#11] Prove rules 3 through 6 of Theorem 12.1
+    
+    \begin{enumerate}
+        \item[3.] $(-a)(-b) = ab$.
+        \begin{flushleft}
+        $(-a)(-b)-(ab)+ab = (-a)(-b) + (-a)b + ab$ , using rule 2. $(-a)(-b) + (-a)b + ab = (-a)(-b+b)+ab = (-a)\cdot 0 + ab = 0 + ab = ab$. \newline
+        Therefore, $(-a)(-b) = ab$, as desired.
+        \end{flushleft}
+        \item[4.] $a(b-c) = ab - ac$ and $(b-c)a = ba - ca$.
+        \begin{flushleft}
+        $a(b-c) = a(b + (-c)) = ab + a(-c) = ab - ac$\newline
+        $(b-c)a = (b + (-c))a = ba + (-c)a = ba - ca$
+        \end{flushleft}
+        Furthermore, if $R$ has a unity element 1, then:
+        \item[5.] $(-1)a = -a$
+        \begin{flushleft}
+        $(-1)a = -(1 \cdot a) = -(a) = -a$, using rule 2.
+        \end{flushleft}
+        \item[6.] $(-1)(-1) = 1$
+        \begin{flushleft}
+        $(-1)(-1) = 1\cdot1 = 1$, using rule 3.
+        \end{flushleft}
+    \end{enumerate}
+    
+    \item[Chapter 13, \#1] Verify that Examples 1 through 8 are as claimed.
+    
+    \begin{enumerate}
+        \item[Example 1] The ring of integers is an integral domain.
+        \begin{flushleft}
+        $\Z$ is a commutative ring since $ab = ba$ for all $a, b $ in $ \Z$. The unity of this ring is 1 and there are no zero divisors since $ab = 0$ implies that $a = 0$ or $b = 0$ for all $a, b $ in $ \Z$. This is because if $b \not= 0$, $a = 0/b = 0$. 
+        \end{flushleft}
+        \item[Example 2] The ring of Gaussian integers $\Z[i] = \{a + bi | a, b \in \Z \}$
+        \begin{flushleft}
+        If we let $a + bi $ in $ \Z[i]$ and $c + di $ in $ \Z[i]$, $(a+bi)(c+di) $=$ ac + (ad + bc)i - bd = (c+di)(a+bi)$ and so $\Z[i]$ is commutative. $\Z[i]$ has a unity of $1$ since $(a + bi)\cdot 1 = a + bi = 1\cdot(a+bi)$, for all $a + bi $ in $ \Z[i]$. If $c + di \not= 0$, $(a+bi)(c+di) = 0$ implies $a+bi = 0/(c+di) = 0$ and so there are no zero divisors in $\Z[i]$.
+        \end{flushleft}
+        \item[Example 3] The ring $\Z[x]$ of polynomials with integer coefficients is an integral domain.
+        \begin{flushleft}
+        The ring $\Z[x]$ is a commutative ring since $p(x)q(x) = q(x)p(x)$ for all $p(x),q(x)$ in $\Z[x]$. The ring has a unity of $f(x) = 1$ since $p(x)\cdot 1 = 1 \cdot p(x) = p(x)$ for all $p(x)$ in $\Z[x]$.
+        \end{flushleft}
+        \item[Example 4] The ring $\Z[\sqrt{2}] = \{a + b\sqrt{2} | a, b \in \Z \}$
+        \begin{flushleft}
+        If we let $a + b\sqrt{2} $ in $ \Z[\sqrt{2}]$ and $c + d\sqrt{2} $ in $ \Z[\sqrt{2}]$, $(a+b\sqrt{2})(c+d\sqrt{2}) $ = $ ac + (ad + bc)\sqrt{2} + 2bd $ = $ (c+d\sqrt{2})(a+b\sqrt{2})$ and so $\Z[i=\sqrt{2}]$ is commutative. $\Z[\sqrt{2}]$ has a unity of $1$ since $(a + b\sqrt{2})\cdot 1 = a + b\sqrt{2} = 1\cdot(a+b\sqrt{2})$, for all $a + b\sqrt{2} $ in $ \Z[\sqrt{2}]$. If $c + d\sqrt{2} \not= 0$, $(a+b\sqrt{2})(c+d\sqrt{2}) = 0$ implies $a+b\sqrt{2} = 0/(c+d\sqrt{2}) = 0$ and so there are no zero divisors in $\Z[\sqrt{2}]$.
+        \end{flushleft}
+        \item[Example 5] The ring $\Z_p$ of integers modulo a prime $p$ is an integral domain.
+        \begin{flushleft}
+        $\Z_p$ is closed and commutative under multiplication and addition. Also 1 is the unity for all $\Z_p$. Euclid's Lemma states that if $p$ is a prime that divides $ab$, then $p$ divides $a$ or $p$ divides $b$. Here $ab = 0 (mod p)$ implies that $p$ divides $ab$. By Euclid's lemma, we know that in $\Z_p$, $a = 0$ or $b = 0$. Since $\Z_p$ is a commutative ring with unity and no zero-divisors, it is an integral domain and is also a field since it is finite.
+        \end{flushleft}
+        \newpage
+        \item[Example 6] The ring $\Z_n$ of integers modulo $n$ is not an integral domain when $n$ is not prime.
+        \begin{flushleft}
+        If $n$ is not prime, then $ab = n$, where $1 < a < n$ and $1 < b < n$. However $ab = 0$ but $a \not= 0$ and $b \not= 0$, which means that $a$ and $b$ are zero-divisors of $\Z_n$. Therefore, $\Z_n$ is not an integral domain since it has zero-divisors.
+        \end{flushleft}
+        \item[Example 7] The ring $M_2(\Z)$ of $2 \times 2$ matrices over the integers is not an integral domain.
+        \begin{flushleft}
+        $M_2(\Z)$ is not an integral domain since there exist zero-divisors. We need to find nonzero elements $a,b$ in $M_2(\Z)$ such that $ab = 0$.
+        $$\left[ \begin{array} { l l } { 1 } & { 0 } \\ { 0 } & { 0 } \end{array} \right] \left[ \begin{array} { l l } { 0 } & { 0 } \\ { 0 } & { 1 } \end{array} \right] = \left[ \begin{array} { l l } { 0 } & { 0 } \\ { 0 } & { 0 } \end{array} \right]$$
+        Therefore, there do exist zero-divisors and so $M_2(\Z)$ is not an integral domain.
+        \end{flushleft}
+        \item[Example 8] $\Z \bigoplus \Z$ is not an integral domain
+        \begin{flushleft}
+        $\Z \bigoplus \Z$ is not an integral domain since there exist zero-divisors. We shall find nonzero elements $a, b $ in $ \Z \bigoplus \Z$ such that $ab = 0 = (0,0)$. If we let $a = (1,0) \not= 0$ and $b = (0, 1) \not= 0$, $ab = (1,0)\cdot (0,1) $ = $ (1\cdot0, 0\cdot1) = (0,0) = 0$. Therefore, $(1,0)$ and $(0,1)$ are zero-divisors of $\Z \bigoplus \Z$.
+        \end{flushleft}
+    \end{enumerate}
+    
+    \item[Chapter 13, \#2] Which of Examples 1 through 5 are fields?
+    
+    \begin{enumerate}
+        \item[Example 1] The ring of integers.
+        \begin{flushleft}
+        $\Z$ is not a field since not every nonzero element is a unit. For example, $2 $ is in $ \Z$ but with respect to multiplication, $2^{-1} = \frac{1}{2} $ is not in $ \Z$.
+        \end{flushleft}
+        \item[Example 2] The ring of Gaussian integers $\Z[i] = \{a + bi | a, b \in \Z \}$.
+        \begin{flushleft}
+        $\Z[i]$ is not a field since not every nonzero element is a unit. As an example, $2 $ is in $ \Z[i]$ but with respect to multiplication, $2^{-1} = \frac{1}{2} $ is not in $ \Z[i]$.
+        \end{flushleft}
+        \item[Example 3] The ring $\Z[x]$ of polynomials with integer coefficients.
+        \begin{flushleft}
+        $\Z[x]$ is not a field since there exist nonzero elements that are not units. For example, $2x $ is in $ \Z[x]$ but $(2x)^{-1} = \frac{1}{2x} $ is not in $ \Z[x]$ since unity is $f(x) = 1$.
+        \end{flushleft}
+        \item[Example 4] The ring $\Z[\sqrt{2}] = \{a + b\sqrt{2} | a, b \in \Z \}$.
+        \begin{flushleft}
+        $\Z[\sqrt{2}]$ is not a field since there exists a nonzero element that is not a unity. For example, $2 $ is in $ \Z[\sqrt{2}]$ but with respect to multiplication, $2^{-1} = \frac{1}{2} $ is not in$ \Z[\sqrt{2}]$.
+        \end{flushleft}
+        \item[Example 5] The ring $\Z_p$ of integers modulo a prime $p$.
+        \begin{flushleft}
+        $\Z_p$ is a field since $\Z_p$ is a commutative ring with unity where ever nonzero element is a unit.
+        \end{flushleft}
+    \end{enumerate}
+    
+    \item[Chapter 13, \#6] Find a nonzero element in a ring that is neither a zero-divisor nor a unit.
+    
+    \begin{flushleft}
+    The ring $\Z[x]$ is commutative, has unity of $f(x) = 1$ and no zero-divisors as so is an integral domain. We know that there are no zero-divisors since if $f(x) $ in $ \Z[x]$ were nonzero, only $g(x) = 0$ would satisfy $f(x)g(x) = 0$ for all $x$. We must find an element for which an inverse does not exist. For $f(x) = 2x^2$, the inverse must solve $f(x)g(x) = (2x^2)g(x) = 1$ and so $g(x) = \frac{1}{2}x^{-2} $ is not in $ \Z[x]$. Since the inverse is not in the ring, we know that $f(x) = 2x^2$ is not a unit.
+    \end{flushleft}
+    \newpage
+    \item[Chapter 13, \#10] Describe all zero-divisors and units of $\Z \bigoplus \Q \bigoplus \Z$.
+    
+    \begin{flushleft}
+    The zero-divisors of $\Z \bigoplus \Q \bigoplus \Z$: $\{(a, 0, 0), (0, b, 0), (0, 0, c), (a, b, 0), (a, 0, c), (0, b, c)\}$, where $a, b, c \not= 0$. For any element $(a, b, c)$ in this set, there exists a non-zero element $(x, y, z) $ in $ \Z \bigoplus \Q \bigoplus \Z$ such that $(a, b, c) \cdot (x, y, z) = 0$. We shall list one example for each zero-divisor: $(a, 0, 0) \cdot (0, 1, 1) = 0$, $(0, b, 0) \cdot (1, 0, 1) = 0$, $(0, 0, c) \cdot (1, 1, 0) = 0$, $(a, b, 0) \cdot (0, 0, 1) = 0$, $(a, 0, c) \cdot (0, 1, 0) = 0$, $(0, b, c) \cdot (1, 0, 0) = 0$.\newline
+    
+    An element $a $ in $ \Z \bigoplus \Q \bigoplus \Z$ is a unit if $a^{-1}$ exists. The units of $\Z \bigoplus \Q \bigoplus \Z$: $\{(1, b, 1), (1, b, -1), (-1, b, 1), (-1, b, -1)\}$, where $b \not= 0$. The inverse of each element is as follows: $(1, b, 1)^{-1} = (1, \frac{1}{b}, 1)$, $(1, b, -1)^{-1} = (1, \frac{1}{b}, -1)$, $(-1, b, 1)^{-1} = (-1, \frac{1}{b}, 1)$, $(-1, b, -1)^{-1} = (-1, \frac{1}{b}, -1)$.
+    \end{flushleft}
+    
+    \item[\#11.] Read Chapter 14. List two observations. Examples include describing what struck your fancy or finding analogies between the topics.
+    
+    \begin{enumerate}
+        \item Is there a counterpart to the concept of a maximal ideal? Could there be a minimal ideal $A$ such that it contains no other nonzero ideal? What could the possible implications and generalizations be?
+        \item Looking at factor rings of the ring of polynomials shows how $\langle 1 \rangle = \R[x]$ since $\R[x] = \langle 1 \rangle = \{f(x)(1) | f(x) \in \R[x]\}$. Looking at $\langle 1 \rangle$ from a different standpoint, can we think of 1 being multiplied and added an arbitrary number of times to generate any possible polynomial? Could it then be used to generate any possible ring? 
+    \end{enumerate}
+    
+    \item[Chapter 14, \#2] Verify that the set $A$ in Example 4 is an ideal and that $A = \langle x \rangle$.
+    
+    \begin{flushleft}
+    The set $A$ is the subset of all polynomials in $\R[x]$ with constant term 0. By definition, $A$ is an ideal of $R$ if for every $r $ in $ R$ and every $a $ in $ A$, both $ra$ and $ar$ are in $A$. According to the ideal test, the nonempty subset $A$ is ideal of $R$ if $a-b $ in $ A$ whenever $a, b $ in $ A$ and $ra$ and $ar$ are in $A$ whenever $a $ in $ A$ and $r $ in $ R$. A defining characteristic of the set $A$ is that $f(x) $ in $ A$ if and only if $f(0) = 0$. For $f, g $ in $ A$, $f-g = f(x) - g(x)$ and so $f(0) - g(0) = 0 - 0 = 0$, which means that $f(x) - g(x) $ in $ A$. For $f(x) $ in $ A$ and $h(x) $ in $ \R[x]$, we shall see if $f(x)h(x)$ and $h(x)f(x)$ are in $A$. Since $f(0) = 0$, we know that $f(0)h(0) = 0 \cdot h(0) = 0 = h(0) \cdot 0 = h(0)f(0)$. Therefore, $f(x)h(x)$ and $h(x)f(x)$ are in $A$ and so $A$ is an ideal of $\R[x]$. $f(x) $ in $ A$ is equivalent to $f(0) = 0$, which is equivalent to $f(x) $ in $ \langle x \rangle$. Therefore, $A = \langle x \rangle$, as desired. $\Box$
+    \end{flushleft}
+    
+    \item[Chapter 14, \#9] If $n$ is an integer greater than 1, show that $\langle n \rangle = n\Z$ is a prime ideal of $\Z$ if and only if $n$ is prime.
+    
+    \begin{flushleft}
+     By definition, a prime ideal $A$ of a commutative ring $R$ is a proper ideal of $R$ such that $a, b $ in $ R$ and $ab $ in $ A$ imply $a $ in $ A$ or $b $ in $ A$. Euclid's Lemma states that if $n$ is a prime that divides $ab$, then $n$ divides $a$ or $n$ divides $b$. Therefore, $n $ in $ a\Z$ or $n $ in $ b\Z$, which implies that $a $ in $ n\Z$ or $b $ in $ n\Z$. If $n$ is not a prime, then $n = cd$ for some $c, d $ in $ \Z$, but $c $ is not in $ n\Z$ and $d $ is not in $ n\Z$ since both $c, d < n\Z$. Therefore, if $n$ is prime and $ab $ in $ n\Z$, this implies that $a $ in $ n\Z$ or $b $ in $ n\Z$, which means that $n\Z$ is a prime ideal of $\Z$. If $n$ is not prime and $ab $ in $ n\Z$, $a $ is not in $ n\Z$ and $b $ is not in $ n\Z$, which means that $n\Z$ is not a prime ideals. This is the contrapositive of the statement if $n\Z$ is a prime ideal of $\Z$, then $n$ is prime. We have shown that $\langle n \rangle = n\Z$ is a prime ideal of $\Z$ if and only if $n$ is prime, as desired. $\Box$ 
+    \end{flushleft}
+    
+    \item[Chapter 14, \#18] If $R$ is a finite commutative ring with unity, prove that every prime ideal of $R$ is a maximal ideal of $R$.
+    
+    \begin{flushleft}
+    If $A$ is a prime ideal of $R$, we must show that it is a maximal ideal of $R$. If $A$ is a prime ideal of $R$, we know that $R/A$ is an integral domain. Since $R$ is finite and $R/A$ is an integral domain, we know that $R/A$ is a field. Since $R$ is a commutative ring with unity, $A$ is an ideal of $R$, and $R/A$ is a field, we know that $A$ is a maximal ideal of $R$. Therefore if $A$ is a prime ideal of $R$, it is a maximal ideal of $R$, as desired. $\Box$
+    \end{flushleft}
+
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,57 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3}}}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 677 Homework 8}
+\centerline{Sumanth Ravipati}
+\centerline{11/20/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[(23)] Model from the Theory of the Spinning Tops: Consider the system
+
+$$\alpha \dot{x} = (\beta - \gamma)yz$$
+$$\beta \dot{y} = (\gamma - \alpha)zx$$
+$$\gamma \dot{z} = (\alpha - \beta)xy$$
+
+where $0 < \alpha < \beta < \gamma$
+
+\begin{enumerate}
+    \item Find all equilibrium solutions.
+    \item Justify that in none of these equilibria we can apply the principle of linearized stability.
+    \item Let $V_1(x,y) = \alpha(\gamma - \alpha)x^2 + \beta(\gamma - \beta)y^2$, $V_2(y,z) = \beta(\beta - \alpha)y^2 + \gamma(\gamma - \alpha)z^2$.
+    \item Using (c), describe the phase portrait of the system completely.
+\end{enumerate}
+
+\item[(24)] Catalytic Hypercycle: Consider the catalytic hypercycle system given by
+$$\dot{x_1} = x_1 \cdot (x_n - \Phi(x))$$
+$$\dot{x_2} = x_2 \cdot (x_1 - \Phi(x))$$
+$$\vdots$$
+$$\dot{x_n} = x_n \cdot (x_{n-1} - \Phi(x))$$
+where $\Phi(x) = x_1x_2 + x_2x_3 + \ldots + x_{n-1}x_n + x_nx_1$. Furthermore let
+$$S_n = \{x \in \R^n : \sum\limits_{k=1}^n x_i = 1 \text{ and } x_k \geq 0 \text{ for all } k = 1, \ldots, n\}$$
+Condsider this system for $n=2, 3$ only.
+\begin{enumerate}
+    \item Show that $S_n$ is invariant for (1).
+    \item Determine all equilibrium points of (1) on $S_n$.
+    \item For every equilibrium of (1) on $S_n$, find the tangent directions of the stable, unstable, and center manifolds at the equilibrium, provided they exist.
+\end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,361 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 677 Homework 3}
+\centerline{Sumanth Ravipati}
+\centerline{9/26/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[(7*)] An equilibrium solution $x^*$ of an autonomous differential equation $\dot{x} = f(x)$ is called attracting, if there exists a neighborhood $U$ of $x^*$ such that for every initial condition $x_0 \in U$ the solution $\lambda(\cdot, 0, x_0)$ exists for all $t \geq 0$ and that $\lim_{t\rightarrow\infty}\lambda(t,0,x_0) = x^*$. \newline
+If $f: \R\rightarrow\R$ is continuously differentiable, what are necessary and sufficient conditions which guarantee that an equilibrium $x^* \in \R$ is attracting?\newline
+\begin{flushleft}
+There are two conditions that must be met to guarantee that an equilibrium is attracting. The first is that it must be stable, which is defined as follows: for any $\epsilon > 0$, there exists $\delta > 0$ such that $|\lambda(t_0),x^*| < \delta$ implies that $|\lambda(t),x^*| < \epsilon$. The additional condition is that the solution must be asymptotically stable, which is defined as follows: there exists a $\delta_0$ such that $|\lambda(t_0),x^*| < \delta$ implies that $|\lambda(t),x^*| \rightarrow 0$. If the autonomous differential equation can be put in Jordan Canonical Form, we can know about the equilibrium point by examining the eigenvalues. According to the Hartman-Grobman theorem, if all the eigenvalues are negative real numbers or complex numbers with negative real parts then the equilibrium point $x^*$ is a stable attracting fixed point. If the absolute value of all of the eigenvalues are less than one, then the system is asymptotically stable about its zero equilibrium. These conditions are generally also known as Lyapunov's methods for stability.
+\end{flushleft}
+\newpage
+\item[(8*)] Exercise 1.23 on page 16 in Chicone's book: \newline\newline
+Exercise 1.23. (a) Show that the family of functions $\phi_t: \R^2\rightarrow\R^2$ given by
+$$\phi_t(x,y) =
+\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+defines a flow on $\R^2$. (b) Find a differential equation whose flow is $\phi_t$. (c) Repeat parts (a) and (b) for
+
+$$\phi_t(x,y) = e^{-2t}
+\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+\newline
+\begin{enumerate}
+    \item The family of functions $\phi_t: \R^2\rightarrow\R^2$ defines a flow if $\phi(0,\vec{x}) \equiv \vec{x}$ and if $\phi(t+s,\vec{x}) = \phi(t,\phi(s,\vec{x}))$. In this context, $(x,y) = \vec{x}$ and $\phi_t(x,y) = \phi(t,\vec{x})$.
+    
+Showing that $\phi(0,\vec{x}) \equiv \vec{x}$:
+$$\phi(0,x,y) = 
+\begin{pmatrix}
+  \cos{0} & -\sin{0} \\
+  \sin{0} & \cos{0} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix} = 
+\begin{pmatrix}
+  1 & 0 \\
+  0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix} =
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+\newline
+Showing that $\phi(t+s,\vec{x}) = \phi(t,\phi(s,\vec{x}))$:
+$$\phi(t+s,x,y) = 
+\begin{pmatrix}
+  \cos{(t+s)} & -\sin{(t+s)} \\
+  \sin{(t+s)} & \cos{(t+s)} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+
+Using the double angle formulas for $\sin{(t+s)}$ and $\cos{(t+s)}$, we get:
+
+$$= \begin{pmatrix}
+  \cos{t}\cos{s}-\sin{t}\sin{s} & -(\cos{t}\sin{s}+\sin{t}\cos{s}) \\
+  \cos{t}\sin{s}+\sin{t}\cos{s} & \cos{t}\cos{s}-\sin{t}\sin{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}
+$$
+
+This can be separated into the product of 2 matrices as follows:
+
+$$= \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\begin{pmatrix}
+  \cos{s} & -\sin{s} \\
+  \sin{s} & \cos{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+
+Using the associative property of matrix multiplication:
+
+$$= \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\left[
+\begin{pmatrix}
+  \cos{s} & -\sin{s} \\
+  \sin{s} & \cos{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}
+\right]$$
+
+$$= \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+[
+\phi(s,x,y)
+]$$
+
+$$= \phi(t,\phi(s,x,y))$$
+\newpage
+    \item Differential equation whose flow is $\phi_t$:\newline
+    \begin{flushleft}
+    The second order differential equation of the form $\ddot{x} + x = 0$ has solutions of the form $\alpha\cos(t)+\beta\sin(t)$ for some constants $\alpha$ and $\beta$. Since the flow $\phi_t$ is of a similar form, it suggests that the original differential equation will be similar to the mentioned second order equation. This second order equation could be divided into the following system of equations that can be put in matrix form:\newline
+    \end{flushleft}
+    \[
+    \left\{
+                \begin{array}{ll}
+                  \dot{x} = -y\\
+                  \dot{y} = x
+                \end{array}
+              \right.
+  \]
+  \begin{flushleft}
+  $$\begin{pmatrix}
+  \dot{x} \\
+  \dot{y} \\
+\end{pmatrix} =
+\begin{pmatrix}
+  0 & -1 \\
+  1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+  $$\dot{\vec{x}} = A\vec{x}$$
+If we express the original system as linear combination of $\sin$ and $\cos$ functions as a matrix we get:
+$$M(t) = \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}$$
+To verify that this is a solution whose flow is $\phi_t$, we can see if it solves our system of equations. Taking the derivative of the matrix, we can separate it into a product of matrices.
+$$\dot{M}(t) = \begin{pmatrix}
+  -\sin{t} & -\cos{t} \\
+  \cos{t} & -\sin{t} \\
+\end{pmatrix} = \begin{pmatrix}
+  0 & -1 \\
+  1 & 0 \\
+\end{pmatrix}\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}$$
+Therefore, $\dot{M}(t) = AM(t)$, as desired.\newline
+We can also see that by taking the exponential of the original matrix as follows:
+$$e^{At} = e^{\begin{pmatrix}
+  0 & -1 \\
+  1 & 0 \\
+\end{pmatrix}t} = \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}$$
+  \end{flushleft}
+\newpage
+    \item Showing that $\phi(0,\vec{x}) \equiv \vec{x}$:
+$$\phi(0,x,y) = e^{0}
+\begin{pmatrix}
+  \cos{0} & -\sin{0} \\
+  \sin{0} & \cos{0} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix} = 1\cdot
+\begin{pmatrix}
+  1 & 0 \\
+  0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix} =
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+\newline
+Showing that $\phi(t+s,\vec{x}) = \phi(t,\phi(s,\vec{x}))$:
+
+$$\phi(t+s,x,y) = e^{-2(t+s)}
+\begin{pmatrix}
+  \cos{(t+s)} & -\sin{(t+s)} \\
+  \sin{(t+s)} & \cos{(t+s)} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+
+Using the double angle formulas for $\sin{(t+s)}$ and $\cos{(t+s)}$, we get:
+
+$$= e^{-2t}\cdot e^{-2s}
+\begin{pmatrix}
+  \cos{t}\cos{s}-\sin{t}\sin{s} & -(\cos{t}\sin{s}+\sin{t}\cos{s}) \\
+  \cos{t}\sin{s}+\sin{t}\cos{s} & \cos{t}\cos{s}-\sin{t}\sin{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}
+$$
+
+This can be separated into the product of 2 matrices as follows:
+
+$$= e^{-2t}\cdot e^{-2s}
+\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\begin{pmatrix}
+  \cos{s} & -\sin{s} \\
+  \sin{s} & \cos{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+
+Using the associative property of matrix multiplication:
+
+$$= e^{-2t}
+\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+\left[e^{-2s}
+\begin{pmatrix}
+  \cos{s} & -\sin{s} \\
+  \sin{s} & \cos{s} \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}
+\right]$$
+
+$$= e^{-2t}
+\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}
+[
+\phi(s,x,y)
+]$$
+
+$$= \phi(t,\phi(s,x,y))$$    
+\newpage
+    \item Differential equation whose flow is $\phi_t$:\newline
+    \begin{flushleft}
+    Let us consider the following system of equations that can be put in matrix form:\newline
+    \end{flushleft}
+    \[
+    \left\{
+                \begin{array}{ll}
+                  \dot{x} = -2x-y\\
+                  \dot{y} = x-2y
+                \end{array}
+              \right.
+  \]
+  \begin{flushleft}
+  $$\begin{pmatrix}
+  \dot{x} \\
+  \dot{y} \\
+\end{pmatrix} =
+\begin{pmatrix}
+  -2 & -1 \\
+  1 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+  $$\dot{\vec{x}} = A\vec{x}$$
+  $$\begin{pmatrix}
+  -2 & -1 \\
+  1 & -2 \\
+\end{pmatrix} = \begin{pmatrix}
+  -2 & 0 \\
+  0 & -2 \\
+\end{pmatrix} + \begin{pmatrix}
+  0 & -1 \\
+  1 & 0 \\
+\end{pmatrix}$$
+$$A = -2I + N$$
+Since the matrices $-2I$ and $N$ commute, $e^{At} = e^{-2It}e^{Nt}$. We can solve $e^{Nt}$ as we did earlier, by solving the simpler system of equations. Since $-2I$ is a diagonal matrix, the solution is simply $e^{-2t}$.
+$$e^{Nt} = e^{\begin{pmatrix}
+  0 & -1 \\
+  1 & 0 \\
+\end{pmatrix}t} = \begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}$$
+$$e^{At} = e^{-2t}\begin{pmatrix}
+  \cos{t} & -\sin{t} \\
+  \sin{t} & \cos{t} \\
+\end{pmatrix}$$
+This was the exact form of the original flow equation for $\phi_t$. This proves that the proposed system of equations of the following form has the desired flow as a solution:
+$$\dot{\vec{x}} = A\vec{x}$$
+  $$\begin{pmatrix}
+  \dot{x} \\
+  \dot{y} \\
+\end{pmatrix} =
+\begin{pmatrix}
+  -2 & -1 \\
+  1 & -2 \\
+\end{pmatrix}
+\begin{pmatrix}
+  x \\
+  y \\
+\end{pmatrix}$$
+  \end{flushleft}
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

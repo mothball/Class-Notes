@@ -1,0 +1,74 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{geometry}
+\geometry{letterpaper, portrait, margin=0.4in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 675 Homework 7}
+\centerline{Sumanth Ravipati}
+\centerline{10/10/2018}
+\vspace{.15in}
+
+\begin{enumerate}[1.]
+\item Verify that the spaces $C[a,b], \ell_2, c, c_0, m$, and $\R^\infty$ are infinite-dimensional.
+    \begin{enumerate}
+        \item $C[a,b]$: Suppose $V = \{1, x, x^2, x^3 \ldots, x_n\}$ where $n \in \Z_{>0}$. These basis elements are all clearly linearly independent since none are linear combinations of any of the others. For any given n, there will be a polynomial of order n+1 which is in $C[a,b]$ that is not in the span of $V$. Therefore $C[a,b]$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+        \item $\ell_2$ is the set of all square-summable sequences $x = (x_1, x_2, \ldots, x_k, \ldots)$ where the sum of the squares of each component is finite, i.e: $\sum\limits_{k=1}^\infty x_k^2 < \infty$. Let $v_1 = (1, 0, \ldots)$ and $v_2 = (0, 1, 0, \ldots)$ and $v_k = (0, \ldots, 0, 1, 0, \ldots)$. These elements are all orthogonal to each other since none are linear combinations of the others. Therefore, they can form an arbitrary large basis in $\ell_2$. For any given n, there can be square-summable sequence with a number in the n+1 position, which is not in the span of $\{v_1, v_2, v_3, \ldots, v_n\}$. Therefore, $\ell_2$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+        \item $c$ is the set of all convergent sequences. Let $v_1 = (1)$ and $v_2 = (0, 1)$ and $v_k = (0, \ldots, 0, 1)$, where the sequences converge to 1 after k 0s. Clearly none are linear combinations of the others and so they form an orthogonal basis set. For any given n, there can be a sequence that converges after n+1 0s, which is not in the span of $\{v_1, v_2, v_3, \ldots, v_n\}$. Therefore, $c$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+        \item $c_0$ is the set of all sequences converging to 0. Let $v_1 = (0)$ and $v_2 = (1, 0)$ and $v_k = (1, \ldots, 1, 0)$, where the sequences converge to 0 after k 1s. Clearly none are linear combinations of the others and so they form an orthogonal basis set. For any given n, there can be a sequence that converges to 0 after n+1 1s, which is not in the span of $\{v_1, v_2, v_3, \ldots, v_n\}$. Therefore, $c_0$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+        \item $m$ is the set of all bounded sequences. Since the basis sets described above for $\ell_2, c, c_0$ are all bounded sequences as $a_n \leq 1 \; \forall n \in \N$. The same argument can be used to show that $m$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+        \item $\R^\infty$ is the set of all sequences. Just as for the set of all bounded sequences, $\R^\infty$ is a superset of the sequences $\ell_2, c, c_0, m$. All of the basis sets described for these sequences could be used here as well. The same argument can be used to show that $\R^\infty$ cannot be spanned by a finite basis and so it is infinite-dimensional. $\Box$
+    \end{enumerate}
+\item Let $f, f_1, \ldots, f_n$ be linear functionals on a linear space $L$ such that for all $x$ one has that $f_1(x)=f_2(x)=\ldots=f_n(x)=0$ implies $f(x)=0$. Prove that there are constants $a_1, \ldots, a_n$ such that $f=a_1f_1+\ldots+a_nf_n$.
+\begin{flushleft}
+    Using a proof by induction, let us consider the case $f_1(x)=f(2)=0$ implies $f(x)=0$. Take $v\in\ker(f_1(x))\cap\ker(f_2(x))$ so that $f_1(v)=f_2(v)=0$. If $f(x), f_1(x)$ and $f_2(x)$ are linearly independent, there exist no constants $a_1$ and $a_2$ such that $a_1f_1(x) + a_2f_2(x) = 0$. However $a_1f_1(v) + a_2f_2(v) = 0$ and so $f, f_1(x)$ and $f_2(x)$ are not linearly dependent and so $f$ can be expressed as a linear combination of the other two: $f = a_1f_1 + a_2f_2$
+    \newline
+    
+    %Proof by contradiction: let us suppose that the linear functionals $f, f_1, \ldots, f_n$ are linearly independent. This means that $b_0f + b_1f_1 + \ldots + b_nf_n = 0$ if and only if $b_0 = \ldots = b_n = 0$. Let us take $v \in \bigcap\limits_{i=1}^n \ker(f_i)$, which is nonempty since $f_1, \ldots, f_n$ are linearly dependent. Then $b_0f(v) + b_1f_1(v) + \ldots + b_nf_n(v) = 0 = b_0f(v) = f(b_0v)$\newline
+    
+    Applying mathematical induction, we observe that in ker $f _ { n }$ we have $n$
+linear functionals $f , f _ { 1 } , f _ { 2 } , \ldots , f _ { n - 1 }$ having the property that $f ( x ) = 0 ,$ whenever $f _ { 1 } ( x ) = f _ { 2 } ( x ) = \cdots = f _ { n - 1 } ( x ) = 0$ if $x \in$ ker $f _ { n } .$ Consequently, there exists $a _ { 1 } , a _ { 2 } , \ldots , a _ { n } \in \mathbb { R } ,$ such that $f ( x ) = \sum _ { i = 1 } ^ { n - 1 } a _ { i } f _ { i } ( x ) , x \in \operatorname { ker } f _ { n }$
+Now, we observe that $f _ { n }$ and $f - \sum _ { i = 1 } ^ { n - 1 } a _ { i } f _ { i }$ are two linear functionals having the same kernels. Since the kernel of a nontrivial linear functional is a homogenous hyperplane and for every homogenous hyperplane there exists a functional uniquely determined up to a nonzero multiplicative constant with the kernel, there exists $a _ { n } \in \mathbb { R } ,$ such that $f - \sum _ { i = 1 } ^ { n - 1 } f _ { i } =$
+$a _ { n } f _ { n } ,$ as claimed.
+\end{flushleft}
+\newpage
+\item Let $V$ be a vector space. Prove that the set of linear functionals on $V$ is a vector space. It is commonly denoted $V^*$.  Give an example of a non-trivial functional on $V^*$.
+\begin{flushleft}
+A linear functional is both additive and homogeneous and so it has the following properties:\newline a) $f(x+y) = f(x) + f(y) \; \forall x, y \in L$ and b) $f(\alpha x) = \alpha f(x)$ for every number $\alpha$.
+    % \begin{enumerate}
+        % \item $f(x+y) = f(x) + f(y) \; \forall x, y \in L$
+        % \item $f(\alpha x) = \alpha f(x)$ for every number $\alpha$
+    % \end{enumerate}
+We shall show that the set of linear functionals, $V^*$, satisfy all the requirements for a vector space:
+    \begin{enumerate}
+        \item $f(\alpha x + y) + g(\beta u + v) = g(\beta u + v) + f(\alpha x + y) \; \forall f, g \in V^*$ since: $f(\alpha x + y) + g(\beta u + v) =$ $\alpha f(x) + f(y) + \beta g(u) + g(v) =$ $\beta g(u) + g(v) + \alpha f(x) + f(y) =$ $g(\beta u + v) + f(\alpha x + y)$
+        \item $\left(f(\alpha x + y) + g(\beta u + v)\right) + h(\gamma w + z) = f(\alpha x + y) + \left(g(\beta u + v) + h(\gamma w + z)\right ) \; \forall f, g, h \in V^*$ since: $\left(f(\alpha x + y) + g(\beta u + v)\right) + h(\gamma w + z) =$ $\left(\alpha f(x) + f(y) + \beta g(u) + g(v)\right) + \gamma h(w) + h(z) =$ $\alpha f(x) + f(y) + \left(\beta g(u) + g(v) + \gamma h(w) + h(z)\right) =$ $f(\alpha x + y) + \left(g(\beta u + v) + h(\gamma w + z)\right )$
+        \item $\exists 0 \in V^*$ such that $f + 0 = f \; \forall f \in V^*$. Let $g(u) = 0 \; \forall u \in V$. This is the identity element since: $f(\alpha x + y) + g(u) = $ $\alpha f(x) + f(y) + 0 =$ $\alpha f(x) + f(y) = f(\alpha x + y)$
+        \item $\exists -f \in V^*$ such that $f + (-f) = 0$. If $f(\alpha x + y)$, let $-f = f(-\alpha x - y)$ since $-\alpha, -y$ exist as they are elements the vector space $V$. $f(\alpha x + y) + f(-\alpha x - y) =$ $\alpha f(x) + f(y) + (-\alpha)f(x) + (-1)f(y) =$ $(\alpha - \alpha)f(x) + (1-1)f(y) = 0$
+        \item $\alpha f \in V^*$ where $\alpha(\beta f) = (\alpha\beta)f$ and $1\cdot f = f \; \forall f \in V^*$. $\gamma f(\alpha x + y) = \gamma(\alpha f(x) + f(y)) =$ $\gamma \alpha f(x) + \gamma f(y) = f((\gamma\alpha)x + \gamma y)$. Therefore $\gamma f(\alpha x + y) \in V^*$ $\delta(\gamma f(\alpha x + y)) = \delta(\gamma(\alpha f(x) + f(y))) =$ $\delta(\gamma \alpha f(x) + \gamma f(y)) = \delta\gamma\alpha f(x) + \delta\gamma f(y) =$ $(\delta\gamma)(\alpha f(x) + f(y)) = (\delta\gamma)f(\alpha x + y)$. Therefore $\delta(\gamma f) = (\delta\gamma)f \; \forall f \in V^* \text{ and } \forall \delta, \gamma \in F$. $1\cdot f(\alpha x + y) = 1 (\alpha f(x) + f(y)) = \alpha f(x) + f(y) = f(\alpha x + y)$. Therefore $1\cdot f = f \; \forall f \in V^*$
+        \item Distributive properties: $(\delta + \gamma)f(\alpha x + y) = (\delta + \gamma)(\alpha f(x) + f(y)) =$ $\delta(\alpha f(x) + f(y)) + \gamma((\alpha f(x) + f(y))) = \delta f(\alpha x + y) + \gamma f(\alpha x + y)$. Therefore $(\delta + \gamma)f = \delta f + \gamma f \; \forall f \in V^* \text{ and } \forall \delta, \gamma \in F$. $\delta(f(\alpha x + y) + g(\beta u + v)) = \delta (\alpha f(x) + f(y) + \beta g(u) + g(v)) =$ $\delta(\alpha f(x) + f(y)) + \delta(\beta g(u) + g(v)) = \delta(f(\alpha x + y)) + \delta(g(\beta u + v))$. Therefore $\delta(f+g) = \delta f + \delta g \; \forall f,g \in V^* \text{ and } \forall \delta \in F$. Therefore the set of linear functionals on $V$ is a vector space. $\Box$ \newline
+        A non-trivial functional on $V^*$: Let $v$ be any element in $V$ so that we can define $F_v(f) = f(v)$. For any $f,g$ in $V^*$, $F_v(cf+g) = (cf+g)(v) = cf(v) + g(v) = cF_v(f) + F_v(g)$. Therefore $F_v$ is a non-trivial linear functional on $V^*$ since there exists $f \in V^*$ such that $f(v) \not= 0 \Rightarrow F_v(f) \not= 0$.
+    \end{enumerate}
+\end{flushleft}
+\item Explain the big-$\mathcal{O}$ and little-$o$ notation for sequences in terms of quotient spaces.
+\begin{flushleft}
+    The sequence $a_n = \mathcal{O}(b_n)$ if and only if $|a_n| \leq c \cdot |b_n|$ for sufficiently large $n$ with $c \geq 0$. This can be rewritten as $\frac{|a_n|}{|b_n|} \leq c$. We can define an equivalence relation with respect to the big-$\mathcal{O}$ notation as follows: $a_n \sim b_n$ if $\frac{|a_n|}{|b_n|} \leq c$ as $n \rightarrow \infty$. This relation is reflexive ($a_n \sim a_n$) since $\frac{|a_n|}{|a_n|} = 1 \leq c$ for some $c \geq 0$. It is symmetric ($a_n \sim b_n \Rightarrow b_n \sim a_n$) since $\frac{|b_n|}{|a_n|} = \frac{1}{c_0} \leq c$ for some $c \geq 0$. The relation is transitive since $a_n \sim b_n \wedge b_n \sim c_n \Rightarrow a_n \sim c_n$: $\frac{|a_n|}{|c_n|} = \frac{|a_n|}{|b_n|}\frac{|b_n|}{|c_n|} = c_0\cdot c_1 = c_2 \geq 0$ since both $c_0, c_1 \geq 0$.\newline
+    
+    The sequence $a_n = o(b_n)$ if and only if $\frac{|a_n|}{|b_n|} = 0$ for sufficiently large $n$. We can define an equivalence relation with respect to the little-$o$ notation as follows: $a_n \sim b_n$ if $a_n = b_n + o(b_n)$ as $n \rightarrow \infty$. This relation is reflexive ($a_n \sim a_n$) since $a_n = a_n + o(a_n) = a_n$ as $n \rightarrow \infty$. It is symmetric ($a_n \sim b_n \Rightarrow b_n \sim a_n$) since $a_n = b_n + o(b_n) = b_n$ as $n \rightarrow \infty$ and so $b_n = a_n + o(a_n) = a_n$ as $n \rightarrow \infty$. The relation is transitive since $a_n \sim b_n \wedge b_n \sim c_n \Rightarrow a_n \sim c_n$: $a_n = b_n + o(b_n)$ and $b_n = c_n + o(c_n)$ so $a_n = c_n + o(c_n) + o(c_n + o(c_n)) = c_n$ as $n \rightarrow \infty$.\newline
+    The quotient space $X\setminus\sim$ of a space $X$ and an equivalence relation $\sim$ is the set of equivalence classes of points in $X$. In our case, the quotient spaces can be defined with respect to the equivalence relations proven above. The space is simply all sequences that must be bounded.
+\end{flushleft}
+\end{enumerate}
+\end{document}

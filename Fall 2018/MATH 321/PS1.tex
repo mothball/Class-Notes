@@ -1,0 +1,133 @@
+\documentclass{article}
+\input xy
+\xyoption{all}
+
+\oddsidemargin=0pt
+\evensidemargin=0pt
+\topmargin=0pt
+\usepackage{geometry}
+\geometry{letterpaper, portrait, margin=1in}
+
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsfonts}
+\usepackage[dvips]{color}
+\usepackage{palatino}
+\usepackage{euler}
+\usepackage{graphicx}
+
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+\linespread{1.075}
+\setcounter{secnumdepth}{1}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}
+%
+\begin{document}
+%
+\title{Abstract Algebra (MATH 321): Problem Set \#1}
+\author{Sumanth Ravipati}
+\date{August, 27, 2018}
+\maketitle
+
+\begin{enumerate}
+\item What do you think the word ``relation'' means in the phrase ``equivalence relation"?
+
+\begin{flushleft}
+A relation conveys a relationship among several items. With respect to the phrase ``equivalence relation", it means a relation with all 3 of the following properties: reflexivity, symmetry, and transitivity.
+\end{flushleft}
+
+\item Give an example of a relation that is not an equivalence relation. Which part of the definition fails?
+
+\begin{flushleft}
+An equivalence relation must have the following properties:
+\begin{enumerate}
+    \item reflexive: $ \forall a \in E, a \sim a $
+    \item symmetric: $ \forall a,b \in E, a \sim b \Rightarrow b \sim a $
+    \item transitive: $ \forall a,b,c \in E, (a \sim b) \wedge (b \sim c) \Rightarrow a \sim c $
+\end{enumerate}
+The relation $\leq$ with respect to the set of integers is both reflexive and transitive but not necessarily symmetric, which would mean that it is not an equivalent relation:
+\begin{enumerate}
+    \item reflexive: $ \forall a \in \mathbb{Z}, a \leq a $
+    \item not symmetric: $ \forall a,b \in \mathbb{Z}, a \leq b \not\Rightarrow b \leq a $
+    \begin{flushleft}
+        counter-example: $ 1 \leq 2 $ but $ 2 \not\leq 1 $
+    \end{flushleft}
+    \item transitive: $ \forall a,b,c \in \mathbb{Z}, (a \leq b) \wedge (b \leq c) \Rightarrow a \leq c $
+\end{enumerate}
+The symmetry property of equivalence relation fails in this example.
+\end{flushleft}
+
+\item What is the connection between partitions and equivalence relations?
+\begin{flushleft}
+There is a well known theorem that states that if we have an equivalence relation R on A, the equivalence classes of that relation form a partition of A. The same rules for a relation that satisfy the equivalence relation, satisfy the conditions for a partition. Given a partition, we can define an equivalence relation and given an equivalence relation, we can define a partition as follows:
+\begin{enumerate}
+    \item Given a partition of a set $S$ in to subsets $A_1, A_2, \ldots$, the equivalence relation is defined as: $x \sim y \Leftrightarrow$ ``x and y belong to the same set $A_i$ from the partition" This satisfies the conditions for an equivalence relation as follows:
+    \begin{enumerate}
+        \item reflexive: $a \in A_i \Leftrightarrow a \in A_i$
+        \item symmetric: $a_1,a_2 \in A_i \Leftrightarrow a_2,a_1 \in A_i$
+        \item transitive: $(a_1,a_2 \in A_i) \wedge (a_2,a_3 \in A_i) \Leftrightarrow a_1,a_3 \in A_i$
+    \end{enumerate}
+    \item Given an equivalence relation on a set $S$, it satisfies the conditions for a partition as follows:
+    \begin{enumerate}
+        \item pairwise disjoint: for any $x,y \in S$, the associated equivalence classes $E_x, E_y$ are either equal or disjoint.
+        \item union is all of S: for any $x \in S$, there exists an equivalence class that contains $x \, (E_x)$.
+    \end{enumerate}
+\end{enumerate}
+\end{flushleft}
+
+\item  Make sense of the following statement: ``A function from $A$ to $B$ is just a $B$-labeled partition of $A$." What do you think of this statement?
+
+\begin{flushleft}
+A function maps elements of A onto elements of B. In particular, a function has a particular value in B for each element in A. Each element in A can only have one corresponding value in B but unless it is one-to-one, several values in A can map to the same value in B. Each subset of A that maps to a particular value in B, it can be thought of as a partition that is labeled with its co-domain, the particular value in B. Such subsets satisfy the conditions for partitions and equivalence relations as follows:
+\begin{enumerate}
+    \item pairwise disjoint: an element in A maps to a particular element in B so it cannot belong to 2 B-labeled partitions simultaneously.
+    \item union is all of A: the union of all such subset will equal to all of A since every element in A maps to an element in B.
+    \item reflexive: $a \in A \to b \in B \Leftrightarrow a \in A \to b \in B$, it is in the same subset of $A$ as itself. Namely, $\{a\} \subset \{a\}$.
+    \item symmetric: $a_1,a_2 \in A \to b \in B \Leftrightarrow a_2,a_1 \in A \to b \in B$
+    \item transitive: $(a_1,a_2 \in A \to b \in B) \wedge (a_2,a_3 \in A \to b \in B) \Leftrightarrow a_1,a_3 \in A \to b \in B$
+\end{enumerate}
+\end{flushleft}
+
+\item What is the difference in your opinion between the first and second principles of mathematical induction? Why do you think anyone bothered with the second principle?
+
+\begin{flushleft}
+There are circumstances where assuming a statement is true for a given n, tells us nothing directly about if it is true for n+1. In these situations, it can be helpful to assume that the statement is true for a range of integers $a \leq x \leq n$. The second principle of mathematical induction also doesn't require a base and one can assume more in the inductive step.
+\end{flushleft}
+
+\item Why aren't the set of integers ``well-ordered"? And why do you think this matters for induction?
+
+\begin{flushleft}
+A set is well-ordered if there exists a smallest element in the set. In other words, every other element must be greater than the smallest element. Let's do a simple proof by contradiction: \newline
+Suppose $\exists \, x \in \mathbb{Z}$ s.t. $x < y \, \forall \, y \in \mathbb{Z} \setminus \{x\}$. By the closure property of the integers, $x + (-1) \in \mathbb{Z}$. However, $x - 1 \leq x$, which contradicts the statement that $x$ is the smallest element in $\mathbb{Z}$. Therefore there is no smallest element of $\mathbb{Z}$ and so the set of integers are not ``well-ordered".
+\end{flushleft}
+
+\item Give an example that illustrates the theorem that the GCD of two numbers is a linear combination of these two numbers.Try to think of a non-trivial example. A non-trivial example is an example that illustrates the principle in a way that you wouldn't have already known without the principle. For example, if you say $gcd(10,10) = 0\cdot 10+1\cdot 10$ then you have given what I would consider a trivial example.
+
+\begin{flushleft}
+$$ gcd(7,13) = 1 = a \cdot 7 + b \cdot 13 $$
+There exists at least one solution with one explicitly listed below:
+$$ gcd(7,13) = 1 = 2 \cdot 7 + (-1) \cdot 13 $$
+As a simple proof by counterexample, we show how the solutions to the linear combination equation are not unique as both (2, -1) and (-11, 6) are both solutions.
+$$ 2 \cdot 7 + (-1) \cdot 13 = (-11) \cdot 7 + 6 \cdot 13 $$
+\end{flushleft}
+
+\item Feedback: Come up with a couple of explicit questions or comments on what you found interesting or confusing. Write them down.
+
+\begin{flushleft}
+\begin{enumerate}
+    \item It would be interesting to see more examples of proofs that require the second principle of mathematical induction (where the first principle wouldn't suffice).
+    \item Are mappings between sets that are not functions, not as interesting to study? What about mappings that are not functions but onto or one-to-one?
+\end{enumerate}
+\end{flushleft}
+
+\end{enumerate}
+\end{document} 

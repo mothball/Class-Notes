@@ -1,0 +1,141 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{booktabs}
+\usetikzlibrary{arrows.meta}
+\geometry{letterpaper, portrait, margin=0.5in}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\id}{\mathrm{id}}
+\pgfplotsset{compat=1.15}
+\begin{document}
+
+\thispagestyle{empty}
+\begin{center}\large{
+    MATH 621\quad
+    HW 3\quad
+    Sumanth Ravipati\quad
+    February 18, 2019}
+\end{center}
+\vspace{.15in}
+\begin{flushleft}
+Sources: https://en.wikipedia.org/wiki/Heisenberg\_group
+\end{flushleft}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[1.] Show that a subgroup of index two of a group is a normal subgroup.
+\newline
+
+\begin{flushleft}
+Let $H$ be the subgroup of a group $G$ where $[G:H] = 2$. In other words, there are 2 cosets of $H$ in $G$, which are of the form $gH$, where $g \in G$. Since the identity element $e \in G$, one of the cosets must be $eH = H$. Since there are only 2 cosets, every element of $G$ must be mapped to one or the other. Let $g_1H = g_2H = \cdots = H$ and $g_1^\prime H = g_2^\prime H = \cdots = xH$ for some $x \in G\setminus H$. Therefore, we can consider the set of elements in $G$ to be a disjoint union of $H$ and $xH$. Using the same logic for the right cosets, we see that $G$ is a disjoint union of $H$ and $Hx$ since $x \in G\setminus H$ in both cases. We see that the subgroup $H$ is a common coset in both cases, and we need only consider the cases $g \in H$ and $g^\prime \in G\setminus H$. 
+\newline
+
+To prove that $H$ is normal in $G$, we must show that $ghg^{-1} \in H\, \forall g \in G$. If $g \in H$, then $g^{-1} \in H$ since $H$ is a group and so it contains its inverses. Since $g, h, g^{-1} \in H$, the product $ghg^{-1}$ is also an element in $H$, due to closure of the group operation. Therefore, if $g \in H \Rightarrow ghg^{-1} \in H\, \forall g \in G$ and equivalently, $gH = Hg$.
+\newline
+
+If $g^\prime \in xH$, then $g^\prime \not\in H$ and so $g^\prime \in Hx$. Therefore $xH \subseteq Hx$. Alternatively, if $g^\prime \in Hx$, then $g^\prime \not\in H$ and so $g^\prime \in xH$ and so $Hx \subseteq xH$. Combining results, we see that $xH \subseteq Hx$ and $Hx \subseteq xH$, which is equivalent to $gH = Hg$ for any $g \not\in H$.
+\newline
+
+Since $gH = Hg$ in both cases of $g \in H$ and $g \not\in H$, we can conclude that $gH = Hg\, \forall g \in G$. This is by definition true if and only if $H$ is normal in $G$ and so $H$ is a normal subgroup. Therefore, we have shown that any subgroup of index two of a group is a normal subgroup, as was to be shown. $\Box$
+\end{flushleft}
+
+\newpage
+\item[2.] Show that the automorphisms of a group $G$ themselves form a group Aut$(G)$, a subgroup of $B(G)$, the group of all bijective functions $G \rightarrow G$. Show that in Aut$(G)$, the inner automorphisms form a normal subgroup of Aut$(G)$.
+\newline
+
+\begin{flushleft}
+We shall first show that the automorphisms of a group $G$, denoted as Aut$(G)$, are a subgroup of $B(G)$, the group of all bijective functions $G \rightarrow G$. To do this, we must first show that Aut$(G)$ is a subset of $B(G)$. Since any homomorphism $\phi: G \rightarrow G$ is an automorphism if and only if it is bijective, any element of Aut$(G)$ must be an element of $B(G)$. Therefore Aut$(G) \subseteq B(G)$. 
+\newline
+
+To then show that Aut$(G)$ is a subgroup of $B(G)$, we must prove that it is non-empty, has an inverse for every element and is closed under the group operation, which is composition. Let $\phi_e = Id$ be the identity map where $\phi_e(g) = g\, \forall g \in G$. Since $\phi_e \circ \phi_i (g)$ = $\phi_e(\phi_i(g))$ = $\phi_i(g)$ = $\phi_i(\phi_e(g))$ = $\phi_i \circ \phi_e(g)\, \forall g \in G$, we know that $\phi_e\phi_i = \phi_i\phi_e = \phi_i\, \forall \phi_i \in \text{Aut}(G)$. Therefore there does exist the identity element $\phi_e$ but we need to show that it also is an element of Aut$(G)$. $\phi_e$ is injective since $a = \phi(a) = \phi(b) = b$ and so $\phi(a) = \phi(b) \Rightarrow a = b$. Since $\exists b \in G\, \forall b \in G$ where $\phi(b) = b$, $\phi_e$ is surjective. Therefore, $\phi_e$ is a bijective homomorphism and maps $G \rightarrow G$ which means that $\phi_e$ is also an automorphism of the group $G$.
+\newline
+
+We next wish to show the existence of an inverse element for any given element of Aut$(G)$. We know that such an element must have the following property: for a given $\phi_i \in \text{Aut}(G)$, $\phi_i^{-1}\phi_i = \phi_i\phi_i^{-1} = \phi_e$. Let $\phi_i(g) = g^\prime \in G$ and since $\phi_i$ is bijective, $\exists \phi_i^{-1}$ such that $\phi_i^{-1}(g^\prime) = g$. Therefore, $\phi_i \circ \phi_i^{-1}(g^\prime) = \phi_i(\phi_i^{-1}(g^\prime)) = \phi_i(g) = g^\prime = \phi_e(g^\prime)$. Similarly, we see that $\phi_i^{-1} \circ \phi_i(g) = \phi_i^{-1}(\phi_i(g)) = \phi_i^{-1}(g^\prime) = g = \phi_e(g)$.
+\newline
+
+We shall see that $\phi^{-1}$ is also a bijective homomorphism. Applying $\phi_i$ to $\phi_i^{-1}(ab)$ twice gives us: $\phi_i(\phi_i(\phi_i^{-1}(ab))) = \phi_i(ab) = \phi_i(a)\phi_i(b)$ since $\phi_i$ is known to be a homomorphism. Applying $\phi_i$ twice to $\phi_i^{-1}(a)\phi_i^{-1}(b)$ gives us: $\phi_i(\phi_i(\phi_i^{-1}(a)\phi_i^{-1}(b)))$ = $\phi_i(\phi_i(\phi_i^{-1}(a))\phi_i(\phi_i^{-1}(b)))$ = $\phi_i(a)\phi_i(b)$. Using the transitivity of equality, for any given $\phi_i^{-1}$, we have shown that $\phi_i(\phi_i(\phi_i^{-1}(ab)))$ = $\phi_i(\phi_i(\phi_i^{-1}(a)\phi_i^{-1}(b)))$. Since $\phi_i$ is injective, $\phi_i(\phi_i^{-1}(ab))$ = $\phi_i(\phi_i^{-1}(a)\phi_i^{-1}(b))$ and $\phi_i^{-1}(ab) = \phi_i^{-1}(a)\phi_i^{-1}(b)$. Since this is true for any $a, b \in G$, we have shown that $\phi_i^{-1}$ is a homomorphism. Since the inverse of $\phi_i^{-1}$ exists and is $\phi_i$, we can conclude that $\phi_i^{-1}$ is also an automomorphism.
+\newline
+
+We will next show that Aut$(G)$ is closed under the operation of composition. Since the composition of bijective functions is bijective, we know that $\forall \phi_i, \phi_j \in \text{Aut}(G), \phi_i \circ \phi_j \in B(G)$. To show that this composition is an automorphism, we shall show that it is also an isomorphism. Using the fact that $\phi_j \in \text{Aut}(G)$, we know that $(\phi_i \circ \phi_j)(ab) = \phi_i(\phi_j(ab)) = \phi_i(\phi_j(a)\phi_j(b))$. Since $\phi_i \in \text{Aut}(G)$, we know that $\phi_i(\phi_j(a)\phi_j(b))$ = $\phi_i(\phi_j(a))\phi_i(\phi_j(b))$. We have shown that this is an isomorphism since $(\phi_i \circ \phi_j)(ab)$ = $(\phi_i \circ \phi_j)(a)(\phi_i \circ \phi_j)(b)\, \forall \phi_i, \phi_j \in \text{Aut}(G)\,, \forall a, b \in G$. Therefore, we have shown that Aut$(G)$ is closed under the operation of composition. Since we have shown that Aut$(G)$ is non-empty, has an inverse for every element, and is has closure, we have proved that it is indeed a subgroup of $B(G)$. $\Box$
+\newline
+
+We shall next show that in Aut$(G)$, the inner automorphisms form a normal subgroup of Aut$(G)$. We shall first show that the inner automorphisms, denoted as Inn$(A)$ are a subgroup of Aut$(G)$ and then show that Inn$(A)$ form a normal subgroup of Aut$(G)$. For an arbitrary element $a \in G$, there is an automorphism $\Phi_a: G \rightarrow G, \Phi_a(h) = a^{-1}ha$, where $\Phi_a \in \text{Inn}(G)$. We know that this is a proper map since $a, h \in G$ and $\exists a^{-1} \in G$ and so $a^{-1}ha \in G$ due to closure of the group operation.
+\newline
+
+Next we shall show that $\Phi_a$ is indeed an automorphism by proving it is a homomorphism and is bijective. We see that $\forall g, h \in G, \Phi_a(gh)$ = $a^{-1}gha$ = $a^{-1}g(aa^{-1})ha$ = $(a^{-1}ga)(a^{-1}ha)$ = $\Phi_a(g)\Phi_a(h)$. Since $\Phi_a(gh)$ = $\Phi_a(g)\Phi_a(h)$, we know that $\Phi_a$ is a homomorphism. To prove that $\Phi_a$ is bijective, we can prove injectivity and surjectivity. For any given $g, h \in G$, we see that if $\Phi_a(g) = \Phi_a(h)$, then $a^{-1}ga = a^{-1}ha$ and so $aa^{-1}gaa^{-1} = aa^{-1}haa^{-1}$, to finally give us that $g = h$, as was to be shown for being injective. Next, for any given $g \in G$, we wish to see if $\exists h \in G$ such that $\Phi_a(h) = g$. Let $h = aga^{-1}$ for some $a, g \in G$. Then $\Phi_a(h) = a^{-1}aga^{-1}a = g$, as desired. Therefore, we have proven that $\Phi_a$ is indeed an automorphism.
+\newline
+
+To show that Inn$(G) \leq \text{Aut}(G)$, we shall show that Inn$(G)$ is non-empty, has an inverse for every elements and is closed under the group operation. There exists an identity function $\Phi_e = Id$, where $\Phi_e(g) = e^{-1}ge = eg = g\, \forall g \in G$. Since $e \in G, \Phi_e \in \text{Inn}(G)$. For a given $\Phi_a, \exists \Phi_{a^{-1}}$, where $\Phi_{a^{-1}}(g) = (a^{-1})^{-1}ga^{-1} = aga^{-1}$. We shall show that $\Phi_{a^{-1}}\Phi_a = \Phi_a\Phi_{a^{-1}} = \Phi_e$. This is because $\Phi_{a^{-1}}(\Phi_a(g)) = (a^{-1})^{-1}(a^{-1}ga)a^{-1} = (aa^{-1})g(aa^{-1}) = g = \Phi_e(g)$. Similarly,  $\Phi_a(\Phi_{a^{-1}}(g)$ = $a^{-1}aga^{-1}a$ = $(a^{-1}a)g(a^{-1}a)$ = $g = \Phi_e(g)$. Therefore, $\Phi_{a^{-1}}(\Phi_a(g)) = \Phi_a(\Phi_{a^{-1}}(g)\, \forall g \in G$.
+\newline
+
+To prove closure, let us consider $\Phi_a, \Phi_b \in \text{Inn}(G)$. For any $g \in G, \Phi_a\Phi_b(g)$ = $\Phi_a(b^{-1}gb)$ = $a^{-1}b^{-1}gba$ = $(ba)^{-1}g(ba) = \Phi_{ba} \in \text{Inn}(G)$, since $ba \in G$, due to closure in $G$. Therefore, we have shown the existence of an identity element, inverse for every element and closure for Inn$(G)$. As $a$ was an arbitrary element of $G$, we have shown that Inn$(A) = \{ \Phi_a | a \in G\}$ is a subgroup of Aut$(G)$.
+\newline
+
+Finally, we shall show that Inn$(G)$ is a normal subgroup of Aut$(G)$. We can show that for any given $\phi \in \text{Aut}(G), \Phi_h \in \text{Inn}(G), g,h \in G$, $(\phi^{-1}\Phi_h\phi)(g)$ = $\phi^{-1}(\Phi_h(\phi(g)))$ = $\phi^{-1}(h^{-1}\phi(g)h)$ = $(\phi^{-1}(h^{-1}))(\phi^{-1}(\phi(g)))(\phi^{-1}(h))$ = $(\phi^{-1}(h^{-1}))g(\phi^{-1}(h))$ If we set $\phi^{-1}(h^{-1}) = k^{-1}$, then $h^{-1} = \phi(k^{-1}) \Rightarrow$ $h = \phi^{-1}(k^{-1}) \Rightarrow$ $\phi(h) = k^{-1} \Rightarrow$ $\phi^{-1}(h) = k$, using the fact that $\phi$ is bijective. Therefore $(\phi^{-1}(h^{-1}))g(\phi^{-1}(h))$ becomes $k^{-1}gk = \Phi_k(g)$ for some $k \in G, \Phi_k \in \text{Inn}(G)\, \forall g \in G$. Therefore, $\phi^{-1}\Phi_h\phi = \Phi_k \in \text{Inn}(G)$. Since this is true for all $\phi \in \text{Aut}(G)$ and for some $h \in G$, $\Phi_h \in \text{Inn}(G)$, we have shown that Inn$(G) \trianglelefteq \text{Aut}(G)$. $\Box$ 
+\end{flushleft}
+\newpage
+\item[3.] Show that a group in which every element is its own inverse is abelian.
+\newline
+
+\begin{flushleft}
+A group $G$ in which every element is its own inverse is equivalently stated as $g = g^{-1}\, \forall g \in G$. We wish to show that $G$ is abelian, which is equivalent to $ab = ba\, \forall a, b \in G$. Since $G$ is a group, it is closed under the group operation and so $ab \in G \, \forall a, b \in G$. Since $ab \in G$, $ab = (ab)^{-1}$ = $b^{-1}a^{-1} = ba$, using the fact that $a^{-1} = a$ and $b^{-1} = b$. Since $ab = ba$ for any given $a, b \in G$, we have proven that $G$ is abelian as desired. $\Box$
+\end{flushleft}
+\vspace{.2in}
+\begin{flushleft}
+Optional bonus: Give an example of a non-abelian group $G$ in which $g^3 = e$ for all $g \in G$.
+\newline
+
+Let $G$ be the set of upper triangular $3 \times 3$ matrices with 1's along the diagonal, under the group operation of multiplication modulo 3. Each element of the group would have the following form: $g = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}$. We know that this set contains the identity element $\begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}$ when $x, y, z = 0$.
+\newline
+For a given $g = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}$, we claim that its inverse is of the form $g^{-1} = \begin{bmatrix} 1 & -x & xz-y \\0 & 1 & -z\\ 0 & 0 & 1 \end{bmatrix}$, which is an element of $G$ as it has the required form.
+$$gg^{-1} = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & -x & xz-y \\0 & 1 & -z\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & x-x & xz-y+y-xz \\0 & 1 & z-z\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}$$
+$$g^{-1}g = \begin{bmatrix} 1 & -x & xz-y \\0 & 1 & -z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & x-x & xz-y+y-xz \\0 & 1 & z-z\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}$$
+
+Therefore, $gg^{-1} = g^{-1}g = e$, as required. Since matrix multiplication is associative, we know that the group operation also has this required property. All that remains to be see is if $G$ is closed under the group operation where $g, g^\prime \in G$:
+\newline
+
+$$gg^\prime = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x^\prime & y^\prime \\0 & 1 & z^\prime\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & x+x^\prime & y+y^\prime+xz^\prime \\0 & 1 & z+z^\prime\\ 0 & 0 & 1 \end{bmatrix}$$
+\newline
+
+This resultant matrix also has the required form since multiplication modulo 3 is a closed operation on the Real numbers and so $gg^\prime$ is also an element of the group. Since $G$ satisfies all the properties of a group, we know that it is a group under the operation of matrix multiplication modulo 3.
+\newline
+
+We next check that every element does in fact have an order of 3, where  $g^3 = e$ for all $g \in G$.
+\newline
+$g^3 = \left(\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\right)\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & 2x & 2y+xz \\0 & 1 & 2z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & 3x & 3y+3xz \\0 & 1 & 3z\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & 2x & 2y+xz \\0 & 1 & 2z\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\left(\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\right)$
+\newline
+
+Therefore, we have seen that $g^3 = e\, \forall g \in G$. To show that $G$ is non-abelian, consider $g, g^\prime \in G$ where $g = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}$ and $g^\prime = \begin{bmatrix} 1 & x^\prime & y^\prime \\0 & 1 & z^\prime\\ 0 & 0 & 1 \end{bmatrix}$. Let us take the products $gg^\prime$ and $g^\prime g$
+\newline
+$$gg^\prime = \begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x^\prime & y^\prime \\0 & 1 & z^\prime\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & x+x^\prime & y+y^\prime+xz^\prime \\0 & 1 & z+z^\prime\\ 0 & 0 & 1 \end{bmatrix}$$
+$$g^\prime g= \begin{bmatrix} 1 & x^\prime & y^\prime \\0 & 1 & z^\prime\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & x & y \\0 & 1 & z\\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & x+x^\prime & y+y^\prime+zx^\prime \\0 & 1 & z+z^\prime\\ 0 & 0 & 1 \end{bmatrix}$$
+\newline
+
+In general, $gg^\prime = g^\prime g$ only when all the components are equal modulo 3 as well. This would only be true if $xz^\prime \equiv zx^\prime (\text{mod }3)$. There obviously infinitely many counterexamples and we can pick $x, y, y^\prime, z^\prime = 0$ and $z, x^\prime = 1$ so that $xz^\prime = 0 \not= 1 = zx^\prime$
+\newline
+
+$gg^\prime = \begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 1\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & 1 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & 1 & 0 \\0 & 1 & 1\\ 0 & 0 & 1 \end{bmatrix} \not= \begin{bmatrix} 1 & 1 & 1 \\0 & 1 & 1\\ 0 & 0 & 1 \end{bmatrix}$ = $\begin{bmatrix} 1 & 1 & 0 \\0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix}\begin{bmatrix} 1 & 0 & 0 \\0 & 1 & 1\\ 0 & 0 & 1 \end{bmatrix} = g^\prime g$
+\newline
+\newline
+
+Therefore we have shown that $G$ is non-abelian as $gg^\prime = g^\prime g \, \forall g, g^\prime \in G$ is not true via the counter-example given above. Since every element has been shown to have an order of 3, we know that $G$ satisfies all the necessary requirements. $\Box$
+\end{flushleft}
+
+\end{enumerate}
+\end{document}

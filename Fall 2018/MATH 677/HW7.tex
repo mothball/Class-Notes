@@ -1,0 +1,66 @@
+\documentclass[12pt,letterpaper,reqno]{amsart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage{titlesec,bbm, hyperref}
+\usepackage{spverbatim} 
+\usepackage{esvect}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+\geometry{letterpaper, portrait, margin=1in}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand*{\pd}[3][]{\ensuremath{\frac{\partial^{#1} #2}{\partial #3}}}
+
+\begin{document}
+
+\thispagestyle{empty}
+\centerline{\Large Math 677 Homework 7}
+\centerline{Sumanth Ravipati}
+\centerline{11/18/2018}
+\vspace{.25in}
+
+\begin{enumerate}
+\item[(21)] Consider the planar system
+$$\dot{x} = -x + \beta y^2 + 2xy^2$$
+$$\dot{y} = xy + x^2y + \alpha y^3$$
+which has already been partially discussed in the lecture.
+
+\begin{enumerate}
+    \item For $\alpha = 2$ and $\beta = -2$ determine the function $c(y)$ describing a center manifold up to order 10. Use this result to determine the stability properties of the equilibrium $(0,0)$. (Hint: Use Mathematica!)
+    \newline
+    \begin{flushleft}
+    If $\alpha = 2$ and $\beta = -2$, the system becomes: $$\dot{x} = -x - 2y^2 + 2xy^2$$
+    $$\dot{y} = xy + x^2y + 2y^3$$
+    \newline
+    \end{flushleft}
+    \item For $\alpha = \beta = 0$ prove that the center manifold is necessarily given by the function $c(y) \equiv 0$. (Hint: You cannot proceed as in (a).)
+    \begin{flushleft}
+    If $\alpha = \beta = 0$, the system becomes:
+    $$\dot{x} = -x + 2xy^2$$
+    $$\dot{y} = xy + x^2y$$
+    If we set $x = c(y)$, we see that $\dot{x} = c^\prime(y)\dot{y}$. In the first equation, substituting for $x$ we get $\dot{x} = -c(y) + 2c(y)^2y^2$. Substituting the second equation for $\dot{y}$, we get: $\dot{x} = $
+    \newline
+    \end{flushleft}
+    \item Describe the phase portrait of the above system for $\alpha = \beta = 0$ in a neighborhood of $(0,0)$. Determine the stability properties of the equilibrium $(0,0)$.
+\end{enumerate}
+
+\item[(22)] Model for the Spread of a Disease: For each $t \in \R$, let $x(t)$ denote the percentage of people in a population which can be infected by a certain disease, let $y(t)$ be the percentage of infected people, and $z(t)$ be the percentage of people which are immune to the disease. Then a simple model for the spread of the disease is given by
+
+$$\dot{x} = -axy$$
+$$\dot{y} = -by + axy$$
+$$\dot{z} = by$$
+
+where $\alpha > 0$ is the infection rate, and $b > 0$ the rate of immunization. Prove the following assertions:
+\begin{enumerate}
+    \item The triangle $D = \{(x,y,z) \in \R^3 : x + y + z = 1, x \geq 0, y \geq 0, z \geq 0\}$ is a positively invariant set.
+    \item Now assume in addition that $0 < b < a$ and prove the following statement. Only if the percentage $x(0)$ exceeds a certain threshold $x^* \in (0,1)$ (Find this value!), the following is true: The percentage of infected people $y(t)$ increases initially, after reaching a maximal value strictly less than 1, it decreases and converges to 0 as $t \rightarrow \infty$.
+    \item What happens in the case $0 < a \leq b$?
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
